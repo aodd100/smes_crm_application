@@ -1,0 +1,405 @@
+﻿
+
+.formMain {
+    position: relative;
+    display: flex;
+    width: 99%;
+    padding: 4px;
+}
+
+.formLeft {
+    position: relative;
+    flex: 1;
+    width: 50%;
+}
+
+.formRight {
+    position: relative;
+    flex: 1;
+    width: 50%;
+    margin-left: 20px;
+}
+
+.formMiddle {
+    position: relative;
+    width: 99%;
+}
+
+.form-group {
+    display: flex;
+    padding: 3px;
+}
+
+.formMain1 {
+    display: flex;
+}
+
+.formMain .formGroup select {
+    width: 93%;
+}
+
+.formMain1 .formLeft {
+    flex: 5;
+}
+
+.formMain1 .formMid {
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+    margin-left: 1%;
+    margin-right: 1%;
+    text-align: center;
+}
+
+.formMain1 .formRight {
+    flex: 5;
+}
+
+.formMain1 .formMid button {
+    width: 63px;
+}
+
+.formMain1 .formLeft select {
+    width: 99%;
+    height: 144px;
+}
+
+.formMain1 .formRight select {
+    width: 99%;
+    height: 144px;
+}
+
+.formMain1 .form-group select {
+    width: 90%;
+}
+
+.formMain .form-group label {
+    flex: 1;
+}
+
+.formMain .form-group input[type="checkbox"] {
+    float: left;
+}
+
+.formMain .form-group .col-md-10 {
+    flex: 1;
+    text-align: left;
+}
+
+    .formMain .form-group .col-md-10 textarea, .formMain .form-group .col-md-10 input, .formMain .form-group .col-md-10 select {
+        width: 90%;
+    }
+
+.formMiddle {
+    display: flex;
+}
+
+    .formMiddle span {
+        flex: 1;
+    }
+
+        .formMiddle span.righSpan {
+            flex: 1;
+            margin-left: 89px;
+        }
+
+    .formMiddle .form-group {
+        width: 100%;
+    }
+
+.form-group .col-md-offset-2 {
+    width: 100px
+}
+
+.form-group .bt {
+    width: 100px
+}
+
+textarea {
+    padding: 0 0;
+}
+
+.formMiddle .form-group .col-md-10 {
+    width: 100%
+}
+
+.form-group .col-md-10 .checkbox {
+    text-align: left;
+    float: left;
+}
+#mailType {
+    width: 100%;
+    height: 190px;
+    padding: 10px;
+}
+.form-horizontal {
+    background-color: #fff;
+    padding: 6px;
+    width: 98%;
+    margin-top: 9px;
+    margin-left: 0px;
+    margin-bottom: 12px;
+}
+.form-group .col-md-offset-2, .form-group .col-md-10 {
+    margin-left: 0px !important;
+    float: none !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.sideContainer a {
+    padding: 2px 2px 2px 3px;
+    border-bottom: 1px solid #EEEEEE;
+    text-align: left;
+    background-color: #E5E5E5;
+    zoom: 1;
+    display: block;
+    width: 148px;
+    padding-right: 2px;
+    line-height: 2;
+    padding-left: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+    .sideContainer a:hover {
+        border-left: solid 4px #002245;
+        text-decoration: none;
+    }
+
+.imagTop {
+    position: absolute;
+    top: 0;
+    width: 214px !important;
+    height: 87px !important;
+}
+
+
+
+div.sideTitle {
+    margin-top: 5px;
+}
+
+.auto-style1 {
+    position: absolute;
+    top: 0;
+    height: 46px;
+    width: 163px;
+    left: 0px;
+}
+
+
+.form-horizontal .form-group .btn {
+    border: 1px solid #000;
+    background: #686767;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    Cursor: pointer;
+    font-weight: bold;
+    width: 78px;
+}
+
+.form-horizontal .textInput {
+    width: 99%;
+}
+
+.form-horizontal textarea#COMPANYNAME {
+    width: 99%;
+}
+/*.form-horizontal textarea#COMPANYNAME, .formMain .form-group .col-md-10 input, .formMain .form-group .col-md-10 select {
+            width: 99%;
+        }*/
+.popup-content {
+    /*Hides pop-up content when there is no "active" class */
+    visibility: hidden;
+}
+
+    .popup-content.active {
+        /*Shows pop-up content when "active" class is present */
+        visibility: visible;
+    }
+
+#tabberpage .formMain .form-group .col-md-10 textarea, #tabberpage .formMain .form-group .col-md-10 input {
+    width: 97% !important;
+}
+
+#tabberpage .formMiddle .form-group {
+    display: flex;
+    flex-flow: column;
+}
+
+    #tabberpage .formMiddle .form-group label {
+        flex: none;
+    }
+
+    #tabberpage .formMiddle .form-group .col-md-10 {
+        flex: 1;
+    }
+
+        #tabberpage .formMiddle .form-group .col-md-10 textarea {
+            width: 100%;
+        }
+
+#tabberpage .formMiddle {
+    display: flex;
+    margin-bottom: 9px;
+}
+
+    #tabberpage .formMiddle span {
+        flex: 1;
+    }
+
+#tabberpage .topDiv {
+    display: flex;
+}
+
+    #tabberpage .topDiv .topDivSub1 {
+        flex: 5;
+    }
+
+    #tabberpage .topDiv .topDivSub2 {
+        flex: 1;
+        text-align: right;
+        position: relative;
+        top: 12px;
+    }
+
+#dynabox {
+    display: block;
+    width: 305px;
+    height: 273px;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    position: absolute;
+    z-index: 999;
+}
+
+.dynaskin #dragbar span#hidebox {
+    text-align: right;
+    color: #fff;
+    cursor: pointer;
+}
+
+.auto-style1 {
+    width: 100%;
+}
+
+.auto-style2 {
+    width: 255px;
+}
+
+#dynaframe {
+    border: solid 1px #686767;
+}
+.tabContainer .buttonContainer{            
+    height: 7%;
+}
+.tabContainer .buttonContainer button {
+    width: 97px;
+    height: 100%;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 2px;
+    font-size: 12px;
+    font-family: sans-serif;
+    background-color: #eee;
+    padding-right: 6px;
+    border-radius: 8px 8px 0px 0px;
+}
+.tabContainer .buttonContainer button:hover{ 
+    background-color: #d7d4d4;
+}
+.tabContainer .tabPanel{
+    width:100%;         
+    height: 85%;
+    padding-top: 1px;
+    background-color: grey;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 14px;
+    display: none;
+}
+.formMain .formLeft select {
+    width: 88%;
+}
+.formRight .form-group {
+    display: flex;
+    flex-flow: column;
+}
+.formRight .form-group label {
+    flex: none;
+}
+.form-group .form-group label {
+    flex: 1;
+}
+.formMain .form-group .col-md-10 select {
+    width: 100%;
+}
+.formMain1 table#productTable td {
+    text-align: center;
+}
+.formMain1 table#productTable td input[type="text"] {
+    width: 91%;
+}
+.formMain .form-group .col-md-10 select {
+    width: 100% !important;
+}
+.formRight .form-group {
+    display: flex;
+    flex-flow: row;
+            
+}
+.formLeft {
+    margin-right: 18px;
+}
+.formRight .form-group label{
+    flex: 1;
+}
+.formRight .form-group .col-md-10 {
+    flex: 1;
+}
+#tabberpage .topDiv .topDivSub1 {
+    flex: 3 !important;
+}
+#tabberpage .topDiv .topDivSub2 {
+    /* display: flex; */
+    margin-right: 10px;
+}
+#tabberpage .topDiv .topDivSub2 a {
+    flex: 1
+}
+    #tabberpage .topDiv .topDivSub2 input {
+        flex: 1;
+        margin-left: 10px;
+        height: 19px;
+        line-height: 14px;
+    }
+.col-md-offset-2.col-md-10.topDivSub2 input.update {
+    flex: none !important;
+    padding: 4px;
+    line-height: 12px;
+    text-align: right;
+}
+#tabberpage .formMiddle span {
+    font-weight: bolder;
+    font-size: 13px;
+}
+#tabberpage .topDiv .topDivSub2 {
+    display: flex !important;
+}
+#tabberpage .topDiv .topDivSub1 {
+    flex: 2 !important;
+}
+#tabberpage .topDiv .topDivSub2 a {
+    font-size: 11px;
+    float: left;
+    margin-right: 10px;
+    position: relative;
+    right: 50px;
+    top: 2px;
+}
+#tabberpage .topDiv .topDivSub2 input {
+    position: absolute;
+    right: -9px;
+}

@@ -1,0 +1,512 @@
+﻿@using System.Web.Optimization
+@using Digita.Mailer
+@using IRSLCRM
+@using IRSLCRM.Helper;
+@*@{
+    var conf = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration(System.Web.Hosting.HostingEnvironment.ApplicationVirtualPath);
+    var section = (System.Web.Configuration.SessionStateSection)conf.GetSection("system.web/sessionState");
+    string timeout = section.Timeout.TotalMinutes.ToString();
+ }*@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/favicon.ico")" rel="shortcut icon" type="image/x-icon" />
+    <link href="@Url.Content("~/css/tmain.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/G.css")" rel="stylesheet" />
+
+    <noscript>
+        <img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=/5f9l1aQeSI14B" style="display:none" height="1" width="1" alt="" />
+    </noscript>
+    <link href="@Url.Content("~/css/datatables.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/fullcalendar.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/fullcalendar.print.css")" rel="stylesheet" media="print" />
+    <link href="@Url.Content("~/css/jquery-ui.css")" rel="stylesheet" />
+
+    <script src="@Url.Content("~/js/popper.min.js")"></script>
+    <script src="@Url.Content("~/js/bootstrap.min.js")"></script>
+
+    <link href="~/css/datatables.min.css" rel="stylesheet" />
+    <link href="@Url.Content("~/css/G.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/layoutTabcss.css")" rel="stylesheet" />
+    <style type="text/css">
+        #BarMenu {
+            display: flex;
+        }
+
+        #BarMenu .menu {
+            flex: 1
+        }
+        #logoutForm {
+            flex: 1;
+            text-align: right;
+        }
+        #BarMenu .username {
+            flex: 1
+        }
+
+        .userProfile {
+            display: flex;
+            margin-left: 33%;
+            float: right;
+            margin-right: 8%;
+        }
+
+        .userProfile table {
+            flex: 6
+        }
+
+        .userProfile a {
+            flex: 0
+        }
+        #divPopupTimeOut {
+            text-align: left;
+            margin-top: 15px;
+            position: fixed;
+            top: 40px;
+            right: 0px;
+            left: 490px;
+            z-index: 9999;
+            height: 165px;
+            width: 280px !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="mainTop">
+        <a href="/" style="height: 45px">
+            @Html.Image(Url.Content("~/images/Irsllogov3.gif.gif"), "Home", new { @id = "myId" })
+        </a>
+        <div id="topbarIrsl">
+            <ul class="inBarMenu Buttons normal" id="BarMenu">
+                <span class="menu">
+                    <li id="MenuSelected" class="FirstItem">@Html.ActionLink(IRSLCRM.Resources.Resources.LangRes.vec67CRMtt, "index", "Companies")</li>
+                    <li>@Html.ActionLink(IRSLCRM.Resources.Resources.LangRes.vec67Exittt, "logoff=true", "EXIT")</li>
+                    @if (Session["UserRole"] != null)
+                    {
+                        if (!String.IsNullOrEmpty(HttpContext.Current.Session["UserRole"].ToString().Trim()) && (HttpContext.Current.Session["UserRole"].ToString().Trim() == "Admin" || HttpContext.Current.Session["UserRole"].ToString().Trim() == "Manager"))
+                        {
+                            <li>@Html.ActionLink("Admin", "Admin", "Account")</li>
+                        }
+                    }
+                </span>
+                @if (!String.IsNullOrEmpty((string)HttpContext.Current.Session["UserName"]))
+                {
+                    using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-centre" }))
+                    {
+                        <span class="userProfile">
+                            <table>
+                                <tr>
+                                    <td>Hi, @Session["UserName"]</td>
+                                </tr>
+                            </table>
+                            <a style="text-align: right;font-size:10px" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                        </span>
+
+                    }
+                }
+                else
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/Login.aspx">Log in</a>
+                    </ul>
+                }
+            </ul>
+            <ul class="inBarMenu" id="SubBarMenu">
+                <span class="floattop">
+                    <img src="/i/topmail.gif" style="cursor: pointer;" onclick="NewWindow('/Common/PopMailHome.aspx?render=no', 'TopMail', '600', '500', 'no')">&nbsp;<img alt="Manual" style="cursor: pointer" onclick="NewWindow('/es/manual/index.html', 'NewLanguage', '600', '600', 'no')" src="/i/help.gif" border="0">&nbsp;<img src="/i/suggestion.gif" onclick="NewWindow('/Common/iwish.aspx?render=no', 'NewLanguage', '320', '400', 'no')" style="cursor: pointer;">&nbsp;<img src="/flags/es.gif" onclick="NewWindow('/Common/newlang.aspx?render=no', 'NewLanguage', '300', '200', 'no')" style="cursor: pointer;" width="18" height="12">
+                </span>
+                <li>@Html.ActionLink("Companies", "index", "Companies")</li>
+                <li>@Html.ActionLink("Contacts", "index", "Contacts")</li>
+                <li>@Html.ActionLink("Leads", "index", "Leads")</li>
+                <li>@Html.ActionLink("Opportunities", "index", "Opportunity")</li>
+                <li>@Html.ActionLink("Appointment", "myEvents", "Events")</li>
+                <li>@Html.ActionLink("Activity", "index", "Activity")</li>
+                <li>@Html.ActionLink("Importing", "Index", "Importing")</li>
+            </ul>
+        </div>
+    </div>
+
+    <table class="mainTopTable" style="width: 100%; vertical-align: top; height: 80%">
+        <tr>
+            <td class="SideBorderLinked" style="width: 153px; vertical-align: top">
+                <table width="100%" cellspacing="0" border="0" style="margin-right: 3px;top: 0px;position: relative;">
+                    <tbody>
+                        <tr>
+                            <td class="sideContainer">
+                                <div class="sideTitle">
+                                    Options
+                                </div>
+                                <span>
+                                    @RenderSection("SideBar", required: false)
+                                </span>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="sideContainer">
+                                <div class="sideTitle">
+                                    Search
+                                </div>
+                                <div class="sideFixed">
+                                    <input name="Search" class="boxDesign" id="Search" />
+                                </div>
+                                <div id="filters" style="display: none">
+                                    <div class="sideInputTitle">
+                                        Search by Group
+
+                                    </div>
+                                    <div class="sideInput">
+                                        <select name="ListGroups" id="ListGroups" class="BoxDesign">
+                                            <option selected="selected" value="0">Select a group</option>
+                                            <option value="1">System Administrators</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="sideInputTitle">
+                                        Search by Industry
+
+                                    </div>
+                                    <div class="sideInput">
+                                        <select name="ListSector" id="ListSector" class="BoxDesign">
+                                            <option value="0">Select an industry</option>
+                                            <option value="29">Actividades recreativas</option>
+                                            <option value="1">Agricultura</option>
+                                            <option value="17">Alimentos y bebidas</option>
+                                            <option value="15">Ambiente</option>
+                                            <option value="103">Artesanias</option>
+                                            <option value="21">Aseguraciones</option>
+                                            <option value="41">Asociaciones o club</option>
+                                            <option value="4">Banco</option>
+                                            <option value="5">Biotecnologia</option>
+                                            <option value="7">Comunicaciones</option>
+                                            <option value="8">Construcciones</option>
+                                            <option value="9">Consultoria</option>
+                                            <option value="10">Educacion</option>
+                                            <option value="11">Electronica</option>
+                                            <option value="12">Energia</option>
+                                            <option value="14">Entretenimiento</option>
+                                            <option value="16">Finanzas</option>
+                                            <option value="18">Gobierno</option>
+                                            <option value="20">Hospitalidad</option>
+                                            <option value="13">Ingenieria</option>
+                                            <option value="38">Instalaciones electricas</option>
+                                            <option value="39">Instalaciones hidraulicas</option>
+                                            <option value="26">Manufactura</option>
+                                            <option value="22">Mecanica</option>
+                                            <option value="27">Media</option>
+                                            <option value="31">Mensajeria</option>
+                                            <option value="28">No lucrativa</option>
+                                            <option value="6">Quimica</option>
+                                            <option value="19">Salud</option>
+                                            <option value="35">Servicios publicos</option>
+                                            <option value="32">Tecnologia</option>
+                                            <option value="33">Telecomunicaciones</option>
+                                            <option value="37">Textil</option>
+                                            <option value="2">Textil</option>
+                                            <option value="34">Transporte</option>
+                                            <option value="30">Venta al detalle</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="sideInputTitle">
+                                        Search by Type
+
+                                    </div>
+                                    <div class="sideInput">
+                                        <select name="ListType" id="ListType" class="BoxDesign">
+                                            <option value="0">Select a type</option>
+                                            <option value="1">Analista</option>
+                                            <option value="2">Cliente</option>
+                                            <option value="3">Competidor</option>
+                                            <option value="4">Integrador de sistemas</option>
+                                            <option value="5">Inversionista</option>
+                                            <option value="8">Prospecto</option>
+                                            <option value="9">Proveedor</option>
+                                            <option value="7">Revendedor</option>
+                                            <option value="6">Socio</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="sideInputTitle">
+                                        Search by category
+
+                                    </div>
+                                    <div class="sideInput">
+                                        <select name="ListCategory" id="ListCategory" class="BoxDesign">
+                                            <option value="0">Choose category</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="sideInputTitle">
+                                        Owner
+
+                                    </div>
+                                    <div class="sideInput">
+                                        <select name="ListOwners" id="ListOwners" class="BoxDesign">
+                                            <option selected="selected" value="0">Select user</option>
+                                            <option value="1">Admin Name Admin Surname</option>
+                                            <option value="2">nuevo usuario</option>
+                                            <option value="3">a a</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="sideInputTitle">
+                                        Last contact more than:
+
+                                    </div>
+                                    <div class="sideInput">
+                                        <select name="Days" id="Days" class="BoxDesign">
+                                            <option selected="selected" value="0">Select no. of days...</option>
+                                            <option value="30">30 days</option>
+                                            <option value="60">60 days</option>
+                                            <option value="90">90 days</option>
+                                            <option value="120">120 days</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="sideSubmit">
+                                    <img id="filtersimg" src="/i/plus.gif" style="float: left; cursor: pointer" alt="filters" onclick="showfilters()">
+                                    <button id="BtnSearch" class="save">Search</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="sideContainer">
+                                <form id="formCreateNew">
+                                    <div class="sideTitle">
+                                        Create Quick Company
+                                    </div>
+                                    <div class="sideFixed">
+                                        <span>Company Name</span>
+                                    </div>
+                                    <div class="sideFixed">
+                                        <input name="COMPANYNAME" class="boxDesign" id="COMPANYNAME" />
+                                    </div>
+                                    <div class="sideFixed">
+                                        <span>Phone Number</span>
+                                    </div>
+                                    <div class="sideFixed">
+                                        <input name="PHONE" class="boxDesign" id="PHONE" />
+                                    </div>
+                                    <div class="sideFixed">
+                                        <span>Email</span>
+                                    </div>
+                                    <div class="sideFixed">
+                                        <input name="EMAIL" class="boxDesign" id="EMAIL" />
+                                    </div>
+                                    <div class="sideFixed">
+                                        <input type="button" name="btnQuickCompany" value="Save" class="save" id="btnQuickCompany" />
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                        <tr>
+                            <td class="BorderBottomTitles" align="left">
+                                <span id="RapInfo" style="color: red"></span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </td>
+            <td class="pageStyle" style="height: 100%; vertical-align: top">
+
+                @RenderBody()
+
+            </td>
+        </tr>
+    </table>
+    <footer style="margin-top: 34px;">
+        <center>
+            <table style="height: 40px; margin-top: 5px;" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="http://www.opensource.irsl.com" target="_blank">
+                                <img class="topLogo" src="@Url.Content("~/images/IrslLogoOS.gif.gif")" alt="Powered by IRSL CRM" border="0">
+                            </a>
+                        </td>
+                        <td valign="top" nowrap="">
+                            <div style="font-family: tahoma, verdana; font-size: 12px; padding: 2px 2px 3px 2px; border: 1px solid #686666; border-left: none;">
+                                © 2017-2018 All Rights Reserved. Version 1.0.0<br>Visit <a href="http://www.opensource.irslconsulting.com" target="_blank" style="font-family: tahoma, verdana; font-size: 12px; color: #f46d12;">www.irslconsulting.com</a> for more information.
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </footer>
+    <script src="@Url.Content("~/Scripts/jquery-3.3.1.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.js")"></script>
+    <script src="@Url.Content("~/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/js/common.js")"></script>
+    <script src="@Url.Content("~/js/dynabox.js")"></script>
+    @RenderSection("Scripts", required: false)
+    <script type="text/javascript">
+
+        $(function () {
+            @*$(document).ready(function () {
+
+                var time = @timeout * 1000 * 60;
+                var timeout;
+                var isLogout = false;
+
+                timeout = setTimeout(function() {
+                    //Things you need to do
+                        isLogout = true;
+
+                }, time);
+
+                $(document).on('click', function () {
+                    if (!isLogout) {
+                        clearTimeout(timeout);
+                        timeout = setTimeout(function() {
+                            //Things you need to do
+                             isLogout = true;
+                        }, time);
+                    }
+                });
+            });*@
+            $("#btnQuickCompany").click(function () {
+                var formData = $('#formCreateNew').serialize();  //the data
+                $.ajax({
+                    url: '/Companies/CreateNew',
+                    data: formData,
+                    dataType: "json",
+                    success: function (data) {
+                        document.location.href = document.location.href;
+                    }
+                });
+
+                return false;
+            });
+            setNavigation();
+        });
+
+        function setNavigation() {
+            var path = window.location.pathname;
+            path = path.replace(/\/$/, "");
+            path = decodeURIComponent(path);
+
+            $(".inBarMenu a").each(function () {
+                var href = $(this).attr('href');
+                if (path.substring(0, href.length) === href) {
+                    $(this).closest('li').addClass('SubMenuSelected');
+                }
+            });
+        }
+    </script>
+    <script src="@Url.Content("~/js/moment.min.js")"></script>
+    <script src="@Url.Content("~/js/fullcalendar.min.js")"></script>
+    <script src="@Url.Content("~/js/notify.min.js")"></script>
+    <script src="@Url.Content("~/js/sessionstate1.js")"></script>
+    <script type="text/javascript">
+    var loginUrl='@Url.Action("Login", "Login")';
+    var extendMethodUrl = '@Url.Action("ExtendSession", "Account")';
+
+    $(document).ready(function(){
+       SessionTimeout.schedulePopup();
+    });
+
+    window.SessionTimeout = (function() {
+            var _timeLeft, _popupTimer, _countDownTimer;
+            var stopTimers = function() {
+                window.clearTimeout(_popupTimer);
+                window.clearTimeout(_countDownTimer);
+            };
+            var updateCountDown = function() {
+                var min = Math.floor(_timeLeft / 60);
+                var sec = _timeLeft % 60;
+                if(sec < 10)
+                    sec = "0" + sec;
+
+                document.getElementById("CountDownHolder").innerHTML = min + ":" + sec;
+
+                if(_timeLeft > 0) {
+                    _timeLeft--;
+                    _countDownTimer = window.setTimeout(updateCountDown, 1000);
+                } else  {
+                    document.location = loginUrl;
+                }
+            };
+            var showPopup = function() {
+            $("#divPopupTimeOut").show();
+                _timeLeft = 120;
+                updateCountDown();
+            };
+            var schedulePopup = function() {
+            $("#divPopupTimeOut").hide();
+                stopTimers();
+                _popupTimer = window.setTimeout(showPopup, @PopupShowDelay);
+            };
+            var hidePopup=function(){
+            $("#divPopupTimeOut").hide();
+            };
+            var sendKeepAlive = function() {
+                stopTimers();
+                $("#divPopupTimeOut").hide();
+                $.ajax({
+                    type: "GET",
+                    url: extendMethodUrl,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function successFunc(response) {
+                        SessionTimeout.schedulePopup();
+                    },
+                    error:function(){
+                    }
+                });
+            };
+            return {
+                schedulePopup: schedulePopup,
+                sendKeepAlive: sendKeepAlive,
+                hidePopup:hidePopup,
+                stopTimers:stopTimers,
+            };
+
+        })();
+
+    </script>
+</body>
+</html>
+
+<div id="divPopupTimeOut" style="display:none; text-align: left; margin-top:15px; width:280px !important; position:fixed; top:20%; left:30%;z-index:9999; height:165px;" class="alert alert-warning">
+    <div class="row" style="margin-top:10px; margin-left:10px;">
+        Your session is about to expire! 
+        <br />
+        <span id="CountDownHolder"></span>
+        <br />
+        Click OK to continue your session.
+    </div>
+    <div class="row">
+        <div class="text-center button-block" style="text-align:center; margin-top:22px;">
+            <button type="button" class="btn btn-default btn-sm" onclick="SessionTimeout.sendKeepAlive();">OK</button>
+            <button type="button" class="btn btn-default btn-sm" onclick="SessionTimeout.hidePopup();">Cancel</button>
+        </div>
+    </div>
+</div> 
+ 
+@functions {
+    public int PopupShowDelay
+    {
+        get
+        {
+            return 1000 * (Convert.ToInt32(FormsAuthentication.Timeout.TotalSeconds) - 130);
+        }
+    }
+ } 

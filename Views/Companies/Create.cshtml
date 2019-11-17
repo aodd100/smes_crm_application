@@ -1,0 +1,1026 @@
+﻿@using System.Web.Script.Serialization
+@model db.crmdb.dbData.ViewCompaniesDetail
+
+@{
+    ViewBag.Title = "Company Creation";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+@section SideBar {
+    <a class="sidebtn" id="crm" href="/Companies/create">New Company</a>
+    <a class="sidebtn" ID="hr">Advance Search</a>
+    <style>
+    </style>
+}
+
+@using (Html.BeginForm("Create", "Companies", FormMethod.Post, new { onSubmit = "return jQueryAjaxPost(this)" }))
+{
+    @Html.AntiForgeryToken()
+   
+    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                <td class="pageTitle" valign="top" align="left">
+                    Manage Companies
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="tabberpage" class="form-horizontal myOuterDiv">
+        <div class="topDiv">
+            <div class="topDivSub1">
+                <h3>CONTACT INFORMATION</h3>
+            </div>
+            <div class="topDivSub2">
+                <input type="submit" value="Save" class="save" />
+            </div>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div id="dynabox" class="dynaskin popup-content" style="display:none;">
+            <div id="dragbar" class="CommonColor" style="text-align:right;color: #fff">
+                <span id="hidebox" onclick="HideBox("hidebox");return false"><b>X&nbsp;</b></span>
+            </div>
+            <iframe scrolling="yes" id="dynaframe" name="dynaframe" src="" frameborder="0"></iframe>
+        </div>
+        <div class="formMain">
+            <div class="formLeft">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.COMPANYNAME, "COMPANY NAME", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="95%">
+                                        @Html.TextAreaFor(model => model.COMPANYNAME, 2, 40, new { htmlAttributes = new { @id = "CompanyName", @name = "CompanyName", @class = "form-control BoxDesignReq", @startfocus = "true", required=""} })
+                                        @Html.ValidationMessageFor(model => model.COMPANYNAME, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td valign="top" nowrap="">
+                                        <img src="/i/lookup.gif" id="companyLookupImg" alt="Check existence" data-href="/Common/checkexist.aspx?render=no&amp;Company=" style="cursor: pointer;" width="24" height="16" border="0">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ADDRESS, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ADDRESS, new { htmlAttributes = new { @class = "form-control", required = "" } })
+                        @Html.ValidationMessageFor(model => model.ADDRESS, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CITY, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CITY, new { htmlAttributes = new { @class = "form-control", required = "" } })
+                        @Html.ValidationMessageFor(model => model.CITY, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.STATE, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.STATE, new { htmlAttributes = new { @class = "form-control", required = "" } })
+                        @Html.ValidationMessageFor(model => model.STATE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.COUNTRYID, "COUNTRY", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.COUNTRYID, ViewBag.Countrys as SelectList, "--Select Country--")
+                        @Html.ValidationMessageFor(model => model.COUNTRYID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                        @Html.LabelFor(model => model.ZIPCODE, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ZIPCODE, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ZIPCODE, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PHONE, htmlAttributes: new { @class = "control-label col-md-2", data_val = "true" })
+                    <div class="col-md-10">
+                        <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="95%">
+                                        @Html.EditorFor(model => model.PHONE, new { htmlAttributes = new { @class = "form-control", required = "" } })
+                                        @Html.ValidationMessageFor(model => model.PHONE, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td valign="top" nowrap="">
+                                        <img id="PHONEimage" src="/i/phone.gif" data-href="/Common/PopPhone.aspx?render=no&amp;ret=Phone&amp;phone=" style="cursor: pointer;" border="0">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FAX, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="95%">
+                                        @Html.EditorFor(model => model.FAX, new { htmlAttributes = new { @class = "form-control", data_val = "true", required = "" } })
+                                        @Html.ValidationMessageFor(model => model.FAX, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td valign="top" nowrap="">
+                                        <img id="FAXImage" src="/i/phone.gif" data-href="/Common/PopPhone.aspx?render=no&amp;ret=Phone&amp;phone=" style="cursor: pointer;" border="0">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EMAIL, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="95%">
+                                        @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control", data_val = "true", required = "" } })
+                                        @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td valign="top" nowrap="">
+                                        <img id="EMAILImage" src="/images/lookup.gif" data-href="/Common/checkmail.aspx?render=no&amp;mail=" style="cursor: pointer;" border="0">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.WEBSITE, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.WEBSITE, new { htmlAttributes = new { @class = "form-control", required = "" } })
+                        @Html.ValidationMessageFor(model => model.WEBSITE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="formRight">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.COMPANYCODE, "COMPANY CODE", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.COMPANYCODE, new { htmlAttributes = new { @class = "form-control", required = "" } })
+                        @Html.ValidationMessageFor(model => model.COMPANYCODE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TAXID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TAXID, new { htmlAttributes = new { @class = "form-control", required = "" } })
+                        @Html.ValidationMessageFor(model => model.TAXID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CONTACTTYPEID, "CONTACT TYPE", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.CONTACTTYPEID, ViewBag.ContactType as SelectList, "--Select Contact Type--")
+
+                        @Html.ValidationMessageFor(model => model.CONTACTTYPEID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.COMPANYTYPEID, "COMPANY TYPE", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.COMPANYTYPEID, ViewBag.CompanyType as SelectList, "--Select Company Type--")
+                        @Html.ValidationMessageFor(model => model.COMPANYTYPEID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                @*<div class="form-group">
+                         @Html.LabelFor(model => model.EMPLOYEENAME, htmlAttributes: new { @class = "control-label col-md-2" })
+                         <div class="col-md-10">
+                             @Html.EditorFor(model => model.EMPLOYEENAME, new { htmlAttributes = new { @class = "form-control" } })
+                             @Html.ValidationMessageFor(model => model.EMPLOYEENAME, "", new { @class = "text-danger" })
+                         </div>
+                     </div>
+                    <div class="form-group">
+                         @Html.LabelFor(model => model.RATING, htmlAttributes: new { @class = "control-label col-md-2" })
+                         <div class="col-md-10">
+                             @Html.EditorFor(model => model.RATING, new { htmlAttributes = new { @class = "form-control" } })
+                             @Html.ValidationMessageFor(model => model.RATING, "", new { @class = "text-danger" })
+                         </div>
+                     </div>*@
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SALESPERSONID, "SALES PERSON", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="95%">
+                                        @Html.HiddenFor(model => model.SALESPERSONID)
+                                        @Html.EditorFor(model => model.USERACCOUNT, new { htmlAttributes = new { @class = "form-control", required="" } })
+                                        @Html.ValidationMessageFor(model => model.SALESPERSONID, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td valign="top" nowrap="">
+
+                                        <img id="SALESPERSONIDImage" src="/i/user.gif" style="cursor: pointer" data-href="/common/PopAccount.aspx?render=no&amp;sales=" border="0">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CATEGORIES, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.CATEGORIES, 6, 40, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CATEGORIES, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ZONEID, "ZONE", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.HiddenFor(model => model.ZONEID)
+                        @Html.DropDownListFor(model => model.ZONEID, ViewBag.ZoneType as SelectList)
+                        @Html.ValidationMessageFor(model => model.ZONEID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div><br />
+        <div class="formMiddle">
+            <div class="form-group">
+                @Html.LabelFor(model => model.DESCRIPTION, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.DESCRIPTION, 5, 40, new { htmlAttributes = new { @class = "form-control BoxDesign", required = "" } })
+                    @Html.ValidationMessageFor(model => model.DESCRIPTION, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="formMiddle">
+            <span>BILLING ADDRESS</span><span class="righSpan">SHIPPING ADDRESS @Html.ActionLink("copy from invoice", "COPYINFO", "INVOICE")</span>
+        </div>
+        <hr />
+        <div class="formMain">
+            <div class="formLeft">
+                <div class="form-group">
+                    <label>SAME AS ABOVE</label>
+                    <div class="col-md-10" style="text-align:left">
+                        <input type="checkbox" id="invoicingCHK" style="width: 13px !important;" />
+                    </div>
+                </div>
+
+                <div id="invoicingContainer">
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.INVOICINGADDRESS, "ADDRESS", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.INVOICINGADDRESS, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.INVOICINGADDRESS, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.INVOICINGSTATE, "STATE", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.INVOICINGSTATE, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.INVOICINGSTATE, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.INVOICINGZIPCODE, "ZIPCODE", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.INVOICINGZIPCODE, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.INVOICINGZIPCODE, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.INVOICINGPHONE, "PHONE", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.INVOICINGPHONE, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.INVOICINGPHONE, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.INVOICINGFAX, "FAX", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.INVOICINGFAX, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.INVOICINGFAX, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.INVOICINGEMAIL, "EMAIL", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.INVOICINGEMAIL, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.INVOICINGEMAIL, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="formRight">
+                <div class="form-group">
+                    <label>SAME AS ABOVE</label>
+                    <div class="col-md-10" style="text-align: left">
+                        <input type="checkbox" id="shippingCHK" style="width: 13px !important;" />
+                    </div>
+                </div>
+                <div id="shippingContainer">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SHIPPINGADDRESS, "ADDRESS", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.SHIPPINGADDRESS, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SHIPPINGADDRESS, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SHIPPINGSTATE, "STATE", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.SHIPPINGSTATE, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SHIPPINGSTATE, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SHIPPINGZIPCODE, "ZIPCODE", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.SHIPPINGSTATEPROVINCE, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SHIPPINGSTATEPROVINCE, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SHIPPINGPHONE, "PHONE", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.SHIPPINGPHONE, "ADDRESS", new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SHIPPINGPHONE, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SHIPPINGFAX, "FAX", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.SHIPPINGFAX, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SHIPPINGFAX, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SHIPPINGEMAIL, "EMAIL", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.SHIPPINGEMAIL, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.SHIPPINGEMAIL, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="formMiddle">
+            <span>Groups</span><span class="righSpan">Can Viewed By</span>
+        </div>
+        <div class="formMain1">
+            <div class="formLeft">
+                @Html.ListBox("ListDips", ViewBag.groups as SelectList, new { @class = "ListGroups", data_val = "true" })
+            </div>
+            <div class="formMid">
+                    <input id="btnAddAll" type="button" value=" >> " onclick="addallItems();" />
+                    <input id="btnAdd" type="button" value=" > " onclick="addItem();" />
+                    <input id="btnRemove" type="button" value=" < " onclick="removeItem();" />
+                    <input id="btnRemoveAll" type="button" value=" << " onclick="removeallItems();" />
+            </div>
+            <div class="formRight">
+                @Html.ListBox("ListDip", ViewBag.groups1 as SelectList, new { @class = "ListDip", data_val = "true" })
+                <input name="GroupValue" id="GroupValue" value="|1|0|" type="hidden">
+            </div>
+        </div>
+
+        <hr />
+        <div class="formMain">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="save" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @*<script src="~/Scripts/jquery-3.3.1.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@
+    <script src="~/Scripts/irsl_validation.js"></script>
+    @*<script src="@Url.Content("~/Scripts/validator.unobtrusive.parseDynamicContent.js")"></script>*@
+    <script type="text/javascript">
+
+        var mygroup = 1;
+        $(function () {
+            $('#tabberpage .col-md-10 input[type=text],#tabberpage .col-md-10 textarea, #tabberpage.col-md-10 select').prop('required',true);
+            $('#tabberpage .col-md-10 input[type=text]').prop('aria-required',true);
+            $('#tabberpage .col-md-10 input[type=text],#tabberpage .col-md-10 textarea').val('na');
+            $(document).on('click',
+                '#invoicingCHK',
+                function(event) {
+                    var model = @(new JavaScriptSerializer().Serialize(Model));
+                    //var str = model.Text;
+                    if ($(this).is(':checked')) {
+                        $("#invoicingContainer input[type='text']").prop('disabled', true);
+                        $("#INVOICINGADDRESS").val($("#ADDRESS").val());
+                        $("#NVOIVINGCITY").val($("#CITY").val());
+                        $("#INVOICINGPHONE").val($("#PHONE").val());
+                        $("#INVOICINGSTATE").val($("#STATE").val());
+                        $("#INVOICINGEMAIL").val($("#EMAIL").val());
+                        $("#INVOICINGFAX").val($("#FAX").val());
+                        $("#INVOICINGZIPCODE").val($("#ZIPCODE").val());
+                    } else {
+                        $("#invoicingContainer input[type='text']").prop("disabled", false);
+                    }
+                });
+            $(document).on('click',
+                '#shippingCHK',
+                function(event) {
+                    if ($(this).is(':checked')) {
+                        $("#shippingContainer input[type='text']").prop('disabled', true);
+                        $("#SHIPPINGADDRESS").val($("#ADDRESS").val());
+                        $("#SHIPPINGCITY").val($("#CITY").val());
+                        $("#SHIPPINGPHONE").val($("#PHONE").val());
+                        $("#SHIPPINGSTATE").val($("#STATE").val());
+                        $("#SHIPPINGEMAIL").val($("#EMAIL").val());
+                        $("#SHIPPINGFAX").val($("#FAX").val());
+                        $("#SHIPPINGZIPCODE").val($("#ZIPCODE").val());
+                    } else {
+                        $("#shippingContainer input[type='text']").prop("disabled", false);
+                    }
+                });
+
+
+            $('#dragbar span#hidebox').on('click',
+                function(event) {
+                    $(".dynaskin").removeClass("active");
+                    $(".dynaskin").css("display", "none");
+                });
+            $('#companyLookupImg').on('click',
+                function(event) {
+
+                    var val = $("#COMPANYNAME").val();
+                    var w = 300,
+                        h = 250;
+                    var
+                        l = (screen.availWidth - w) / 2,
+                        t = (screen.availHeight - h) / 2;
+
+                    var x = event.clientX; // Get the horizontal coordinate
+                    var y = event.clientY;
+                    y = y - 40;
+                    var url1 = $(this).attr("data-href");
+                    var url = url1.toString().split(":");
+                    url = url[0];
+                    document.getElementById('dynaframe').src = "";
+                    var el = document.getElementById('dynaframe').src = url + val;
+                    var modal = document.getElementById('dynabox');
+                    var span = document.getElementsByClassName("close")[0];
+
+                    modal.style.display = "block";
+                    $("#dynabox").css({
+                        "top": y,
+                        "left": x,
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynaframe").css({
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynabox, #dynaframe").addClass("active");
+                    $("#dynabox, #dynaframe").css("visibility", "visible");
+
+                    return false;
+                });
+            $('#PHONEimage').on('click',
+                function(event) {
+
+                    var PHONEval = $("#PHONE").val();
+                    var w = 340,
+                        h = 60;
+                    var
+                        l = (screen.availWidth - w) / 2,
+                        t = (screen.availHeight - h) / 2;
+
+                    var x = event.clientX; // Get the horizontal coordinate
+                    var y = event.clientY;
+                    y = y - 40;
+
+                    var url1 = $(this).attr("data-href");
+                    var url = url1.toString().split(":");
+                    url = url[0];
+                    document.getElementById('dynaframe').src = "";
+                    var el = document.getElementById('dynaframe').src = url + PHONEval;
+                    var modal = document.getElementById('dynabox');
+                    var span = document.getElementsByClassName("close")[0];
+
+                    modal.style.display = "block";
+                    $("#dynabox").css({
+                        "top": y,
+                        "left": x,
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynaframe").css({
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynabox, #dynaframe").addClass("active");
+                    $("#dynabox, #dynaframe").css("visibility", "visible");
+
+                    return false;
+                });
+            $('#FAXImage').on('click',
+                function(event) {
+
+                    var FAXval = $("#FAX").val();
+                    var w = 340,
+                        h = 60;
+                    var
+                        l = (screen.availWidth - w) / 2,
+                        t = (screen.availHeight - h) / 2;
+
+                    var x = event.clientX; // Get the horizontal coordinate
+                    var y = event.clientY;
+                    y = y - 40;
+
+                    var url1 = $(this).attr("data-href");
+                    var url = url1.toString().split(":");
+                    url = url[0];
+                    document.getElementById('dynaframe').src = "";
+                    var el = document.getElementById('dynaframe').src = url + FAXval;
+                    var modal = document.getElementById('dynabox');
+                    var span = document.getElementsByClassName("close")[0];
+
+                    modal.style.display = "block";
+                    $("#dynabox").css({
+                        "top": y,
+                        "left": x,
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynaframe").css({
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynabox, #dynaframe").addClass("active");
+                    $("#dynabox, #dynaframe").css("visibility", "visible");
+                    return false;
+                });
+            $('#EMAILImage').on('click',
+                function(event) {
+
+                    var EMAILval = $("#EMAIL").val();
+                    var w = 200,
+                        h = 100;
+                    var
+                        l = (screen.availWidth - w) / 2,
+                        t = (screen.availHeight - h) / 2;
+
+                    var x = event.clientX; // Get the horizontal coordinate
+                    var y = event.clientY;
+                    y = y - 40;
+
+                    var url1 = $(this).attr("data-href");
+                    var url = url1.toString().split(":");
+                    url = url[0];
+                    document.getElementById('dynaframe').src = "";
+                    var el = document.getElementById('dynaframe').src = url + EMAILval;
+                    var modal = document.getElementById('dynabox');
+                    var span = document.getElementsByClassName("close")[0];
+
+                    modal.style.display = "block";
+                    $("#dynabox").css({
+                        "top": y,
+                        "left": x,
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynaframe").css({
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynabox, #dynaframe").addClass("active");
+                    $("#dynabox, #dynaframe").css("visibility", "visible");
+
+                    return false;
+                });
+            $('#SALESPERSONIDImage').on('click',
+                function(event) {
+
+                    var SALESPERSONIDval = $("#SALESPERSONID").val();
+                    var SALESPERSONNAMEval = $("#USERACCOUNT").val();
+                    var w = 300,
+                        h = 100;
+                    var
+                        l = (screen.availWidth - w) / 2,
+                        t = (screen.availHeight - h) / 2;
+
+                    var x = event.clientX; // Get the horizontal coordinate
+                    var y = event.clientY;
+                    y = y - 40;
+
+                    var url2 = $(this).attr("data-href");
+                    var url = url2.toString().split(":");
+                    url = url[0];
+                    document.getElementById('dynaframe').src = "";
+
+                    var el = document.getElementById('dynaframe').src =
+                        url + SALESPERSONIDval + "&textbox=SALESPERSONID&textbox2=USERACCOUNT";
+
+                    var modal = document.getElementById('dynabox');
+                    var span = document.getElementsByClassName("close")[0];
+
+                    modal.style.display = "block";
+                    $("#dynabox").css({
+                        "top": y,
+                        "left": x,
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynaframe").css({
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynabox, #dynaframe").addClass("active");
+                    $("#dynabox, #dynaframe").css("visibility", "visible");
+
+                    return false;
+                });
+            $('#hidebox').on('click',
+                function(event) {
+                    $("#dynabox, #dynaframe").removeClass("active");
+                    $("#dynaframe").attr("src", "");
+                });
+
+
+        $("#butFirstAddAll").click(function(e) {
+            $("#ListGroups > option").each(function() {
+                $(this).remove().appendTo("#ListDip");
+            });
+            e.preventDefault();
+        });
+        $('#butAdd').click(
+            function(e) {
+                $("#ListGroups > option:selected").each(function() {
+                    $(this).remove().appendTo("#ListDip");
+                });;
+                e.preventDefault();
+            });
+
+        $('#btnRemove').click(
+            function(e) {
+                $("#ListDip > option:selected").each(function() {
+                    $(this).remove().appendTo("#ListGroups");
+                });
+                e.preventDefault();
+            });
+
+        $('#btnRemoveAll').click(
+            function(e) {
+                $("#ListDip > option").each(function() {
+                    $(this).remove().appendTo("#ListGroups");
+                });
+                e.preventDefault();
+            });
+        $(document).on("blur",
+            "#tabberpage.myOuterDiv #EMAIL",
+            function() {
+               if (check_mail($(this).val())) {
+                    $(this).val().css({ "border": "1px solid rgb(122, 122, 122)" });
+                } else {
+                    result = false;
+                    $(this).val().css({ "border": "2px solid #F90A0A" });
+                }
+            });
+
+
+        if ($('#tabberpage #COMPANYNAME').focusout(function () {
+            check_name($('#tabberpage #COMPANYNAME'), "COMPANY NAME", $('#tabberpage #COMPANYNAME').val());
+        }));
+
+        if ($('#tabberpage #ADDRESS').focusout(function () {
+            check_AlaphNumeric($('#tabberpage #ADDRESS'), "ADDRESS", $('#tabberpage #ADDRESS').val());
+        }));
+
+        if ($('#tabberpage #CITY').focusout(function () {
+            check_name($('#tabberpage #CITY'), "CITY", $('#tabberpage #CITY').val());
+        }));
+        if ($('#tabberpage #STATE').focusout(function () {
+            check_name($('#tabberpage #STATE'), "STATE", $('#tabberpage #STATE').val());
+        }));
+
+
+        if ($('#tabberpage #COUNTRYID').change(function () {
+            if ($("#tabberpage #COUNTRYID :selected").val() == "") {
+                result = false;
+                $("#tabberpage #COUNTRYID").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#tabberpage #COUNTRYID").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+        }));
+        if ($('#tabberpage #PHONE').focusout(function () {
+            check_PHONE($('#tabberpage #PHONE'), "PHONE", $('#tabberpage #PHONE').val());
+        }));
+
+        if ($('#tabberpage #EMAIL').focusout(function () {
+            check_mail($('#tabberpage #EMAIL'), "EMAIL", $('#tabberpage #EMAIL').val());
+        }));
+        if ($('#tabberpage #WEBSITE').focusout(function () {
+            check_web($('#tabberpage #WEBSITE'), "WEBSITE", $('#tabberpage #WEBSITE').val());
+        }));
+        if ($('#tabberpage #COMPANYCODE').focusout(function () {
+            check_AlaphNumeric($('#tabberpage #COMPANYCODE'), "COMPANY", $('#tabberpage #COMPANYCODE').val());
+        }));
+        if ($('#tabberpage #TAXID').focusout(function () {
+            check_AlaphNumeric($('#tabberpage #TAXID'), "TAX", $('#tabberpage #TAXID').val());
+        }));
+        if ($('#tabberpage #CONTACTTYPEID').change(function () {
+            if ($("#tabberpage #CONTACTTYPEID :selected").val() == "") {
+                result = false;
+                $("#tabberpage #CONTACTTYPEID").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#tabberpage #CONTACTTYPEID").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+        }));
+
+        if ($('#tabberpage #COMPANYTYPEID').change(function () {
+            if ($("#tabberpage #COMPANYTYPEID :selected").val() == "") {
+                result = false;
+                $("#tabberpage #COMPANYTYPEID").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#tabberpage #COMPANYTYPEID").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+        }));
+        if ($('#USERACCOUNT').change(function () {
+            check_name($('#tabberpage #USERACCOUNT'), "USERACCOUNT", $('#tabberpage #USERACCOUNT').val());
+        }));
+
+        if ($('#USERACCOUNT').focusout(function () {
+            check_name($('#tabberpage #USERACCOUNT'), "USERACCOUNT", $('#tabberpage #USERACCOUNT').val());
+        }));
+
+        if ($('#tabberpage #DESCRIPTION').focusout(function () {
+            check_AlaphNumeric($('#tabberpage #DESCRIPTION'), "DESCRIPTION", $('#tabberpage #DESCRIPTION').val());
+        }));
+
+        $(document).ready(function () {
+            var selectedCountry = $("#Country").val();
+            var selectedRegion = $("#Region").val();
+            var regionsSelect = $('#Region');
+            AddRegions(selectedCountry, regionsSelect);
+            if (selectedRegion != null && selectedRegion != '') {
+                regionsSelect.val = selectedRegion;
+            };
+        });
+
+        $("#Country").change(function () {
+            var selectedCountry = $("#Country").val();
+            var regionsSelect = $('#Region');
+            regionsSelect.empty();
+            if (selectedCountry != null && selectedCountry != '') {
+                AddRegions(selectedCountry, regionsSelect);
+            }
+        });
+    });
+    function AddRegions(selectedCountry, regionsSelect) {
+        $.getJSON('@Url.Action("GetRegions")', {
+            iso3: selectedCountry
+        }, function (regions) {
+            if (regions != null && !jQuery.isEmptyObject(regions)) {
+                regionsSelect.append($('<option/>', {
+                    value: null,
+                    text: ""
+                }));
+                $.each(regions, function (index, region) {
+                    regionsSelect.append($('<option/>', {
+                        value: region.Value,
+                        text: region.Text
+                    }));
+                });
+            };
+        });
+    }
+     function jQueryAjaxPost(form) {
+            //var form = $("form")[0];
+            $.ajaxSetup({ cache: false });
+
+            var result = true;
+
+            if ($('#tabberpage #COMPANYNAME').val() == "" || $('#tabberpage #COMPANYNAME').val() == "na") {
+                result = false;
+                $("#tabberpage #COMPANYNAME").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#tabberpage #COMPANYNAME").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+        
+
+            if ($('#ADDRESS').val() == "" || $('#ADDRESS').val() == "na") {
+                result = false;
+                $("#ADDRESS").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#ADDRESS").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($('#CITY').val() == "" || $('#CITY').val() == "na") {
+                result = false;
+                $("#CITY").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#CITY").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+        
+            if ($('#STATE').val() == "" || $('#STATE').val() == "na") {
+                result = false;
+                $("#STATE").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#STATE").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($('#COUNTRYID').val() == "" || $('#COUNTRYID').val() == "na") {
+                result = false;
+                $("#COUNTRYID").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#COUNTRYID").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+        
+            if ($('div.myOuterDiv #PHONE').val() == "" || $('div.myOuterDiv #PHONE').val() == "na") {
+                result = false;
+                $("div.myOuterDiv #PHONE").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("div.myOuterDiv #PHONE").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($("div.myOuterDiv #EMAIL").val() == "" || $("div.myOuterDiv #EMAIL").val() == "na") {
+                result = false;
+                $("div.myOuterDiv #EMAIL").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("div.myOuterDiv #EMAIL").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+            
+            if ($('#WEBSITE').val() == "" || $('#WEBSITE').val() == "na") {
+                result = false;
+                $("#WEBSITE").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#WEBSITE").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+
+            if ($('#TAXID').val() == "") {
+                result = false;
+                $("#TAXID").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#TAXID").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+
+            if ($('#USERACCOUNT').val() == "" || $('#USERACCOUNT').val() == "na") {
+                result = false;
+                $("#USERACCOUNT").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#USERACCOUNT").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+ 
+
+            if ($('#COMPANYCODE').val() == "" || $('#COMPANYCODE').val() == "na") {
+                result = false;
+                $("#COMPANYCODE").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#COMPANYCODE").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+
+            if ($('#DESCRIPTION').val() == "" || $('#DESCRIPTION').val() == "na") {
+                result = false;
+                $("#DESCRIPTION").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#DESCRIPTION").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+            //-------------------------------------------------------------------------
+            if ($("#COMPANYTYPEID :selected").val() == "") {
+                result = false;
+                $("#COMPANYTYPEID").css({ "border": "2px solid #F90A0A"});
+            } else {
+                $("#COMPANYTYPEID").css({ "border": "1px solid rgb(122, 122, 122)"});
+            }
+
+            if ($("#CONTACTTYPEID :selected").val() == "") {
+                result = false;
+                $("#CONTACTTYPEID").css({ "border": "2px solid #F90A0A"});
+            } else {
+                $("#CONTACTTYPEID").css({ "border": "1px solid rgb(122, 122, 122)"});
+            }
+
+            if ($('#tabberpage #ZONEID').change(function () {
+                if ($("#tabberpage #ZONEID :selected").val() == "") {
+                    result = false;
+                    $("#tabberpage #ZONEID").css({ "border": "2px solid #F90A0A" });
+                } else {
+                    $("#tabberpage #ZONEID").css({ "border": "1px solid rgb(122, 122, 122)" });
+                }
+            }));
+
+
+            if (result) {
+                var ajaxConfig = {
+                    type: 'POST',
+                    url: form.action,
+                    data: new FormData(form),
+                    dataType: 'json',
+                    cache: false,
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader("Accept", "application/json");
+                        xhr.setRequestHeader("Content-Type", "application/json");
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            //$("#firstTab").html(response.html);
+                            $.notify(response.message, "success");
+                        } else {
+                            $.notify(response.message, "error");
+                        }
+
+                    }                    
+                 
+                }
+                if ($(form).attr('enctype') == "multipart/form-data") {
+                    ajaxConfig['contentType'] = false;
+                    ajaxConfig['processData'] = false;
+                }
+                $.ajax(ajaxConfig);
+                return false;
+            } else {
+                alert("Error \n" +
+                    "-------------------------------------------------\n" +
+                    " Some Fields are invalid\n" +
+                    " Please, check your form again and re submit");
+                return false;
+            }
+           
+        }        
+        function listbox_selectall(listID, isSelect) {
+            var listbox = document.getElementById(listID);
+            for (var count = 0; count < listbox.options.length; count++) {
+                listbox.options[count].selected = isSelect;
+            }
+        }
+
+        function compareText(option1, option2) {
+            return option1.text < option2.text ? -1 : option1.text > option2.text ? 1 : 0;
+        }
+
+        function sortSelect(select) {
+            if (!IE4plus) return;
+            var options = new Array(select.options.length);
+            for (var i = 0; i < options.length; i++)
+                options[i] =
+                    new Option(
+                        select.options[i].text,
+                        select.options[i].value,
+                        select.options[i].defaultSelected,
+                        select.options[i].selected
+                    );
+            options.sort(compareText);
+            select.options.length = 0;
+            for (var i = 0; i < options.length; i++)
+                select.options[i] = options[i];
+        }
+        function addItem() {
+            $("#ListDips option:selected").appendTo("#ListDip");
+            $("#ListDip option").attr("selected", false);
+        }
+        function addallItems() {
+            $("#ListDips option").appendTo("#ListDip");
+            $("#ListDip option").attr("selected", false);
+        }
+        function removeItem() {
+            $("#ListDip option:selected").appendTo("#ListDips");
+            $("#ListDips option").attr("selected", false);
+        }
+        function removeallItems() {
+            $("#ListDip option").appendTo("#ListDips");
+            $("#ListDips option").attr("selected", false);
+        }
+
+    </script>
+}

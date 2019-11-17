@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+@section SideBar {
+    <a class="sidebtn" id="crm" href="/Importing/Activity">Import Activities</a>
+    <a class="sidebtn" id="crm" href="/Importing/Companies">Import Companies</a>
+    <a class="sidebtn" id="crm" href="/Importing/Leads">Import Leads</a>
+    <a class="sidebtn" id="crm" href="/Importing/Contacts">Import Contacts</a>
+    <a class="sidebtn" id="crm" href="/Importing/Opportunity">Import Opportunity</a>
+    <a class="sidebtn" ID="hr">Advance Search</a>
+    <style>
+    </style>
+}
+
+@Html.AntiForgeryToken()
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tbody>
+        <tr>
+            <td class="pageTitle" valign="top" align="left">
+                Importing Page
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div style="position: relative; top: 27px;">
+    To import records you have to click the type of import you want to carry out from the navigation bar on the left
+</div>
+
+

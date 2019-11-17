@@ -1,0 +1,179 @@
+<TITLE>Irsl WebGate Lead Generator</TITLE>
+<textarea id="templatesource" style="width:100%;height:96%;">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<HTML>
+<HEAD>
+<TITLE>Irsl WebGate Lead Generator</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<!-- These fields are optional -->
+<!-- do not change the action path -->
+<form name="Irsl_Form" method="post" action="http://crm.Irsl.com/webgate/savelead.aspx">
+<table>
+  <tr>
+    <td class="fieldname">
+      CompanyName:
+    </td>
+    <td class="fieldtext">
+      <input id="Irsl_CompanyName" name="Irsl_CompanyName" type="text" value="">
+    </td>
+  </tr>
+      <tr>
+    <td class="fieldname">
+      Title:
+    </td>
+    <td class="fieldtext">
+      <input id="Irsl_Title" name="Irsl_Title" type="text" value="">
+    </td>
+  </tr>  
+  <tr>
+    <td class="fieldname">
+      Name:
+    </td>
+    <td class="fieldtext">
+      <input id="Irsl_Name" name="Irsl_Name" type="text" value="">
+    </td>
+  </tr>  
+  <tr>
+    <td class="fieldname">
+      Surname:
+    </td>
+    <td class="fieldtext">
+      <input id="Irsl_Surname" name="Irsl_Surname" type="text" value="">
+    </td>
+  </tr>
+  <tr>
+    <td class="fieldname">
+      Address:
+    </td>
+    <td class="fieldtext">
+      <input id="Irsl_Address" name="Irsl_Address" type="text" value="">
+    </td>
+  </tr>  
+  <tr>
+    <td class="fieldname">
+      City:
+    </td>
+    <td class="fieldtext">
+      <input id="Irsl_City" name="Irsl_City" type="text" value="">
+    </td>
+  </tr>  <tr>
+    <td class="fieldname">
+      Province:
+    </td>
+    <td class="fieldtext">
+      <input id="Irsl_Province" name="Irsl_Province" type="text" value="">
+    </td>
+  </tr>  <tr>
+    <td class="fieldname">
+      ZIPCode:
+    </td>
+    <td class="fieldtext">
+      <input id="Irsl_ZIPCode" name="Irsl_ZIPCode" type="text" value="">
+    </td>
+  </tr>  <tr>
+    <td class="fieldname">
+      VAT:
+    </td>
+    <td class="fieldtext">
+      <input id="Irsl_VAT" name="Irsl_VAT" type="text" value="">
+    </td>
+  </tr>  
+  <tr>
+    <td class="fieldname">
+      Email:
+    </td>
+    <td class="fieldtext">
+      <input id="Irsl_Email" name="Irsl_Email" type="text" value="">
+    </td>
+  </tr>
+  <tr>
+    <td class="fieldname">
+      Phone:
+    </td>
+    <td class="fieldtext">
+      <input id="Irsl_Phone" name="Irsl_Phone" type="text" value="">
+    </td>
+  </tr>
+  <tr>
+    <td class="fieldname">
+      Fax:
+    </td>
+    <td class="fieldtext">
+      <input id="Irsl_Fax" name="Irsl_Fax" type="text" value="">
+    </td>
+  </tr>  
+  <tr>
+    <td class="fieldname">
+      MobilePhone:
+    </td>
+    <td class="fieldtext">
+      <input id="Irsl_MobilePhone" name="Irsl_MobilePhone" type="text" value="">
+    </td>
+  </tr>   
+  <tr>
+    <td class="fieldname">
+      Notes:
+    </td>
+    <td class="fieldtext">
+      <input id="Irsl_Notes" name="Irsl_Notes" type="text" value="">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <input type="Submit" value="SUBMIT">
+      <!-- do not change the company code, it must reflect the companycode present in the Admin/Company menu -->
+      <input name="Irsl_CompanyCode" type="hidden" value="%COMPANYCODE%">
+      <!-- insert here your return page -->
+      <input name="Irsl_thankspage" type="hidden" value="http://www.yoursite.com/thanks.htm">    
+    </td>
+  </tr>
+<table>
+</form>
+</body>
+</html>
+</textarea>
+<input type="button" value="copy to clipboard" onclick="copy_clip(document.getElementById('templatesource').value)">
+<script language="javascript" type="text/javascript">
+<!--
+function copy_clip(textarea)
+{
+
+ if (window.clipboardData) 
+   {
+   window.clipboardData.setData("Text", textarea);
+   }
+   else if (window.netscape) 
+   { 
+   netscape.security.PrivilegeManager.enablePrivilege('UniversalXPConnect');
+   
+   var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
+   if (!clip) return;
+   
+   var trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);
+   if (!trans) return;
+   
+   trans.addDataFlavor('text/unicode');
+   
+   var str = new Object();
+   var len = new Object();
+   
+   var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+   
+   var copytext=textarea;
+   
+   str.data=copytext;
+   
+   trans.setTransferData("text/unicode",str,copytext.length*2);
+   
+   var clipid=Components.interfaces.nsIClipboard;
+   
+   if (!clip) return false;
+   
+   clip.setData(trans,null,clipid.kGlobalClipboard);
+   
+   }
+   return false;
+}
+//-->
+</script>

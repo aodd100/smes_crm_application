@@ -1,0 +1,43 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<table class="table" style="z-index:5;position:absolute;top:26px;width:82%;text-align:center;vertical-align:middle;filter: DropShadow(Color=#333333, OffX=1, OffY=1, Positive=true)">
+  <tr>
+    <th class="GridTitle">
+      NAME
+    </th>
+    <th class="GridTitle">
+      PHONE
+    </th>
+    <th class="GridTitle">
+      FAX)
+    </th>
+    <th class="GridTitle">
+      EMAIL
+    </th>
+    <th class="GridTitle"></th>
+  </tr>
+   <tr *ngFor>
+    <td class="GridItem GridItemHlip">
+      {{item.NAME}}
+    </td>
+    <td class="GridItem GridItemHlip">
+      {{item.PHONE}}
+    </td>
+    <td class="GridItem GridItemHlip">
+      {{item.FAX}}
+    </td>
+    <td class="GridItem GridItemHlip">
+      {{item.EMAIL}}
+    </td>
+    <td class="GridItem"></td>
+  </tr>
+  <tr>
+    <td id="footerTd" class="GridTitle" colspan="10">
+      <!--Records:&nbsp;<span id="Elements">@Model.Count()</span>&nbsp;
+      &nbsp;
+      &nbsp;-->
+
+    </td>
+
+  </tr>
+</table>
+

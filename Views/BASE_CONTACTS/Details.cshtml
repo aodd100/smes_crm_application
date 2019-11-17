@@ -1,0 +1,403 @@
+﻿@model db.db.BASE_CONTACTS
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BASE_CONTACTS</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.COMPANYID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMPANYID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SURNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SURNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TITLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TITLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADDRESS_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADDRESS_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADDRESS_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADDRESS_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CITY_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CITY_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CITY_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CITY_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROVINCE_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROVINCE_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROVINCE_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROVINCE_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ZIPCODE_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZIPCODE_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ZIPCODE_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZIPCODE_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STATE_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STATE_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STATE_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STATE_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VATID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VATID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TAXIDENTIFICATIONNUMBER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TAXIDENTIFICATIONNUMBER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHONE_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHONE_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHONE_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHONE_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FAX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOBILEPHONE_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOBILEPHONE_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MOBILEPHONE_2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MOBILEPHONE_2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BUSINESSROLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BUSINESSROLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SKYPE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SKYPE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOTES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOTES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ACTIVE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACTIVE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OWNERID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OWNERID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GROUPS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GROUPS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OTHERCOMPANYID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OTHERCOMPANYID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FLAGGLOBALORPERSONAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FLAGGLOBALORPERSONAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BIRTHDAY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BIRTHDAY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LASTACTIVITY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LASTACTIVITY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LIMBO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LIMBO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CREATEDDATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREATEDDATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CREATEDBYID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREATEDBYID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LASTMODIFIEDDATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LASTMODIFIEDDATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LASTMODIFIEDBYID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LASTMODIFIEDBYID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BIRTHPLACE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BIRTHPLACE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CATEGORIES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CATEGORIES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MLEMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MLEMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MLFLAG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MLFLAG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FROMLEAD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FROMLEAD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LASTCONTACT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LASTCONTACT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOCONTACT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOCONTACT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMMERCIALZONE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMMERCIALZONE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SALESPERSONID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SALESPERSONID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CODE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CODE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,329 @@
+﻿@using IRSLCRM.Helper;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="../css/defaultsheet.css" rel="stylesheet" />
+    <style type="text/css">
+        #BarMenu {
+            display: flex;
+        }
+
+            #BarMenu .menu {
+                flex: 2
+            }
+
+            #BarMenu .username {
+                flex: 1
+            }
+
+        .userProfile {
+            display: flex;
+        }
+
+            .userProfile table {
+                flex: 1
+            }
+
+            .userProfile a {
+                flex: 1
+            }
+        .sideContainer a:hover {
+            border-left: solid 4px #002245;
+            text-decoration: none;
+        }
+
+        .imagTop {
+            position: absolute;
+            top: 0;
+            width: 217px !important;
+            height: 62px !important;
+        }
+
+        #Search {
+            width: 97%;
+        }
+
+        .pageStyle table.ContentTbl {
+            width: 29%;
+            vertical-align: top;
+            margin: auto;
+            margin-top: 120px;
+            margin-bottom: 71px;
+        }
+
+        div.tr table > td > input[type='button'] {
+            position: relative;
+            margin-left: 50px;
+        }
+
+        .auto-style1 {
+            width: 100%;
+        }
+
+        .auto-style2 {
+            height: 124px;
+        }
+
+        .auto-style3 {
+            width: 145px;
+        }
+
+        .auto-style4 {
+            width: 80ex;
+            height: 66px;
+        }
+
+        .auto-style5 {
+            width: 120px;
+            height: 66px;
+        }
+
+        .auto-style6 {
+            width: 161%;
+            height: 6000%;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+        }
+
+        .auto-style7 {
+            top: 0px;
+            position: relative;
+            left: 77px;
+            width: 116px;
+        }
+
+        .auto-style8 {
+            width: 165px;
+            height: 103px;
+        }
+
+        #topbarIRSL1 {
+            background-position: center top;
+            margin-left: 0px !important;
+            border-top: 2px solid #686767;
+            height: 100%;
+            width: 100%;
+            top: -7px;
+            position: relative;
+            /* left: -3px; */
+            /*border-bottom: 2px solid #686767;
+            border-right: 2px solid #686767;
+            background-image: url('/images/BACKGROUND-2.jpg');
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            color: #FFFFFF;
+            background-position-x: -491px;
+            background-position-y: -163px;*/
+            background-color: #FFA500 !important;
+        }
+
+        html > body #tabberpage {
+            border-bottom: thin outset;
+            border-right: thin outset;
+            -moz-box-sizing: border-box;
+            background-color: #fff;
+            padding: 10px;
+        }
+
+        .mainTop #myId {
+            height: 47px;
+            width: 168px;
+            position: relative;
+            top: -7px;
+        }
+
+        .mainTop {
+            position: relative;
+            top: -6px;
+            display: flex;
+            height: 45px;
+        }
+
+        div.sideTitle {
+            border-bottom: 1px solid #C0C0C0;
+            background-color: #CDCDCD;
+            background-image: url(/images/GridTitleBg.gif);
+            background-repeat: repeat-x;
+            background-position: top;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 11px;
+            font-weight: bold;
+            text-align: left;
+            height___: 18px;
+            padding: 2px 1px 1px 3px;
+        }
+
+        .mainTopTable {
+            width: 100%;
+            vertical-align: top;
+            height: 80%;
+            position: relative;
+            top: -8px;
+            left: -4px;
+        }
+
+        /*.sideContainer a:hover {
+            border-left: solid 4px #002245;
+            text-decoration: none;
+        }*/
+
+        /*.sideContainer a {
+            padding: 2px 2px 2px 3px;
+            border-bottom: 1px solid #EEEEEE;
+            text-align: left;
+            background-color: #E5E5E5;
+            zoom: 1;
+            display: block;
+            width: 206px;
+            padding-right: 2px;
+            line-height: 2;
+            padding-left: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }*/
+        /* Style the sidebar - fixed full height */
+        .sidebar {
+            height: 100%;
+            width: 160px;
+            /* position: fixed; */
+            z-index: 1;
+            top: 0;
+            left: 0;
+            /* background-color: #111; */
+            overflow-x: hidden;
+            padding-top: 16px;
+        }
+
+            /* Style sidebar links */
+            .sidebar a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 10px;
+                color: #000;
+                display: block;
+            }
+
+        /* Style links on mouse-over */
+        /*.sidebar a:hover {
+            color: #f1f1f1;
+        }*/
+
+        /* Style the main content */
+        .main {
+            margin-left: 160px; /* Same as the width of the sidenav */
+            padding: 0px 10px;
+        }
+    </style>
+    <link href="@Url.Content("~/css/G.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/layoutTabcss.css")" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="mainTop">
+        <a href="/" style="height: 47px">
+            @Html.Image(Url.Content("~/images/Irsllogov3.gif.gif"), "Home", new { @id = "myId" })
+        </a>
+        <div id="topbarIRSL1" class="auto-style1">
+            <table cellpadding="0" cellspacing="0" style="left: 2px; position: relative; padding-top: -3px; top: 6px; padding-left: 7px;width: 100%">
+                <tr>
+                    <td style="width: 78%; text-align:left;position: relative;z-index: 9;">
+                        
+                    </td>
+                    <td style="width: 125px">
+                        @if (!String.IsNullOrEmpty((string)HttpContext.Current.Session["UserName"]))
+                        {
+                            using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-centre" }))
+                            {
+                                <span class="userProfile">
+                                    <table>
+                                        <tr>
+                                            <td>Hi, @Session["UserName"]</td>
+                                            <td style="width: 21px;height: 22px">
+                                                <img src="@Url.Content("~/AppFiles/Images/default.png")" width="20" height="20" alt="picture" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </span>
+
+                            }
+                        }
+                        else
+                        {
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>@Html.ActionLink("Log in", "Login", "Home", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                            </ul>
+                        }
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <table cellpadding="0" cellspacing="0" class="auto-style1" style="width: 99.7%; position: relative; top: -5px; left: 0px;margin-left: 0px !important;">
+        <tr>
+            <td style="width: 158px; top: 1px; position: relative; vertical-align: top; background-color: #E5E5E5;left: 1px">
+                <table cellpadding="0" cellspacing="0" class="auto-style3" style="height: auto; width: 153px">
+                    <tr>
+                        <td style="text-align: center" class="sideContainer">
+                            <div class="sideTitle">
+                                Admin Dashboard
+                            </div>
+                            <div class="sidebar">
+                                <a href="/default"><i class="fa fa-fw fa-home"></i> Home</a>
+                                <a href="@Url.Action("index", "Dashboard")"><i class="fa fa-fw fa-wrench"></i> Dashboard</a>
+                                <a href="@Url.Action("index", "Account")"><i class="fa fa-fw fa-user"></i> Users Account</a>
+                                <a href="@Url.Action("index", "LeadSetup")"><i class="fa fa-fw fa-envelope"></i> Lead Setup</a>
+                                <a href="@Url.Action("index", "Reports")"><i class="fa fa-fw fa-wrench"></i> Reports</a>
+                                <a href="@Url.Action("index", "EmailCampaing")"><i class="fa fa-fw fa-user"></i> Mail Setup</a>
+                                <a href="@Url.Action("index", "Event")"><i class="fa fa-fw fa-envelope"></i> Event</a>
+                                <a href="@Url.Action("index", "Opportunities")"><i class="fa fa-fw fa-wrench"></i> Opportunity</a>
+                                <a href="@Url.Action("index", "MailSetup")"><i class="fa fa-fw fa-user"></i> Configure Search</a>
+                                <a href="@Url.Action("index", "Licence")"><i class="fa fa-fw fa-envelope"></i> Licence</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="text-align: center">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center">&nbsp;</td>
+                    </tr>
+                </table>
+            </td>
+            <td class="auto-style2" style="width: 100%; vertical-align: top; border: solid 1px #686767; border: solid 1px #686767;padding-left: 11px;">
+
+                @RenderBody()
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center">
+                <div style="font-family: tahoma, verdana; font-size: 12px; padding: 2px 2px 3px 2px; border: 1px solid #686666; border-left: none;">
+                    © 2017-2018 All Rights Reserved.<br>Visit <a href="http://www.opensource.irslconsulting.com" target="_blank" style="font-family: tahoma, verdana; font-size: 12px; color: #f46d12;">www.irslconsulting.com</a> for more information.
+                </div>
+            </td>
+        </tr>
+    </table>
+    @RenderSection("Scripts", required: false)
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    @*<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>*@
+    <script src="~/js/notify.min.js"></script>
+    @*<script type="text/javascript" src="@Url.Content("~/Scripts/client/runtime.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/client/polyfills.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/client/styles.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/client/vendor.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/client/main.js")"></script>*@
+</body>
+</html>

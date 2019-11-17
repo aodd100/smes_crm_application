@@ -1,0 +1,162 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="CRMLogin.master.cs" Inherits="IRSLCRM.master.CRMLogin" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GUDIT CRM <%: Page.Title %> - Application</title>
+
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="../css/defaultsheet.css" rel="stylesheet" />
+    <style type="text/css">
+        .sideContainer a {
+            padding: 2px 2px 2px 3px;
+	        border-bottom: 1px solid #EEEEEE;
+	        text-align: left;
+	        background-color: #E5E5E5;
+	        zoom: 1;
+	        display: block;
+	        width: 147px !important;
+	        padding-right: 52px;
+	        line-height: 2;
+	        padding-left: 4px;
+	        cursor: pointer;
+            text-decoration: none;
+        }
+         .sideContainer a:hover {
+	        border-left: solid 4px #002245;
+            text-decoration: none;
+        }
+        .imagTop{
+	        position: absolute;
+	        top: 0;
+	        width: 214px !important;
+	        height: 87px !important;
+        }
+        #Search {
+	        width: 97%;
+        }
+
+        .pageStyle table.ContentTbl {
+	        width: 29%;
+	        vertical-align: top;
+	        margin: auto;
+	        margin-top: 120px;
+	        margin-bottom: 71px;
+        }
+        div.tr table > td > input[type='button'] {
+	        position: relative;
+	        margin-left: 50px;
+        }
+        .bl {
+	        MARGIN-TOP: 160px;
+	        WIDTH: 522px;
+	        border: solid 1px #686767;
+	        margin: auto 0px;
+        }
+
+        .br {
+            /*/*BACKGROUND: url(/images/cbr.gif) no-repeat 100% 100%*/*/
+        }
+
+        .tl {
+            /*BACKGROUND: url(/images/ctl.gif) no-repeat 0px 0px*/
+        }
+
+        .tr {
+            PADDING-RIGHT: 10px;
+            PADDING-LEFT: 10px;
+            /*BACKGROUND: url(/images/ctr.gif) no-repeat 100% 0px;*/
+            PADDING-BOTTOM: 10px;
+            PADDING-TOP: 10px
+        }
+        td.pageTitle2 {
+	        /* border-bottom: 1px solid #C0C0C0; */
+	        font-family: Verdana, Arial, Helvetica, sans-serif;
+	        font-size: 15px !important;
+	        font-weight: bold;
+	        text-align: left;
+	        height: 20px;
+	        padding: 4px 0 0 0;
+	        vertical-align: top;
+	        text-indent: 14px;
+	        background-image: url(/images/titleside.gif);
+	        background-repeat: no-repeat;
+	        background-position: left;
+	        margin: auto 0px;
+	        text-align: center;
+        }
+        .clear {
+            FONT-SIZE: 1px;
+            HEIGHT: 1px
+        }
+       .auto-style2 td span{
+           color: #fff;
+       }
+        .BoxDesign {
+	        border: 1px solid #AAA;
+	        width: 92% !important;
+	        font-family: Verdana, Arial, Helvetica, sans-serif;
+	        font-size: 10px;
+	        height: 16px;
+	        padding: 4px;
+	        border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <form runat="server">
+        <a href="/">
+        <img class="imagTop" style="position:absolute; top: 0; width: 154px" src="/images/irsl_logo1.jpg"></a>
+        <div id="topbarIRSL" class="auto-style1" style="background-color: #CCCCCC">
+            <%--<table cellpadding="0" cellspacing="0" class="auto-style2" style="left: 2px; position: relative; padding-top: -3px; top: -8px; padding-left: 7px;">
+                <tr>
+                    <td class="auto-style3">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style3" style="font-weight: bold">
+                        <asp:Label ID="lblUserId" runat="server"></asp:Label>
+                    </td>
+                    <td>&nbsp;AODD&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style4" style="font-weight: bold">                        
+                        <asp:Label ID="lblUserPass" runat="server"></asp:Label>
+                    </td>
+                    <td class="auto-style5">Sylvester Jude</td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style3" style="font-weight: bold">
+                        <asp:Label ID="lblEmail" runat="server"></asp:Label>
+                    </td>
+                    <td>Sylvester.Jude@irslconsulting.com</td>
+                </tr>
+            </table>--%>
+       </div>
+        <table style="width: 100%; vertical-align: top; height: 80%">
+            <tr>
+               <td class="pageStyle" style="height: 100%; vertical-align: top">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                 </td>
+            </tr>
+        </table>
+        <div id="topbarFooter">
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - <a href="http://www.irslconsulting.com" style="text-align: center">IRSL Consulting Application Units</a></p>
+            </footer>
+        </div> 
+    </form>
+</body>
+</html>

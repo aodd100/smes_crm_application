@@ -1,0 +1,208 @@
+﻿
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/_LayoutAdminPage.cshtml";
+
+    <style type="text/css">
+        #tabberpage {
+            padding: 5px;
+        }
+
+        #dashMain {
+            display: flex;
+            flex-flow: column;
+            min-height: 222px;
+        }
+
+            #dashMain #dashMainInner {
+                display: flex;
+                width: 100%;
+                flex-flow: row;
+            }
+
+            #dashMain table td label {
+                font-size: large;
+                font-weight: bold;
+            }
+
+        html > body #tabberpage {
+            border-bottom: thin outset;
+            border-right: thin outset;
+            -moz-box-sizing: border-box;
+            background-color: #fff;
+            padding: 10px;
+            width: 918px;
+            margin: 10px;
+        }
+    </style>
+}
+<div class="topDiv">
+    <div class="topDivSub1">
+        <h1>Chart Board</h1>
+    </div>
+</div>
+<hr />
+<div id="tabberpage" class="form-horizontal">
+    <div class="">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Mini Pie</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Settings 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div id="echart_mini_pie" style="height:150px;">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Mini Pie</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Settings 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div id="echart_mini_pie" style="height:150px;">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Mini Pie</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Settings 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div id="echart_mini_pie" style="height:150px;">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+        @*<h2>Dashboard</h2>
+        <div id="dashMain">
+            <table style="width: 70%">
+                <tr>
+                    <td style="width: 100%">
+                        <label>Companies Charts</label>
+                    </td>
+                </tr>
+            </table>
+            <div id="dashMainInner">
+                <div>
+                    <img src="@Url.Action("ChartsBoard")" alt="Chart" />
+                </div>
+                <div>
+                    <img src="@Url.Action("ChartsBar")" alt="Chart" />
+                </div>
+                <div>
+                    <img src="@Url.Action("ChartsPie")" alt="Chart" />
+                </div>
+            </div>
+        </div>
+        <div id="dashMain">
+            <table style="width: 70%">
+                <tr>
+                    <td style="width: 100%">
+                        <label>Leads Charts</label>
+                    </td>
+                </tr>
+            </table>
+            <div id="dashMainInner">
+                <div>
+                    <img src="@Url.Action("ChartsBoard")" alt="Chart" />
+                </div>
+                <div>
+                    <img src="@Url.Action("ChartsBar")" alt="Chart" />
+                </div>
+                <div>
+                    <img src="@Url.Action("ChartsPie")" alt="Chart" />
+                </div>
+            </div>
+        </div>
+        <div id="dashMain">
+            <table style="width: 70%">
+                <tr>
+                    <td style="width: 100%">
+                        <label>Opportunities Charts</label>
+                    </td>
+                </tr>
+            </table>
+            <div id="dashMainInner">
+                <div>
+                    <img src="@Url.Action("ChartsBoard")" alt="Chart" />
+                </div>
+                <div>
+                    <img src="@Url.Action("ChartsBar")" alt="Chart" />
+                </div>
+                <div>
+                    <img src="@Url.Action("ChartsPie")" alt="Chart" />
+                </div>
+            </div>
+        </div>*@
+    </div>

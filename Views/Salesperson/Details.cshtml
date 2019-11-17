@@ -1,0 +1,43 @@
+﻿@model db.crmdb.dbData.SALESPERSON
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SALESPERSON</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SALESPERSONNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SALESPERSONNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SALESPERSONEMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SALESPERSONEMAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SALESPERSONPHONE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SALESPERSONPHONE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SALESPERSONID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

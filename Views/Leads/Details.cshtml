@@ -1,0 +1,338 @@
+﻿@model db.crmdb.dbData.ViewLeadsDetail
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_LayoutPage.cshtml";
+    <style>
+        .details .formMain .form-group .col-md-10 select {
+            width: 100% !important;
+        }
+
+        .details .formMain .form-group .col-md-10 {
+            flex: 1;
+            text-align: left;
+            border-bottom: dashed 1px #686767;
+        }
+
+        .details .form-group {
+            display: flex;
+            padding: 3px;
+            margin-bottom: 7px;
+        }
+    </style>
+}
+
+<h2>Details</h2>
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tbody>
+        <tr>
+            <td class="pageTitle" valign="top" align="left">
+                Manage Leads Details
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div id="tabberpage" class="form-horizontal myOuterDiv  details">
+    <div class="topDiv">
+        <div class="topDivSub1">
+            <h4>NEW LEADS</h4>
+        </div>
+        <div class="topDivSub2">
+
+            @Html.ActionLink("Edit", "Edit", new { id = ViewBag.Id }) |
+            @Html.ActionLink("Last searched", "index", new { @class = "save" })
+            @Html.ActionLink("Convert Lead To Opportunity", "LeadToOpportunity", new { @class = "save" })
+        </div>
+    </div>
+    <hr />
+
+
+    <div class="formMain">
+        <div class="formLeft">
+            <div class="form-group">
+                @Html.LabelFor(model => model.TITLE)
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.TITLE)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.FIRSTNAME)
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.FIRSTNAME)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.LASTNAME)
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.LASTNAME)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.COMPANYNAME)
+                <div class="col-md-10">
+
+                    <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                        <tbody>
+                            <tr>
+                                <td width="100%">
+                                    @Html.HiddenFor(model => model.COMPANYNAME)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.JOBTITLE)
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.JOBTITLE)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PHONE)
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.PHONE)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MOBILEPHONE)
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.MOBILEPHONE)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.FAX)
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.FAX)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.EMAIL)
+                <div class="col-md-10">
+                    <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                        <tbody>
+                            <tr>
+                                <td width="100%">
+                                    @Html.DisplayFor(model => model.EMAIL)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BIRTHDAY, "BIRTH PLACE")
+                <div class="col-md-10">
+                    <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                        <tbody>
+                            <tr>
+                                <td width="100%">
+                                    @Html.DisplayFor(model => model.BIRTHDAY)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.BIRTHPLACE, "BIRTH PLACE")
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.BIRTHPLACE)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.CATEGORIES)
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.CATEGORIES)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.WEBSITE)
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.WEBSITE)
+                </div>
+            </div>
+        </div>
+        <div class="formRight">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ASSOCIATEDCOMPANY, "ASSOCIATED COMPANY")
+                <div class="col-md-10">
+                    <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                        <tbody>
+                            <tr>
+                                <td width="100%">
+                                    @Html.DisplayFor(model => model.ASSOCIATEDCOMPANY)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ASSOCIATEDCONTACT, "ASSOCIATED CONTACT")
+                <div class="col-md-10">
+                    <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                        <tbody>
+                            <tr>
+                                <td width="100%">
+                                    @Html.DisplayFor(model => model.ASSOCIATEDCONTACT)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.COMPANYTYPEID, "COMPANY TYPE")
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.COMPANYNAME)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.STATUSID, "STATUS")
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.StatusDesc)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RATINGID, "RATING")
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.RATINGDESC)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.INTERESTDESC, "INTEREST")
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.INTERESTDESC)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.CURRENCY)
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.CURRENCY)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.FORECASTEDREVENUE)
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.FORECASTEDREVENUE)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CLOSEDATE)
+                <div class="col-md-10">
+                    <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                        <tbody>
+                            <tr>
+                                <td width="100%">
+                                    @Html.DisplayFor(model => model.CLOSEDATE)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ORIGIN)
+                <div class="col-md-10">
+
+                    @Html.DisplayFor(model => model.ORIGIN)
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.INDUSTRY)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.INDUSTRY)
+                        @Html.ValidationMessageFor(model => model.INDUSTRY, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SALESPERSONNAME)
+                <div class="col-md-10">
+                    @*@Html.HiddenFor(model => model.SALESPERSONID)*@
+                    <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                        <tbody>
+                            <tr>
+                                <td width="100%">
+                                    @Html.DisplayFor(model => model.SALESPERSONNAME)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.COMMERCIALZONE)
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.COMMERCIALZONE)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="formMiddle">
+        <span>ADDRESS</span><span class="righSpan"></span><BR />
+
+    </div>
+    <HR />
+    <div class="formMain">
+        <div class="formLeft">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ADDRESS)
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.ADDRESS)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.STATE)
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.STATE)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PROVINCE)
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.PROVINCE)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ZIPCODE)
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.ZIPCODE)
+                </div>
+            </div>
+
+        </div>
+        <div class="formRight">
+
+        </div>
+    </div>
+    <div class="formMiddle">
+        <span>NOTE</span><span class="righSpan"></span>
+    </div>
+    <HR />
+    <br />
+    <div class="formMiddle">
+        <div class="form-group">
+            @Html.LabelFor(model => model.NOTES)
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.NOTES)
+            </div>
+        </div>
+    </div>
+</div>

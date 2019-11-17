@@ -1,0 +1,3205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\aodd\Documents\IRSL\Published</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="Admin/Company.aspx">
+      <publishTime>01/10/2018 01:19:00</publishTime>
+    </File>
+    <File Include="Admin/ConfigFreeFields.ascx">
+      <publishTime>01/10/2018 01:19:00</publishTime>
+    </File>
+    <File Include="Admin/currency.ascx">
+      <publishTime>01/10/2018 01:19:00</publishTime>
+    </File>
+    <File Include="Admin/CurrencyAdmin.aspx">
+      <publishTime>01/10/2018 01:19:00</publishTime>
+    </File>
+    <File Include="Admin/Default.aspx">
+      <publishTime>01/10/2018 01:19:00</publishTime>
+    </File>
+    <File Include="Admin/ERPConfiguration.aspx">
+      <publishTime>01/10/2018 01:19:00</publishTime>
+    </File>
+    <File Include="Admin/FillFolderSize.aspx">
+      <publishTime>01/10/2018 01:19:00</publishTime>
+    </File>
+    <File Include="Admin/groups.ascx">
+      <publishTime>01/10/2018 01:19:00</publishTime>
+    </File>
+    <File Include="Admin/Groups.aspx">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="Admin/Limbo.aspx">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="Admin/links.aspx">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="Admin/ListConfiguration.ascx">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="Admin/loadcsv.aspx">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="Admin/logos.ascx">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="Admin/Menu.aspx">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="Admin/NewUser.aspx">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="Admin/offices.ascx">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="Admin/PasswordRecovery.ascx">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="Admin/QuoteNumber.ascx">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="Admin/ScoreManagment.ascx">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="Admin/ShipDates.ascx">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="Admin/Web.config">
+      <publishTime>08/26/2018 01:35:47</publishTime>
+    </File>
+    <File Include="App_Code/Employee.cs">
+      <publishTime>08/27/2018 10:18:25</publishTime>
+    </File>
+    <File Include="aRef/IRSLCRM.Base.dll">
+      <publishTime>08/30/2018 14:51:33</publishTime>
+    </File>
+    <File Include="aRef/IRSLCRM.Core.dll">
+      <publishTime>08/30/2018 14:50:09</publishTime>
+    </File>
+    <File Include="aRef/IRSLCRM.Database.dll">
+      <publishTime>08/30/2018 14:49:36</publishTime>
+    </File>
+    <File Include="aRef/IRSLCRM.Webcontrol.dll">
+      <publishTime>08/30/2018 14:48:51</publishTime>
+    </File>
+    <File Include="aRef/DigitaMailer.dll">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="aRef/DigitaPop.dll">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="aRef/HibridControls.dll">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="bin/aRef/DigitaMailer.dll">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="bin/aRef/DigitaPop.dll">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="bin/Brettle.Web.NeatUpload.dll">
+      <publishTime>08/24/2018 13:01:42</publishTime>
+    </File>
+    <File Include="bin/Brettle.Web.NeatUpload.pdb">
+      <publishTime>08/24/2018 13:01:42</publishTime>
+    </File>
+    <File Include="bin/IRSLCRM.Base.dll">
+      <publishTime>08/30/2018 14:51:33</publishTime>
+    </File>
+    <File Include="bin/IRSLCRM.Core.dll">
+      <publishTime>08/30/2018 15:22:49</publishTime>
+    </File>
+    <File Include="bin/IRSLCRM.Core.pdb">
+      <publishTime>08/29/2018 13:45:21</publishTime>
+    </File>
+    <File Include="bin/IRSLCRM.Database.dll">
+      <publishTime>08/30/2018 14:49:36</publishTime>
+    </File>
+    <File Include="bin/IRSLCRM.Webcontrol.dll">
+      <publishTime>08/30/2018 17:29:14</publishTime>
+    </File>
+    <File Include="bin/IRSLCRM.Webcontrol.pdb">
+      <publishTime>08/30/2018 07:39:31</publishTime>
+    </File>
+    <File Include="bin/DigitaMailer.dll">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="bin/DigitaPop.dll">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="bin/en-US/Brettle.Web.NeatUpload.resources.dll">
+      <publishTime>08/24/2018 13:01:42</publishTime>
+    </File>
+    <File Include="bin/es/Brettle.Web.NeatUpload.resources.dll">
+      <publishTime>08/24/2018 13:01:42</publishTime>
+    </File>
+    <File Include="bin/fr/Brettle.Web.NeatUpload.resources.dll">
+      <publishTime>08/24/2018 13:01:42</publishTime>
+    </File>
+    <File Include="bin/HibridControls.dll">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="bin/ImageProcessing.dll">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="bin/itextsharp.dll">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="bin/Lucene.Net.dll">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.UI.Webcontrols.dll">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="bin/RSS.NET.dll">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="bin/SimpleTimeZone.dll">
+      <publishTime>01/10/2018 01:19:01</publishTime>
+    </File>
+    <File Include="bin/System.Web.UI.Webcontrols.DomValidators.dll">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="bin/Irsl.dll">
+      <publishTime>08/30/2018 17:29:19</publishTime>
+    </File>
+    <File Include="bin/Irsl.XmlSerializers.dll">
+      <publishTime>08/30/2018 17:29:21</publishTime>
+    </File>
+    <File Include="bin/WebChart.dll">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="bin/ZedGraph.dll">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="bin/ZedGraph.Web.dll">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="Calendar/Agenda.aspx">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="Calendar/Appointment.ascx">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="Calendar/Appointment.aspx">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="Calendar/DailyPrint.aspx">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="Calendar/Events.aspx">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="Calendar/Meeting.aspx">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="Calendar/PopAppointment.aspx">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="Calendar/PrintApp.aspx">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="Calendar/vcal.aspx">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="Calendar/vcard.aspx">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="Catalog/CatalogCategories.aspx">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="Catalog/CatalogHome.aspx">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="Catalog/CatalogList.aspx">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="Catalog/CatalogListManagment.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Catalog/CatalogProducts.aspx">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="Catalog/PrintProduct.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Catalog/ProductSchema.ascx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Catalog/Warehouse/warehousemanagment.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Catalog/Warehouse/WarehouseRows.ascx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Chart/bar.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Chart/doublebar.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Chart/pie.aspx">
+      <publishTime>01/10/2018 01:19:02</publishTime>
+    </File>
+    <File Include="Chart/side.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/ActivityMail.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/AppVerify.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/BillControl.ascx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/checkexist.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/checkmail.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/CompanyScore.ascx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/ConvertQuoteToPurchase.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/ExtendedValueEditor.ascx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/FreeFields.ascx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/GroupControl.ascx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/iwish.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/jsrsextlink.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/LeadInfo.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/MailEstimate.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/MailLead.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/Merge.ascx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/newlang.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/OppLoadFromCompany.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/OppLoadFromLead.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PGparser.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PopAccount.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PopActivity.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PopAddProduct.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PopCatalog.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PopCompany.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PopContacts.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/popcountry.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PopFile.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PopGroups.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PopHelp.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PopLead.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PopMailHome.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PopOpportunity.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PopPhone.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PopScoreValues.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PopUpDate.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PopUpReport.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PrintCompany.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PrintLead.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/PrintOpportunity.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/RepeaterPaging.ascx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="Common/Report.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="Common/SearchCompany.ascx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="Common/SearchLead.ascx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="Common/SelectOffice.ascx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/SheetPaging.ascx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/ViewCompany.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/ViewContact.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Common/ViewLead.aspx">
+      <publishTime>01/10/2018 01:19:03</publishTime>
+    </File>
+    <File Include="Connected Services/ServiceReference/IRSLCRM.ServiceReference.AddToGroupResponse.datasource">
+      <publishTime>08/27/2018 02:28:50</publishTime>
+    </File>
+    <File Include="Connected Services/ServiceReference/IRSLCRM.ServiceReference.ArrayOfAnyType.datasource">
+      <publishTime>08/27/2018 02:28:48</publishTime>
+    </File>
+    <File Include="Connected Services/ServiceReference/IRSLCRM.ServiceReference.AuthenticateResponse.datasource">
+      <publishTime>08/27/2018 02:28:49</publishTime>
+    </File>
+    <File Include="Connected Services/ServiceReference/IRSLCRM.ServiceReference.CreateUserAccountResponse.datasource">
+      <publishTime>08/27/2018 02:28:51</publishTime>
+    </File>
+    <File Include="Connected Services/ServiceReference/IRSLCRM.ServiceReference.DisableResponse.datasource">
+      <publishTime>08/27/2018 02:28:52</publishTime>
+    </File>
+    <File Include="Connected Services/ServiceReference/IRSLCRM.ServiceReference.Employee.datasource">
+      <publishTime>08/27/2018 02:28:48</publishTime>
+    </File>
+    <File Include="Connected Services/ServiceReference/IRSLCRM.ServiceReference.EnableResponse.datasource">
+      <publishTime>08/27/2018 02:28:51</publishTime>
+    </File>
+    <File Include="Connected Services/ServiceReference/IRSLCRM.ServiceReference.GroupsResponse.datasource">
+      <publishTime>08/27/2018 02:28:51</publishTime>
+    </File>
+    <File Include="Connected Services/ServiceReference/IRSLCRM.ServiceReference.RemoveUserFromGroupResponse.datasource">
+      <publishTime>08/27/2018 02:28:50</publishTime>
+    </File>
+    <File Include="Connected Services/ServiceReference/IRSLCRM.ServiceReference.ResetPasswordResponse.datasource">
+      <publishTime>08/27/2018 02:28:53</publishTime>
+    </File>
+    <File Include="Connected Services/ServiceReference/IRSLCRM.ServiceReference.UnlockResponse.datasource">
+      <publishTime>08/27/2018 02:28:52</publishTime>
+    </File>
+    <File Include="Connected Services/ServiceReference/IRSLCRM.ServiceReference.userSearchResponse.datasource">
+      <publishTime>08/27/2018 02:28:49</publishTime>
+    </File>
+    <File Include="CRM/AddCategories.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="CRM/BASE_Contacts.aspx">
+      <publishTime>08/24/2018 12:45:07</publishTime>
+    </File>
+    <File Include="CRM/BASE_Messages.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="CRM/BASE_NewMessage.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="CRM/BASE_NewTask.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="CRM/CRM_Companies.aspx">
+      <publishTime>08/29/2018 13:23:34</publishTime>
+    </File>
+    <File Include="CRM/CRM_Lead.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="CRM/CRM_Notes.aspx">
+      <publishTime>08/29/2018 13:44:06</publishTime>
+    </File>
+    <File Include="CRM/CRM_OppCompany.ascx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="CRM/CRM_OppLead.ascx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="CRM/CRM_Opportunity.aspx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="CRM/CRM_Reminder.aspx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="CRM/CRM_ToDoList.aspx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="CRM/MergeContacts.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="CRM/NewCard.ascx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="CRM/PopConvertLead.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="CRM/QBDefault.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="CRM/QBEdit.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="CRM/QBFixed.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="CRM/qbtable.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="CRM/WhereBuild.aspx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="css/defaultsheet.css">
+      <publishTime>08/30/2018 01:50:42</publishTime>
+    </File>
+    <File Include="css/G.css">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="css/TabControl.css">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="css/TabControl_all.css">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="css/tmain.css">
+      <publishTime>08/29/2018 15:41:48</publishTime>
+    </File>
+    <File Include="css/tred.css">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="css/ttabber.css">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="Dash/Dash1.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="Dash/Dash2.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="Dash/Dash3.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="Dash/Dash4.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="Dash/dashboard.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="Dash/piechart.aspx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="DataStorage/AdminFolder.aspx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="DataStorage/DataStorage.aspx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="DataStorage/PopFileInfo.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="DataStorage/search.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="DataStorage/uploadDialog.aspx">
+      <publishTime>01/10/2018 01:19:04</publishTime>
+    </File>
+    <File Include="default.aspx">
+      <publishTime>08/30/2018 07:40:52</publishTime>
+    </File>
+    <File Include="ERP/CustomerQuote.ascx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="ERP/CustomerQuoteList.aspx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="ERP/OrderEditing.aspx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="ERP/OrderList.aspx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="ERP/PrintOrder.aspx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="ERP/PrintQuote.aspx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="ERP/QuoteEditing.aspx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="ERP/QuoteList.aspx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="ERP/RowEditing.ascx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="Error/ErrorPage.aspx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="Error/jserror.aspx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="Error/waitplease.htm">
+      <publishTime>08/25/2018 14:37:30</publishTime>
+    </File>
+    <File Include="Estimates/EstimateList.ascx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="Estimates/EstimatePrint.aspx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="Estimates/EstimateTemplate.aspx">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/af.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/al.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/am.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/an.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/ao.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/ar.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/at.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/au.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/aw.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/az.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/ba.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/bb.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/bd.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/be.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/bf.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/bg.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/bh.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/bi.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/bj.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/bm.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/bn.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/bo.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/br.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/bs.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/bt.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/bw.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/by.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/bz.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/ca.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/cf.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/cg.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/ch.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/ci.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/ck.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/cl.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/cm.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/cn.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/co.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/cr.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/cu.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/cv.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/cy.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/cz.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/de.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/dk.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/dz.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/ec.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/ee.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/eg.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/er.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/es.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/et.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/fi.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/fj.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/fo.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/fr.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/ga.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/gb.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/ge.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/gi.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/gl.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/gp.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/gr.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/gt.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/gu.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/gy.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/hk.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/hr.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/ht.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/hu.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/id.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/ie.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/il.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/in.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/iq.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/ir.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/is.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/it.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/jm.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/jo.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/jp.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/ke.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/kg.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/kh.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/ki.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/kp.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/kr.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/ky.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/kz.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/lb.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/lc.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/lk.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/lt.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/lu.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/lv.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/ly.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/ma.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/mc.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/md.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/mg.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/mn.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/mo.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/mp.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/ms.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/mt.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/mx.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/my.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/mz.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/na.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/nc.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/nf.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/nl.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/no.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/np.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/nr.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/nz.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/om.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/pa.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/pe.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/pf.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/ph.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/pk.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/pl.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/pm.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/pr.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/pt.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/py.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/qa.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/ro.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/ru.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="flags/sa.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="flags/sb.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="flags/sd.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="flags/se.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="flags/sg.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/si.gif">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="flags/sk.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/sl.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/so.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/sr.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/sy.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/tc.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/tg.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/th.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/tn.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/to.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/tp.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/tr.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/tt.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/tv.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/tw.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/tz.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/ua.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/ug.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/us.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/uy.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/va.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/ve.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/vg.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/vi.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/vn.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/ws.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/ye.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/yu.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/za.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="flags/zw.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/AU/dbfull.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/AU/HelpActivity.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/AU/HelpDataStorage.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/AU/HelpFreeField.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/AU/HelpGruppi.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/AU/HelpMenu.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/AU/HelpUffici.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/AU/HelpUtenti.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/AU/loadcsv.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/AU/loadcsv2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/AU/qbilder_step1.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/AU/qbilder_step2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/AU/qbilder_step3.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/AU/qbilder_step4.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/BZ/dbfull.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/BZ/HelpActivity.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/BZ/HelpDataStorage.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/BZ/HelpFreeField.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/BZ/HelpGruppi.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/BZ/HelpMenu.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/BZ/HelpUffici.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/BZ/HelpUtenti.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/BZ/loadcsv.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/BZ/loadcsv2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/BZ/qbilder_step1.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/BZ/qbilder_step2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/BZ/qbilder_step3.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/BZ/qbilder_step4.htm">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="Help/CA/dbfull.htm">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="Help/CA/HelpActivity.htm">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="Help/CA/HelpDataStorage.htm">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="Help/CA/HelpFreeField.htm">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="Help/CA/HelpGruppi.htm">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="Help/CA/HelpMenu.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CA/HelpUffici.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CA/HelpUtenti.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CA/loadcsv.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CA/loadcsv2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CA/qbilder_step1.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CA/qbilder_step2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CA/qbilder_step3.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CA/qbilder_step4.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CB/dbfull.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CB/HelpActivity.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CB/HelpDataStorage.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CB/HelpFreeField.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CB/HelpGruppi.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CB/HelpMenu.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CB/HelpUffici.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CB/HelpUtenti.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CB/loadcsv.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CB/loadcsv2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CB/qbilder_step1.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CB/qbilder_step2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CB/qbilder_step3.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CB/qbilder_step4.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CH/dbfull.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CH/HelpActivity.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CH/HelpDataStorage.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CH/HelpFreeField.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CH/HelpGruppi.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CH/HelpMenu.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CH/HelpUffici.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CH/HelpUtenti.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CH/loadcsv.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CH/loadcsv2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CH/qbilder_step1.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CH/qbilder_step2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CH/qbilder_step3.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/CH/qbilder_step4.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/ACT.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/admin_home.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/archive_home.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/catalogue_home.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/crm_home.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/dbfull.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/ERPConfig.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/erp_home.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/GoldMine.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/HelpActivity.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/HelpDataStorage.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/HelpFreeField.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/HelpGruppi.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/HelpMenu.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/HelpOffices.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/HelpUser.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/loadcsv.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/loadcsv2.htm">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="Help/en/loadcsv2old.htm">
+      <publishTime>01/10/2018 01:19:05</publishTime>
+    </File>
+    <File Include="Help/en/loadcsvold.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/mailcenter_home.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/other.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/Outlook.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/palm.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/qbilder_step1.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/qbilder_step2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/qbilder_step3.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/qbilder_step4.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/reports_home.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/salesforce.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/WizardEnd.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/en/WizardHlp.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/admin_home.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/archive_home.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/catalogue_home.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/crm_home.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/dbfull.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/ERPConfig.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/erp_home.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/HelpActivity.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/HelpDataStorage.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/HelpFreeField.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/HelpGruppi.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/HelpMenu.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/HelpUffici.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/loadcsv.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/loadcsv2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/mailcenter_home.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/qbilder_step1.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/qbilder_step2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/qbilder_step3.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/qbilder_step4.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/reports_home.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/WizardEnd.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/es/WizardHlp.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/GB/dbfull.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/GB/HelpActivity.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/GB/HelpDataStorage.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/GB/HelpFreeField.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/GB/HelpGruppi.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/GB/HelpMenu.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/GB/HelpUffici.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/GB/HelpUtenti.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/GB/loadcsv.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/GB/loadcsv2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/GB/qbilder_step1.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/GB/qbilder_step2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/GB/qbilder_step3.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/GB/qbilder_step4.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/IE/dbfull.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/IE/HelpActivity.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/IE/HelpDataStorage.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/IE/HelpFreeField.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/IE/HelpGruppi.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/IE/HelpMenu.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/IE/HelpUffici.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/IE/HelpUtenti.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/IE/loadcsv.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/IE/loadcsv2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/IE/qbilder_step1.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/IE/qbilder_step2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/IE/qbilder_step3.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/IE/qbilder_step4.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/Images/currency.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/Images/dropdown.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/Images/people.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/Images/Irslproduct_trans.gif">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/it/ACT_it.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/it/admin_home.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/it/admin_homexxx.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/it/archive_home.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/it/catalogue_home.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/it/crm_home.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/it/dbfull.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/it/ERPConfig.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/it/erp_home.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/it/GoldMine_it.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/it/HelpActivity.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/it/HelpDataStorage.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/it/HelpFreeField.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/it/HelpGruppi.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/it/HelpMenu.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/it/HelpOffices.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/it/HelpUser.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/it/loadcsv.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/it/loadcsv2.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/it/loadcsvold.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/it/mailcenter_home.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/it/other_it.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/it/Outlook_it.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/it/palm_it.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/it/qbilder_step1.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/it/qbilder_step2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/it/qbilder_step3.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/it/qbilder_step4.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/it/reports_home.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/it/salesforce_it.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/it/WizardEnd.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/it/WizardHlp.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/JM/dbfull.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/JM/HelpActivity.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/JM/HelpDataStorage.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/JM/HelpFreeField.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/JM/HelpGruppi.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/JM/HelpMenu.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/JM/HelpUffici.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/JM/HelpUtenti.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/JM/loadcsv.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/JM/loadcsv2.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/JM/qbilder_step1.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/JM/qbilder_step2.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/JM/qbilder_step3.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/JM/qbilder_step4.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/NZ/dbfull.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/NZ/HelpActivity.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/NZ/HelpDataStorage.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/NZ/HelpFreeField.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/NZ/HelpGruppi.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/NZ/HelpMenu.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/NZ/HelpUffici.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/NZ/HelpUtenti.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/NZ/loadcsv.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/NZ/loadcsv2.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/NZ/qbilder_step1.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/NZ/qbilder_step2.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/NZ/qbilder_step3.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/NZ/qbilder_step4.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/PH/dbfull.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/PH/HelpActivity.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/PH/HelpDataStorage.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/PH/HelpFreeField.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/PH/HelpGruppi.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/PH/HelpMenu.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/PH/HelpUffici.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/PH/HelpUtenti.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/PH/loadcsv.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/PH/loadcsv2.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/PH/qbilder_step1.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/PH/qbilder_step2.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/PH/qbilder_step3.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/PH/qbilder_step4.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/TT/dbfull.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/TT/HelpActivity.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/TT/HelpDataStorage.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/TT/HelpFreeField.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/TT/HelpGruppi.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/TT/HelpMenu.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/TT/HelpUffici.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/TT/HelpUtenti.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/TT/loadcsv.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/TT/loadcsv2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/TT/qbilder_step1.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/TT/qbilder_step2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/TT/qbilder_step3.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/TT/qbilder_step4.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/US/dbfull.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/US/HelpActivity.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/US/HelpDataStorage.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/US/HelpFreeField.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/US/HelpGruppi.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/US/HelpMenu.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/US/HelpUffici.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/US/HelpUtenti.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/US/loadcsv.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/US/loadcsv2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/US/qbilder_step1.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/US/qbilder_step2.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/US/qbilder_step3.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/US/qbilder_step4.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/ZA/dbfull.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/ZA/HelpActivity.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/ZA/HelpDataStorage.htm">
+      <publishTime>01/10/2018 01:19:06</publishTime>
+    </File>
+    <File Include="Help/ZA/HelpFreeField.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZA/HelpGruppi.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZA/HelpMenu.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZA/HelpUffici.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZA/HelpUtenti.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZA/loadcsv.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZA/loadcsv2.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZA/qbilder_step1.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZA/qbilder_step2.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZA/qbilder_step3.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZA/qbilder_step4.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZW/dbfull.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZW/HelpActivity.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZW/HelpDataStorage.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZW/HelpFreeField.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZW/HelpGruppi.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZW/HelpMenu.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZW/HelpUffici.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZW/HelpUtenti.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZW/loadcsv.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZW/loadcsv2.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZW/qbilder_step1.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZW/qbilder_step2.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZW/qbilder_step3.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="Help/ZW/qbilder_step4.htm">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/a/case.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/a/email.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/a/fax.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/a/fax.old.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/a/generic.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/a/hands.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/a/letter.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/a/phone.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/a/Phone.old.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/a/Pin.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/a/quote.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/alert.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/alfabeto.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/alfabeto1.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/allday.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/apri_cartella.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/arrow.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/arrow2.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/Back.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/bell.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/bg.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/1024.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/1152.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/1280.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/1400.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/1450.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/1600.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/640.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/800.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/832.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/ff-no.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/ff.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/IE-no.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/ie.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/konqueror.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/linux.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/mac.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/mozilla-no.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/mozilla.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/netscape-no.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/netscape.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/opera-no.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/opera.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/safari.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/unix.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/browser/windows.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/bug.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/buttonmessageread.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/buttonmessageunread.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/cal.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/calendar.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/cancel.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/cancella_old.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/celeb.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/celeb.old.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/checkoff.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/checkon.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/checkout.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/chiudi.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/ClockNE.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/confirm.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/confirm2.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/Copy.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/CopyDown.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/CopyDownAll.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/delete.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/deletedoc.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/DeleteDocument.png">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/DeleteSheet.png">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/DeleteUser.png">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/DocumentDraw.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/down.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/download.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/downsel.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/Draw.png">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/edit.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/elabora_file.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/Envelope.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/EnvelopeOpen.png">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/erase.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/erase2.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/err.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/eventosi.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/eventosi.old.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/Eyeball.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/fax.jpg">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/FlowGraph16.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/Forward.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/free.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/gbut.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/globe.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/go.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/goback.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/google.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/greenbul.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/hands.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/hands20.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/help.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/Help.old.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/import.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/incoming.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/industry.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/lens.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/livehelp.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/live_help.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/loading.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/lookup.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/lookupAlert.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/mail.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/mailin.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/mail_out.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/menu_open.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/modifica_old.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/modify.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/modify2.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/movedown.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/moveup.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/newevent.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/noskype.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/nuovo_file.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/ok.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/okckeck.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/onhold.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/onhold2.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/outcoming.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/paste.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/persons.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/pg.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/phone.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/Phone.jpg">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/PhotoProduct.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/Pin.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/plus.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/printer.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/qbi/cpr.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/qbi/cpr0.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/qbi/cpr1.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/qbi/del.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/qbi/dwn.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/qbi/dwn0.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/qbi/dwn1.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/qbi/gra.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/qbi/gra0.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/qbi/gra1.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/qbi/grp.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/qbi/grp0.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/qbi/grp1.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/qbi/par.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/qbi/par0.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/qbi/par1.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/qbi/up.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/qbi/up0.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/qbi/up1.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/qbi/vis.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/qbi/vis0.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/qbi/vis1.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/rankgradient.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/rankgradient2.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/read.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/redalert.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/redbul.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/remind.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/rubpiccola.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/rubrica3.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/rubricapic2.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/sheet.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/SmallCalendar.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/square.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/suggestion.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/suggestion.old.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/suggestion2.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/ThumbDown.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/ThumbNi.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/ThumbUp.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/topmail.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/topsms.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/trans.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/trash.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/tree.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/Tree/ArrowBlue.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/Tree/ElementArrowDown.jpg">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/Tree/ElementArrowRight.jpg">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/Tree/ElementBlueArrowDown.jpg">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/Tree/ElementBlueArrowRight.jpg">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/Tree/ElementBlueDown.jpg">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/Tree/ElementBlueRight.jpg">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/Tree/ElementMinus.jpg">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/Tree/ElementPlus.jpg">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/Tree/ElementYellowDown.jpg">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/Tree/ElementYellowRight.jpg">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/Tree/ElementYellowUp.jpg">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/Tree/file.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/Tree/folder.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/Tree/ListenRadio.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/up.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/update.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/upsel.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/user.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/user_old.gif">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="i/Visit.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/waiting.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/welcomemail.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/whitebul.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/zipico.jpg">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="i/zippa.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="icons/doc.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="icons/email.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="icons/file.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="icons/folder.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="icons/generic.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="icons/globe.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="icons/home.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="icons/image.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="icons/pdf.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="icons/person.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="icons/persons.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="icons/ppt.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="icons/see.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="icons/sound.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="icons/trend.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="icons/xls.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="icons/zip.gif">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="imageRepath.aspx">
+      <publishTime>01/10/2018 01:19:07</publishTime>
+    </File>
+    <File Include="images/BACKGROUND-2.jpg">
+      <publishTime>08/29/2018 15:29:31</publishTime>
+    </File>
+    <File Include="images/irsl_logo.jpg">
+      <publishTime>08/26/2018 17:26:33</publishTime>
+    </File>
+    <File Include="images/IrslLogoOS.gif">
+      <publishTime>08/29/2018 14:59:28</publishTime>
+    </File>
+    <File Include="images/Irsllogov3.gif">
+      <publishTime>08/29/2018 15:23:11</publishTime>
+    </File>
+    <File Include="ImportMaps/ActivityImportMap_en.xml">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="ImportMaps/ActivityImportMap_es.xml">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="ImportMaps/ActivityImportMap_it.xml">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="ImportMaps/CompanyImportMap_en.xml">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="ImportMaps/CompanyImportMap_es.xml">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="ImportMaps/CompanyImportMap_it.xml">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="ImportMaps/ContactImportMap_en.xml">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="ImportMaps/ContactImportMap_es.xml">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="ImportMaps/ContactImportMap_it.xml">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="ImportMaps/LeadImportMap_en.xml">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="ImportMaps/LeadImportMap_es.xml">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="ImportMaps/LeadImportMap_it.xml">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="indexgridtext.aspx">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="js/actb.js">
+      <publishTime>08/24/2018 12:12:25</publishTime>
+    </File>
+    <File Include="js/activityform.js">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="js/ajax.js">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="js/allactivity.js">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="js/Appointment.js">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="js/autocomplete.js">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="js/autodate.js">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="js/browser.js">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="js/calendars.js">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="js/clone.js">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="js/common.js">
+      <publishTime>01/10/2018 01:19:09</publishTime>
+    </File>
+    <File Include="js/country.js">
+      <publishTime>01/10/2018 01:19:09</publishTime>
+    </File>
+    <File Include="js/dynabox.js">
+      <publishTime>01/10/2018 01:19:09</publishTime>
+    </File>
+    <File Include="js/finddom.js">
+      <publishTime>01/10/2018 01:19:09</publishTime>
+    </File>
+    <File Include="js/FullScreen.js">
+      <publishTime>01/10/2018 01:19:09</publishTime>
+    </File>
+    <File Include="js/hashtable.js">
+      <publishTime>01/10/2018 01:19:09</publishTime>
+    </File>
+    <File Include="js/jslangspec.js">
+      <publishTime>01/10/2018 01:19:09</publishTime>
+    </File>
+    <File Include="js/liveclock.js">
+      <publishTime>01/10/2018 01:19:09</publishTime>
+    </File>
+    <File Include="js/makeor.js">
+      <publishTime>01/10/2018 01:19:09</publishTime>
+    </File>
+    <File Include="js/makeoresteso.js">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="js/menudigita.js">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="js/minmax.js">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="js/normalize.js">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="js/optionadd.js">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="js/optionremove.js">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="js/orttable.js">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="js/percent_bar.js">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="js/qbtable.js">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="js/Search.js">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="js/SelectOffice.js">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="js/sorttable.js">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="js/test.js">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="js/tooltip.js">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="landingpage.aspx">
+      <publishTime>08/26/2018 21:46:47</publishTime>
+    </File>
+    <File Include="login.aspx">
+      <publishTime>08/30/2018 15:54:58</publishTime>
+    </File>
+    <File Include="MailingList/default_Image.aspx">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="MailingList/editor.aspx">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="MailingList/MailCenter.aspx">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="MailingList/MailEvents.aspx">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="MailingList/MailLog.aspx">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="MailingList/mailpreview.aspx">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="MailingList/neweditor.aspx">
+      <publishTime>01/10/2018 01:19:09</publishTime>
+    </File>
+    <File Include="MailingList/NewMailingList.aspx">
+      <publishTime>01/10/2018 01:19:09</publishTime>
+    </File>
+    <File Include="MailingList/sendsingleaddressmail.aspx">
+      <publishTime>01/10/2018 01:19:09</publishTime>
+    </File>
+    <File Include="MailingList/sendsms.aspx">
+      <publishTime>01/10/2018 01:19:09</publishTime>
+    </File>
+    <File Include="MailingList/update.aspx">
+      <publishTime>01/10/2018 01:19:09</publishTime>
+    </File>
+    <File Include="MailingList/VerifyMailInML.aspx">
+      <publishTime>01/10/2018 01:19:09</publishTime>
+    </File>
+    <File Include="MailingList/webmail/checkmail.aspx">
+      <publishTime>01/10/2018 01:19:09</publishTime>
+    </File>
+    <File Include="MailingList/webmail/CheckPop3.aspx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="MailingList/webmail/EraseCache.aspx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="MailingList/webmail/mailout.ascx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="MailingList/webmail/MailRedir.aspx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="MailingList/webmail/SendGenericMail.aspx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="MailingList/webmail/ShowMsg.aspx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="MailingList/webmail/webmail.aspx">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="NeatUpload/Progress.aspx">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="NoMoreHelp.aspx">
+      <publishTime>01/10/2018 01:19:08</publishTime>
+    </File>
+    <File Include="packages/System.DirectoryServices.4.5.0/.signature.p7s">
+      <publishTime>05/15/2018 16:37:18</publishTime>
+    </File>
+    <File Include="packages/System.DirectoryServices.4.5.0/lib/net45/_._">
+      <publishTime>05/15/2018 13:29:44</publishTime>
+    </File>
+    <File Include="packages/System.DirectoryServices.4.5.0/lib/netstandard2.0/System.DirectoryServices.dll">
+      <publishTime>05/15/2018 13:29:44</publishTime>
+    </File>
+    <File Include="packages/System.DirectoryServices.4.5.0/LICENSE.TXT">
+      <publishTime>05/15/2018 13:29:44</publishTime>
+    </File>
+    <File Include="packages/System.DirectoryServices.4.5.0/ref/net45/_._">
+      <publishTime>05/15/2018 13:29:44</publishTime>
+    </File>
+    <File Include="packages/System.DirectoryServices.4.5.0/ref/netstandard2.0/System.DirectoryServices.dll">
+      <publishTime>05/15/2018 13:29:44</publishTime>
+    </File>
+    <File Include="packages/System.DirectoryServices.4.5.0/ref/netstandard2.0/System.DirectoryServices.xml">
+      <publishTime>05/15/2018 13:29:44</publishTime>
+    </File>
+    <File Include="packages/System.DirectoryServices.4.5.0/runtimes/win/lib/net45/_._">
+      <publishTime>05/15/2018 13:29:44</publishTime>
+    </File>
+    <File Include="packages/System.DirectoryServices.4.5.0/runtimes/win/lib/netcoreapp2.0/System.DirectoryServices.dll">
+      <publishTime>05/15/2018 13:29:44</publishTime>
+    </File>
+    <File Include="packages/System.DirectoryServices.4.5.0/System.DirectoryServices.4.5.0.nupkg">
+      <publishTime>08/27/2018 00:32:01</publishTime>
+    </File>
+    <File Include="packages/System.DirectoryServices.4.5.0/THIRD-PARTY-NOTICES.TXT">
+      <publishTime>05/15/2018 13:29:44</publishTime>
+    </File>
+    <File Include="packages/System.DirectoryServices.4.5.0/useSharedDesignerContext.txt">
+      <publishTime>05/15/2018 13:29:44</publishTime>
+    </File>
+    <File Include="packages/System.DirectoryServices.4.5.0/version.txt">
+      <publishTime>05/15/2018 13:29:44</publishTime>
+    </File>
+    <File Include="PassRecoveryPage.aspx">
+      <publishTime>01/10/2018 01:19:09</publishTime>
+    </File>
+    <File Include="portal.aspx">
+      <publishTime>01/10/2018 01:19:09</publishTime>
+    </File>
+    <File Include="quick/ActivityForm.ascx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="quick/quick.aspx">
+      <publishTime>08/26/2018 15:43:47</publishTime>
+    </File>
+    <File Include="quick/quickactivity.aspx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="quick/QuickAppointments.aspx">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="quick/QuickLogView.aspx">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="quick/quicksearch.aspx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="Report/htmlreport.aspx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="Report/NewDoc.aspx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="Report/OpportunityReport.aspx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="RSS/feed.aspx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="session.aspx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="SideBar/AllNew.ascx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="SideBar/Calculator.ascx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="SideBar/Calculator.js">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="SideBar/calendar.ascx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="SideBar/calendar.js">
+      <publishTime>08/26/2018 21:14:55</publishTime>
+    </File>
+    <File Include="SideBar/JsAllNew.aspx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="SideBar/RecentItems.ascx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="SideBar/SideBar.xml">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="template/1/Estimate.htm">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="template/1/EstimateMail.htm">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="template/acqua.css">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="template/bodyTemplate.htm">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="template/btm_shadow.png">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="template/digita05022004.gif">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="template/headTemplate.htm">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="template/istituzionale.css">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="template/lostpassword_en.txt">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="template/lostpassword_it.txt">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="template/mailing/Irsl_signature.htm">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="template/mailing/Irsl_signature.txt">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="template/newTemplate.htm">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="template/Normal.css">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="template/print/htmlformtemplate.htm">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="template/red_highlight_top_left.png">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="template/T2.htm">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="template/tmain.htm">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="template/tred.htm">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="template/Twiz.htm">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="template/webGateForm.htm">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="template/white_pressed_button.png">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="timer.aspx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="today.aspx">
+      <publishTime>08/26/2018 21:07:43</publishTime>
+    </File>
+    <File Include="TokenPage.aspx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="UpdateMenu.aspx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="UpgradeLog.htm">
+      <publishTime>08/24/2018 12:02:28</publishTime>
+    </File>
+    <File Include="wap/default.aspx">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="wap/Web.config">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>08/29/2018 09:31:01</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/images/folder.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/images/folderopen.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/images/html.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/images/root.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/images/treeGray.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/images/treeYellow.gif">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/f.gif">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/fminus.gif">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/folder.gif">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/folderopen.gif">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/fplus.gif">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/html.gif">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/i.gif">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/L.gif">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/Lminus.gif">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/Lplus.gif">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/minus.gif">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/plus.gif">
+      <publishTime>01/10/2018 01:19:11</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/r.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/Rminus.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/root.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/Rplus.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/rtl/F.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/rtl/Fminus.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/rtl/Fplus.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/rtl/I.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/rtl/L.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/rtl/Lminus.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/rtl/Lplus.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/rtl/minus.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/rtl/plus.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/rtl/r.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/rtl/Rminus.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/rtl/Rplus.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/rtl/T.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/rtl/Tminus.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/rtl/Tplus.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/rtl/white.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/T.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/Tminus.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/Tplus.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/treeGray.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/treeYellow.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="webctrl_client/1_0/treeimages/white.gif">
+      <publishTime>01/10/2018 01:19:10</publishTime>
+    </File>
+    <File Include="WebEditor/WebEditorConnector.aspx">
+      <publishTime>01/10/2018 01:19:13</publishTime>
+    </File>
+    <File Include="WebGate/MailAuth.aspx">
+      <publishTime>01/10/2018 01:19:13</publishTime>
+    </File>
+    <File Include="WebGate/regform.aspx">
+      <publishTime>01/10/2018 01:19:13</publishTime>
+    </File>
+    <File Include="WorkingCRM/ActivityChronology.ascx">
+      <publishTime>01/10/2018 01:19:13</publishTime>
+    </File>
+    <File Include="WorkingCRM/AllActivity.aspx">
+      <publishTime>01/10/2018 01:19:13</publishTime>
+    </File>
+    <File Include="WorkingCRM/chronology.aspx">
+      <publishTime>01/10/2018 01:19:13</publishTime>
+    </File>
+    <File Include="WorkingCRM/PopActivity.aspx">
+      <publishTime>01/10/2018 01:19:13</publishTime>
+    </File>
+    <File Include="WorkingCRM/QuickActivity.ascx">
+      <publishTime>01/10/2018 01:19:13</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

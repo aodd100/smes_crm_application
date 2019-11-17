@@ -1,0 +1,281 @@
+﻿@model db.crmdb.dbData.mEvent
+
+@{
+    /**/
+
+    ViewBag.Title = "Manage Events Creation";
+    Layout = "~/Views/_LayoutAdminPage.cshtml";
+    <style type="text/css">
+        /*==========================================================*/
+        .form-group h1 {
+            font-size: 14px;
+        }
+
+        .formMain .form-group .col-md-10 input#ACTIONDATE {
+            width: 64% !important;
+            margin-right: 3px;
+        }
+
+        .formMain .form-group .col-md-10 input, .formMain .form-group .col-md-10 select {
+            display: block;
+            width: 100%;
+            height: 24px;
+            padding: 1px 8px;
+            font-size: 10px;
+            line-height: 0.429;
+            color: #555;
+            background-color: #FFF;
+            background-image: none;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        .formMain .form-group .col-md-10 textarea {
+            display: block;
+            width: 100%;
+            padding: 1px 8px;
+            font-size: 10px;
+            line-height: 0.429;
+            color: #555;
+            background-color: #FFF;
+            background-image: none;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        #tabberpage .formMain .form-group .col-md-10 textarea, #tabberpage .formMain .form-group .col-md-10 input {
+            width: 85% !important;
+        }
+
+
+
+        /*========================================================================*/
+        .form-horizontal .form-group {
+            display: flex;
+        }
+
+            .form-horizontal .form-group label {
+                flex: 1;
+            }
+
+            .form-horizontal .form-group .col-md-10 {
+                flex: 3;
+            }
+
+                .form-horizontal .form-group .col-md-10 input[type='text'] {
+                    width: 304px;
+                }
+
+                .form-horizontal .form-group .col-md-10 table {
+                    width: 191px !important;
+                }
+
+                    .form-horizontal .form-group .col-md-10 table img {
+                        position: relative;
+                        top: 3px;
+                        left: 2px;
+                    }
+
+                    .form-horizontal .form-group .col-md-10 table input {
+                        width: 162px !important;
+                    }
+
+        html > body #tabberpage {
+            border-bottom: thin outset;
+            border-right: thin outset;
+            -moz-box-sizing: border-box;
+        }
+
+        .form-horizontal .form-group .col-md-10 table {
+            width: 372px !important;
+        }
+
+            .form-horizontal .form-group .col-md-10 table td {
+                width: 162px !important;
+                display: flex;
+                flex-flow: row;
+            }
+
+        textarea {
+            padding: 10px;
+            vertical-align: top;
+            width: 593px !important;
+        }
+
+        .form-horizontal .form-group .col-md-10 input[type="text"] {
+            width: 593px !important;
+        }
+    </style>
+}
+
+
+@using (Html.BeginForm("Create", "Events",FormMethod.Post,new { @id="formSubmit" }))
+{
+    @Html.AntiForgeryToken()
+    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                <td class="pageTitle" valign="top" align="left">
+                    Manage Events
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="tabberpage " class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Description, 2, 40, new { htmlAttributes = new { @id = "Description", @name = "Description", @class = "form-control BoxDesignReq", @startfocus = "true" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Start, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                    <tbody>
+                        <tr>
+                            <td width="100%">
+                                @*@Html.HiddenFor(model => model.CLOSEDATE)*@
+                                @Html.EditorFor(model => model.Start, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Start, "", new { @class = "text-danger" })
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.End, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                    <tbody>
+                        <tr>
+                            <td width="100%">
+                                @*@Html.HiddenFor(model => model.CLOSEDATE)*@
+                                @Html.EditorFor(model => model.End, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.End, "", new { @class = "text-danger" })
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ThemeColor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ThemeColor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ThemeColor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsFullDay, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.IsFullDay)
+                    @Html.ValidationMessageFor(model => model.IsFullDay, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="save" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script src="@Url.Content("~/js/jquery-ui.js")"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/irsl_validation.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+
+            $("#End").datepicker({
+                showOn: "button",
+                buttonImage: "/i/SmallCalendar.gif",
+                buttonImageOnly: true,
+                buttonText: "Select date"
+            });
+            $("#Start").datepicker({
+                showOn: "button",
+                buttonImage: "/i/SmallCalendar.gif",
+                buttonImageOnly: true,
+                buttonText: "Select date"
+            });
+            $(".form-group .save").on('click', function (e) {
+                var form = $("form#formSubmit");
+                var st = false;
+                var msg = "------------------Error Messages-------------------------------";
+                msg += "\n---------------------------------------------------------------";
+
+                if ($("#Subject").val() == "") {
+                    msg += "\n* Subject field required";
+                    st = true;
+                }
+                if ($("#Description").val() == "") {
+                    msg += "\n* Description field required";
+                    st = true;
+
+                }
+                if ($("#Sart").val() == "") {
+                    msg += "\n* Start date field required";
+                    st = true;
+
+                }
+                //if ($("#End").val() == "") {
+                //    msg += "\n* End date field required";
+                //    st = true;
+
+                //}
+
+                if (st) {
+                    alert(msg);
+                    return false;
+                } else {
+                         $.ajax({
+                            type: 'POST',
+                            url: $(form)[0].action,
+                            data: new FormData(form),
+                            success: function (response) {
+                                if (response.success) {
+                                    //$("#firstTab").html(response.html);
+                                    $.notify(response.message, "success");
+                                }
+                                else {
+                                    $.notify(response.message, "error");
+                                }
+
+                            }
+                        });
+                        return true;
+                    
+                    
+                }
+            });
+
+        });
+    </script>
+}

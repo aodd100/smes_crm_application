@@ -1,0 +1,168 @@
+﻿* {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #000;
+}
+
+body {
+    background-color: #F2F2F2;
+}
+#topbarIRSL {
+    background-position: center top;
+    margin-left: 217px;
+    border-top: 2px solid #686767;
+    height: 83px;
+    width: 84%;
+    top: -8px;
+    position: relative;
+    left: -3px;
+    border-bottom: 2px solid #686767;
+    border-right: 2px solid #686767;
+    background-image: url('/images/BACKGROUND-2.jpg');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    color: #FFFFFF;
+    background-position-x: -582px;
+    background-position-y: -95px;
+}
+
+#topbarIRSL table td {
+    color: #fff;
+}
+
+#topbarFooter {
+    margin-left: 0px;
+    height: 20px;
+    width: 100%;
+    top: 0px;
+    position: relative;
+    left: 0px;
+    text-align: center;
+}
+
+.SideBorderLinked {
+    border-right: 1px solid #002144;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-bottom: 1px solid #002144;
+    border-left: 1px solid #002144;
+}
+
+td.pageStyle {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+auto-style2 {
+}
+
+.auto-style1 {
+    margin-left: 145px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.auto-style2 {
+    width: 100%;
+}
+
+.auto-style3 {
+    width: 83px;
+}
+
+.auto-style4 {
+    width: 83px;
+    height: 8px;
+}
+
+.auto-style5 {
+    height: 8px;
+}
+
+td.sideContainer {
+    border: 1px solid #C0C0C0;
+    background-color: #E3E3E3;
+}
+
+.SideBorderLinked td {
+    padding-top: 1px;
+    padding-bottom: 2px;
+}
+
+div.sideTitle {
+    border-bottom: 1px solid #C0C0C0;
+    background-color: #CDCDCD;
+    background-image: url(/images/GridTitleBg.gif);
+    background-repeat: repeat-x;
+    background-position: top;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: left;
+    height___: 18px;
+    padding: 2px 1px 1px 3px;
+}
+
+table > a.sideBtn {
+    zoom: 1;
+    display: block;
+    padding: 2px 2px 2px 3px;
+    border-bottom: 1px solid #EEEEEE;
+    text-align: left;
+    background-color: #E5E5E5;
+    text-decoration: none;
+    border-left: 4px solid #797979;
+}
+
+    table > a.sideBtn:hover {
+        background-color: #EEEEEE;
+        border-left: 4px solid #002144;
+    }
+
+.SideBorderLinked td {
+    padding-top: 1px;
+    padding-bottom: 2px;
+}
+
+div.sideFixed {
+    background-color: #EEEEEE;
+    padding: 2px 2px 2px 3px;
+    border-bottom: 1px solid #EEEEEE;
+    text-align: left;
+    text-decoration: none;
+}
+
+div.sideSubmit {
+    text-align: right;
+    padding: 4px 2px 2px 3px;
+    background-color: #EEEEEE;
+}
+
+.save {
+    border-right: white 1px outset !important;
+    border-left: white 1px outset !important;
+    border-top-style: none !important;
+    border-bottom: white 1px outset !important;
+    background-color: #FFF !important;
+    background-repeat: repeat !important;
+    background-position: bottom !important;
+    background-image: url('/images/bgsave.gif') !important;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px !important;
+    text-decoration: none !important;
+    padding-top: 2px !important;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+    height: 16px !important;
+    text-transform: uppercase !important;
+    vertical-align: top !important;
+}
+
+.BoxDesign {
+    border: 1px solid #AAA;
+    width: 100%;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+}

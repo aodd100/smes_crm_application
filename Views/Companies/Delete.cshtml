@@ -1,0 +1,174 @@
+﻿@using Microsoft.Activities.Extensions.Tracking
+@model db.crmdb.dbData.ViewAccountDetail
+
+@{
+    ViewBag.Title = "User Details Account";
+    Layout = "~/Views/_LayoutAdminPage.cshtml";
+    <style>
+        .formRight .image {
+            border: dashed 1px #59595A;
+        }
+        /*.WeekenDivWrapper .form-group {
+            width: 100%;
+            display: flex;
+            flex-flow: row;
+        }*/
+        .WeekenDivWrapper .form-group .col-md-10 {
+            width: 100%;
+            display: flex;
+            flex-flow: row;
+        }
+
+            .WeekenDivWrapper .form-group .col-md-10 input {
+                flex: 4;
+            }
+
+            .WeekenDivWrapper .form-group .col-md-10 img {
+                vertical-align: middle;
+                margin-left: 4px;
+                top: -3px;
+                position: relative;
+            }
+
+            .WeekenDivWrapper .form-group .col-md-10 input, .WeekenDivWrapper .form-group .col-md-10 textarea, .WeekenDivWrapper .form-group .col-md-10 select {
+                width: 96%;
+            }
+
+        .details .formMain .form-group .col-md-10 select {
+            width: 100% !important;
+        }
+
+        .details .formMain .form-group .col-md-10 {
+            flex: 1;
+            text-align: left;
+            border-bottom: dashed 1px #686767;
+        }
+
+        .details .form-group {
+            display: flex;
+            padding: 3px;
+            margin-bottom: 7px;
+        }
+    </style>
+}
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tbody>
+        <tr>
+            <td class="pageTitle" valign="top" align="left">
+                Manage Activity
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="tabberpage" class="form-horizontal details">
+    <div class="topDiv">
+        <div class="topDivSub1">
+            <h3>Delete Activity</h3>
+        </div>
+        <div class="topDivSub2">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.UID)
+                <input type="submit" value="Delete" class="save" />
+            }
+        </div>
+    </div>
+    <hr />
+    <div class="formMain">
+        <div class="formLeft">
+            <div class="form-group">
+                <h1>Which Company</h1>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.COMPANYID, "Company", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                        <tbody>
+                            <tr>
+                                <td width="100%">
+                                    @Html.DisplayFor(model => model.COMPANYNAME)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                <h1>What type of Activity</h1>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ActivityTypeId, "Activity Type", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.ActivityTypeId)
+                </div>
+            </div>
+            <div class="form-group">
+                <h1>What are they interested in buying</h1>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PRODUCTCODE, "OFFERINGS", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.PRODUCTCODE)
+                </div>
+            </div>
+            <div class="form-group">
+                <h1> Notes </h1>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Note)
+                </div>
+            </div>
+        </div>
+        <div class="formRight">
+            <div class="form-group">
+                <h1>Feedback Recieved</h1>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.FeedbackRecieved, "Feedback Recieved", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.FeedbackRecieved)
+                </div>
+            </div>
+            <div class="form-group">
+                <h1>Starting Date</h1>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.InitiationDate, "Initiation Date", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.InitiationDate)
+                </div>
+            </div>
+            <div class="form-group">
+                <h1>Expected Closure Date</h1>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ExpectedClosure, "Expected Closure", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.ExpectedClosure)
+                </div>
+            </div>
+            <div class="form-group">
+                <h1>Next Action</h1>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.NextAction, "Next Action", htmlAttributes: new { @class = "control-label col-md-2", required = "required" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.NextAction)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="@Url.Content("~/js/jquery-ui.js")"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/irsl_validation.js"></script>
+}
+

@@ -1,0 +1,113 @@
+﻿@model IEnumerable<db.crmdb.dbData.ViewNewOpportunityDetail>
+
+@{
+    ViewBag.Title = "List Of Opportunity";
+    Layout = "~/Views/_LayoutPage.cshtml";
+    <style type="text/css">
+        .btn {
+            width: 161px;
+        }
+        table.dataTable {
+            position: relative;
+            top: 5px;
+        }
+    </style>
+}
+
+@section SideBar {
+    <a class="sidebtn" id="crm" href="/Opportunity/create">New Opportunity</a>
+    <a class="sidebtn" ID="hr">Advance Search</a>
+}
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tbody>
+        <tr>
+            <td class="pageTitle" valign="top" align="left">
+                Manage Opportunity
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h1>List Of Opportunities</h1>
+@if (Model.Any())
+{
+    <div>
+
+        <div class="formhorizontal">
+            <div class="form-group">
+                <div class=" col-md-offset-2 col-md-2" style="display:flex;flex-flow:row">
+                    @*@Html.ActionLink("Export to CSV", "ExportCSV", "Companies", null, new { @class = "btn btn-primary" })*@
+                    @Html.ActionLink("Export to Excel", "ExportExcel", "Opportunity", null, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+    <div id="tabberpage" class="form-horizontal">
+        <table id="mytable" class="table table-striped table-bordered">
+            <thead class="black white-text">
+                <tr>
+                    <th class="GridTitle">
+                        <label> Title</label>
+                    </th>
+                    <th class="GridTitle">
+                        <label> Prospect Name</label>
+                    </th>
+                    <th class="GridTitle">
+                        <label> Email</label>
+                    </th>
+                    <th class="GridTitle">
+                        <label> Phone</label>
+                    </th>
+                    <th class="GridTitle"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Any())
+                {
+
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="GridItem GridItemHlip">
+                                <a class="" href="@Url.Action("Details","Opportunity", new { id=item.OPPORTUNITYID })">
+                                    @Html.DisplayFor(modelItem => item.TITLE)
+                                </a>
+                            </td>
+                            <td class="GridItem GridItemHlip">
+                                @Html.DisplayFor(modelItem => item.ProsepectName)
+                            </td>
+                            <td class="GridItem GridItemHlip">
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td class="GridItem GridItemHlip">
+                                @Html.DisplayFor(modelItem => item.Phone1)
+                            </td>
+                            <td class="GridItem">
+                                <a href="@Url.Action("Delete","Opportunity", new { id = item.OPPORTUNITYID })" onclick="return ConfirmDelete()">Delete</a>
+                            </td>
+                        </tr>
+                    }
+
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#mytable").dataTable();
+        });
+        function ConfirmDelete() {
+            if (confirm("Are you sure you want to delete this Opportunity")) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
+}

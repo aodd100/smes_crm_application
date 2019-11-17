@@ -1,0 +1,669 @@
+﻿@model  IRSLCRM.Models.MailModel
+@using System.Data;
+@{
+    ViewBag.Title = "Mail Campaign";
+    Layout = "~/Views/_LayoutAdminPage.cshtml";
+    <style>
+        .auto-style6 {
+            position: relative;
+            right: 0px;
+            top: 0px;
+        }
+
+        .auto-style3 {
+            width: 100%;
+        }
+
+        .auto-style4 {
+            width: 247px;
+            height: 187px;
+            margin-bottom: 9px;
+        }
+
+        .auto-style5 {
+            width: 244px;
+            height: 190px;
+        }
+
+        .auto-style6 {
+            width: 100%;
+            height: 243px;
+        }
+
+        .auto-style7 {
+            width: 508px;
+        }
+
+        .auto-style8 {
+            width: 223px;
+        }
+
+        .auto-style9 {
+            width: 507px;
+        }
+
+        .auto-style10 {
+            width: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            padding: 3px;
+            flex-flow: column;
+        }
+
+            .form-group label {
+                flex: 1;
+            }
+
+            .form-group .col-md-offset-2 {
+                flex: 1;
+                width: 100%;
+            }
+
+        .auto-style7 {
+            width: 100%;
+            left: 0px !important;
+        }
+
+        .auto-style9 {
+            width: 100%;
+        }
+
+        #filedrag {
+            /*display: none;*/
+            font-weight: bold;
+            text-align: center;
+            padding: 1em 0;
+            margin: 1em 0;
+            color: #555;
+            border: 2px dashed #555;
+            border-radius: 7px;
+            cursor: default;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        legend {
+            display: block;
+            width: 38% !important;
+            margin-bottom: 20px;
+            border: 0;
+            border-bottom: none;
+        }
+
+        #filedrag.hover {
+            color: #f00;
+            border-color: #f00;
+            border-style: solid;
+            box-shadow: inset 0 3px 4px;
+        }
+
+        .formMain .form-group .col-md-10 input#ACTIONDATE {
+            width: 64% !important;
+            margin-right: 3px;
+        }
+
+        .formMain .form-group .col-md-10 input, .formMain .form-group .col-md-10 select {
+            display: block;
+            width: 100%;
+            height: 24px;
+            padding: 1px 8px;
+            font-size: 10px;
+            line-height: 0.429;
+            color: #555;
+            background-color: #FFF;
+            background-image: none;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        .formMain .form-group .col-md-10 textarea {
+            display: block;
+            width: 100%;
+            padding: 1px 8px;
+            font-size: 10px;
+            line-height: 0.429;
+            color: #555;
+            background-color: #FFF;
+            background-image: none;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        .hiddenFileInput > input {
+            height: 100%;
+            width: 100;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .hiddenFileInput {
+            border: 1px solid #ccc;
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            overflow: hidden;
+            /*for the background, optional*/
+            background: center center no-repeat;
+            background-size: 75% 75%;
+            background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBoZWlnaHQ9IjUxMnB4IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9Ii01MyAxIDUxMSA1MTEuOTk5MDYiIHdpZHRoPSI1MTJweCI+CjxnIGlkPSJzdXJmYWNlMSI+CjxwYXRoIGQ9Ik0gMjc2LjQxMDE1NiAzLjk1NzAzMSBDIDI3NC4wNjI1IDEuNDg0Mzc1IDI3MC44NDM3NSAwIDI2Ny41MDc4MTIgMCBMIDY3Ljc3NzM0NCAwIEMgMzAuOTIxODc1IDAgMC41IDMwLjMwMDc4MSAwLjUgNjcuMTUyMzQ0IEwgMC41IDQ0NC44NDM3NSBDIDAuNSA0ODEuNjk5MjE5IDMwLjkyMTg3NSA1MTIgNjcuNzc3MzQ0IDUxMiBMIDMzOC44NjMyODEgNTEyIEMgMzc1LjcxODc1IDUxMiA0MDYuMTQwNjI1IDQ4MS42OTkyMTkgNDA2LjE0MDYyNSA0NDQuODQzNzUgTCA0MDYuMTQwNjI1IDE0NC45NDE0MDYgQyA0MDYuMTQwNjI1IDE0MS43MjY1NjIgNDA0LjY1NjI1IDEzOC42MzY3MTkgNDAyLjU1NDY4OCAxMzYuMjg1MTU2IFogTSAyNzkuOTk2MDk0IDQzLjY1NjI1IEwgMzY0LjQ2NDg0NCAxMzIuMzI4MTI1IEwgMzA5LjU1NDY4OCAxMzIuMzI4MTI1IEMgMjkzLjIzMDQ2OSAxMzIuMzI4MTI1IDI3OS45OTYwOTQgMTE5LjIxODc1IDI3OS45OTYwOTQgMTAyLjg5NDUzMSBaIE0gMzM4Ljg2MzI4MSA0ODcuMjY1NjI1IEwgNjcuNzc3MzQ0IDQ4Ny4yNjU2MjUgQyA0NC42NTIzNDQgNDg3LjI2NTYyNSAyNS4yMzQzNzUgNDY4LjA5NzY1NiAyNS4yMzQzNzUgNDQ0Ljg0Mzc1IEwgMjUuMjM0Mzc1IDY3LjE1MjM0NCBDIDI1LjIzNDM3NSA0NC4wMjczNDQgNDQuNTI3MzQ0IDI0LjczNDM3NSA2Ny43NzczNDQgMjQuNzM0Mzc1IEwgMjU1LjI2MTcxOSAyNC43MzQzNzUgTCAyNTUuMjYxNzE5IDEwMi44OTQ1MzEgQyAyNTUuMjYxNzE5IDEzMi45NDUzMTIgMjc5LjUwMzkwNiAxNTcuMDYyNSAzMDkuNTU0Njg4IDE1Ny4wNjI1IEwgMzgxLjQwNjI1IDE1Ny4wNjI1IEwgMzgxLjQwNjI1IDQ0NC44NDM3NSBDIDM4MS40MDYyNSA0NjguMDk3NjU2IDM2Mi4xMTMyODEgNDg3LjI2NTYyNSAzMzguODYzMjgxIDQ4Ny4yNjU2MjUgWiBNIDMzOC44NjMyODEgNDg3LjI2NTYyNSAiIHN0eWxlPSIgZmlsbC1ydWxlOm5vbnplcm87ZmlsbC1vcGFjaXR5OjE7IiBzdHJva2U9IiMwMDAwMDAiIGZpbGw9IiMwMDAwMDAiLz4KPHBhdGggZD0iTSAzMDUuMTAxNTYyIDQwMS45MzM1OTQgTCAxMDEuNTM5MDYyIDQwMS45MzM1OTQgQyA5NC43MzgyODEgNDAxLjkzMzU5NCA4OS4xNzE4NzUgNDA3LjQ5NjA5NCA4OS4xNzE4NzUgNDE0LjMwMDc4MSBDIDg5LjE3MTg3NSA0MjEuMTAxNTYyIDk0LjczODI4MSA0MjYuNjY3OTY5IDEwMS41MzkwNjIgNDI2LjY2Nzk2OSBMIDMwNS4yMjY1NjIgNDI2LjY2Nzk2OSBDIDMxMi4wMjczNDQgNDI2LjY2Nzk2OSAzMTcuNTkzNzUgNDIxLjEwMTU2MiAzMTcuNTkzNzUgNDE0LjMwMDc4MSBDIDMxNy41OTM3NSA0MDcuNDk2MDk0IDMxMi4wMjczNDQgNDAxLjkzMzU5NCAzMDUuMTAxNTYyIDQwMS45MzM1OTQgWiBNIDMwNS4xMDE1NjIgNDAxLjkzMzU5NCAiIHN0eWxlPSIgZmlsbC1ydWxlOm5vbnplcm87ZmlsbC1vcGFjaXR5OjE7IiBzdHJva2U9IiMwMDAwMDAiIGZpbGw9IiMwMDAwMDAiLz4KPHBhdGggZD0iTSAxNDAgMjY4Ljg2MzI4MSBMIDE5MC45NTMxMjUgMjE0LjA3NDIxOSBMIDE5MC45NTMxMjUgMzQ5LjEyNSBDIDE5MC45NTMxMjUgMzU1LjkyNTc4MSAxOTYuNTE5NTMxIDM2MS40OTIxODggMjAzLjMyMDMxMiAzNjEuNDkyMTg4IEMgMjEwLjEyNSAzNjEuNDkyMTg4IDIxNS42ODc1IDM1NS45MjU3ODEgMjE1LjY4NzUgMzQ5LjEyNSBMIDIxNS42ODc1IDIxNC4wNzQyMTkgTCAyNjYuNjQwNjI1IDI2OC44NjMyODEgQyAyNjkuMTEzMjgxIDI3MS40NTcwMzEgMjcyLjMzMjAzMSAyNzIuODIwMzEyIDI3NS42Njc5NjkgMjcyLjgyMDMxMiBDIDI3OC42MzY3MTkgMjcyLjgyMDMxMiAyODEuNzMwNDY5IDI3MS43MDcwMzEgMjg0LjA3ODEyNSAyNjkuNDgwNDY5IEMgMjg5LjAyNzM0NCAyNjQuNzgxMjUgMjg5LjM5ODQzOCAyNTYuOTg4MjgxIDI4NC42OTkyMTkgMjUyLjA0Mjk2OSBMIDIxMi4yMjY1NjIgMTc0LjI1MzkwNiBDIDIwOS44NzUgMTcxLjc4MTI1IDIwNi42NjAxNTYgMTcwLjI5Njg3NSAyMDMuMTk5MjE5IDE3MC4yOTY4NzUgQyAxOTkuNzM0Mzc1IDE3MC4yOTY4NzUgMTk2LjUxOTUzMSAxNzEuNzgxMjUgMTk0LjE3MTg3NSAxNzQuMjUzOTA2IEwgMTIxLjY5OTIxOSAyNTIuMDQyOTY5IEMgMTE3IDI1Ni45ODgyODEgMTE3LjM3MTA5NCAyNjQuOTAyMzQ0IDEyMi4zMTY0MDYgMjY5LjQ4MDQ2OSBDIDEyNy41MTE3MTkgMjc0LjE3OTY4OCAxMzUuMzAwNzgxIDI3My44MDg1OTQgMTQwIDI2OC44NjMyODEgWiBNIDE0MCAyNjguODYzMjgxICIgc3R5bGU9IiBmaWxsLXJ1bGU6bm9uemVybztmaWxsLW9wYWNpdHk6MTsiIHN0cm9rZT0iIzAwMDAwMCIgZmlsbD0iIzAwMDAwMCIvPgo8L2c+Cjwvc3ZnPgo=)
+        }
+
+        .loader {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            top: 18%;
+            left: 41%;
+            width: 28%;
+            height: 90vh;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-attachment: fixed;
+            display: block;
+        }
+        /*.loader img {
+            position: relative;
+            width: auto;
+            height: auto;
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        #img {
+            width: 600px;
+            height: 450px;
+            background: url(loading.gif) 50% no-repeat;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+        button#load {
+            padding: 0 3em;
+            outline: none;
+            border: none;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-size: 1em;
+            line-height: 4;
+            overflow: hidden;
+            border-radius: 5px;
+            background: rgba(0,0,0,0.2);
+            text-align: center;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+        }
+
+        #loader-img {
+            margin: 0 auto;
+            display: block;
+        }
+
+        #content {
+            width: 40%;
+            margin: 0 auto;
+            padding: 3em;
+            text-align: center;
+            color: #fff;
+            font-family: 'Raleway', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+        }*/
+
+        .border {
+            border: 3px solid #fff;
+            border-radius: 5px;
+        }
+    </style>
+}
+<link href="~/editor/rich-text-editor.css" rel="stylesheet" />
+@using (Html.BeginForm("SendMail", "EmailCampaing", FormMethod.Post, new { accept_charset = "UTF-8", id = "SendMailForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div id="tabberpage" class="form-horizontal">
+
+        <div class="topDiv">
+            <div class="topDivSub1">
+                <h3>Mails Campaign Page</h3>
+            </div>
+            <div class="topDivSub2">
+                <input type="submit" value="Send" class="save" />
+            </div>
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <hr />
+        <table cellpadding="0" cellspacing="0" class="auto-style3 myOuterDiv">
+
+            <tr>
+                <td colspan="3">
+                    <div class="form-group">
+                        <label>Mail Type</label>
+                        <div class="col-md-offset-2 col-md-10">
+                            <select id="ddlMailType" style="width: 46%;height: 26px;padding: 4px;" onchange="javascript: fetEmailItem(this);">
+                                <option value="">--Select Email Type--</option>
+                                <option value="1">All Companies</option>
+                                <option value="2">All Leads</option>
+                                <option value="3">All Oportunities</option>
+                                <option value="4">From Excell Sheet</option>
+                                <option value="5">To All Sales Person</option>
+                                <option value="6">All User</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+                </td>
+            </tr>
+            <tr id="excelltr" style="display:none">
+                <td colspan="3">
+
+                    <fieldset style="width: 100%;border: dashed 2px #999;">
+                        <legend style="position:relative;top:0px">Upload File</legend>
+                        <div class="form-group" style="position: relative">
+                            <label for="fileselect" style="margin-top: 1%; text-align:left;width: 142px;" class="col-sm-2 control-label">Files to upload:</label>
+                            <div class="col-sm-10">
+                                <span class="hiddenFileInput">
+                                    <input type="file" name="UploadFile"  accept="*.xls,*.xlsx" id="txtUploadFile" class="makethispretty" onchange="ExcellUpload(this); return false" />
+                                </span>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 46%;">
+                    <div class="form-group">
+                        <select id="mailType" multiple="multiple" class="auto-style5" style="width:100%;height: 190px"></select>
+                    </div>
+                </td>
+                <td>
+                    <div class="formMain1">
+                        <div class="formMid">
+                            <input id="btnAddAll" type="button" value=" >> " onclick="addallItems();" />
+                            <input id="btnAdd" type="button" value=" > " onclick="addItem();" />
+                            <input id="btnRemove" type="button" value=" < " onclick="removeItem();" />
+                            <input id="btnRemoveAll" type="button" value=" << " onclick="removeallItems();" />
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 46%;">
+
+                    <div class="form-group">
+
+                        @Html.ListBoxFor(model => model.Email, new SelectList(new[] { "" }), new { @class = "auto-style4 Email", @name = "mailType", @style = "width: 100%;height: 190px;padding: 10px;", data_val = "true" })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <div class="col-md-offset-2 col-md-10">
+                            @Html.TextBoxFor(model => model.Title, new { @style = "width: 100%;height: 12px;padding: 10px;", @onfocus = "focusFunction(this)", @onblur = "blurFunction(this)" })
+                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <div class="col-md-offset-2 col-md-10">
+                            @Html.TextBoxFor(model => model.Subject, new { @style = "width: 100%;height: 12px;padding: 10px;", @onfocus = "focusFunction(this)", @onblur = "blurFunction(this)" })
+                            @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div class="form-group">
+                        <label>Body</label>
+                        <div class="col-md-offset-2 col-md-10">
+                            @Html.TextAreaFor(model => model.Body, 20, 40, new { @class = "form-control BoxDesign" })
+                            @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+
+                            @*<textarea name="comment" id="newcomment" class="rich-text-editor auto-style6 mceEditor"></textarea><br />*@
+
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10" style="text-align: right">
+                            <input type="submit" value="Send" class="save" />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+}
+<div class="loader">
+    <img id="img" src="@Url.Content("~/images/ajax_loader_gray_256.gif")" alt="Alternate Text" />
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/tinymce/tinymce.js"></script>
+    <script src="~/Scripts/tinyMain.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".loader").css("display", "none");
+        });
+        $(function () {
+            $(document).ajaxStart(function () {
+                $(".loader").css("display", "block");
+            });
+
+            $(document).ajaxComplete(function () {
+                $(".loader").css("display", "none");
+            });
+
+            $("#excelltr").css("display", "none");
+
+            $(document).on("keyup keypress blur change",
+                "#Title",
+                function () {
+                    if ($(this).val() !== "") {
+                        $(this).css({ "border": "1px solid rgb(122, 122, 122)" });
+                    } else {
+                        result = false;
+                        $(this).css({ "border": "2px solid #F90A0A" });
+                    }
+                });
+            $(document).on("keyup keypress blur change",
+                "#Subject",
+                function () {
+                    if ($(this).val() !== "") {
+                        $(this).css({ "border": "1px solid rgb(122, 122, 122)" });
+                    } else {
+                        result = false;
+                        $(this).css({ "border": "2px solid #F90A0A" });
+                    }
+                });
+
+        });
+
+        function fetEmailItem(e) {
+
+            excelltr.style.display = 'none';
+            var selected = e.options[e.selectedIndex].value;
+            var mailType = $("#mailType");
+            var Email = $("#Email");
+            $(mailType).html("");
+            $(Email).html("");
+            var option = '<option value="-1">Wait Loading...</option>';
+            $(option).appendTo($(mailType))
+            if (selected !== "" && selected !== "4") {
+                $.ajax({
+                    type: "GET",
+                    url: "/EmailCampaing/findMailtype",
+                    data: {
+                        ID: selected
+                    },
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+                    },
+                    success: function (response) {
+                        Email = [];
+                        $(mailType).html("");
+                        $(Email).html("");
+
+                        if (response.data) {
+                            for (var i = 0; i < response.data.length; i++) {
+                                if (response.data[i].Email.toString().indexOf('.com') > 0) {
+                                    var option = '<option value="' + i + '">' + response.data[i].Email + '</option>';
+                                    $(option).appendTo($(mailType))
+                                }
+
+                            }
+
+                        } else {
+                            $.notify(response.message, "error");
+                        }
+
+                    }
+                });
+            } else {
+                $(mailType).html("");
+                $(Email).html("");
+                excelltr.style.display = 'block';
+            }
+        }
+        $(".save").on('click', function (e) {
+
+
+            $(".loader").css("display", "block");
+            //$(this).parent("tr").html('<img id="loader-img" alt="" src="http://adrian-design.com/images/loading.gif" width="100" height="100" align="center" />');
+
+
+            var form = $("#SendMailForm")[0];
+            $.ajaxSetup({ cache: false });
+            msg = "";
+            msg += "Error \n" +
+                "-------------------------------------------------\n" +
+                " Some Fields are invalid\n" +
+                " Please, check your form again and re submit\n";
+            //var content = tinymce.get("Body").getContent(); or
+            tinyMCE.triggerSave(); // It is used with $("#Body").val() inorder to get the content of the textarea
+            var result = true;
+            if ($("#Title").val() == "") {
+                result = false;
+                $("#Title").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* Title field required";
+            } else {
+                $("#Title").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($("#Subject").val() == "") {
+                result = false;
+                $("#Subject").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* Subject field required";
+            } else {
+                $("#Subject").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($("#Body").val() == "") {
+                result = false;
+                $("#Body").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* Body field required";
+            } else {
+                $("#Body").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            var lb = document.getElementById("Email");
+            if (lb.options.length < 1) {
+                result = false;
+                $("#Email").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* Email field required";
+            } else {
+                $("#Email").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            var content = $("#Body").val();
+           // var content = wrap_span_letters(content1);
+            var mail = [];
+            for (var i = 0; i < $("#Email").text().toString().split('com').length; i++) {
+                if ($("#Email").text().toString().split('com')[i] !== "") {
+                    mail.push($("#Email").text().toString().split('com')[i] + 'com');
+                }
+            }
+            var data = {
+                Title: $("#Title").val(),
+                Email: mail,
+                Subject: $("#Subject").val(),
+                Body: content
+            };
+            if (result) {
+                try {
+                    $.ajax({
+                        type: "POST",
+                        url: "/EmailCampaing/SendMail",
+                        cache: false,
+                        data: data,
+                        dataType: "json",
+                        success: getSuccess,
+                        error: getFail
+                    });
+                } catch (e) {
+                    //alert(e);
+                }
+                function getSuccess(response, textStatus, jqXHR) {
+                    if (response.success) {
+                        //$("#firstTab").html(response.html);
+                        $.notify(response.message, "success");
+
+                        $(".loader").css("display", "none");
+                    } else {
+                        $.notify(response.message, "error");
+
+                        $(".loader").css("display", "none");
+                    }
+                };
+                function getFail(response, textStatus, errorThrown) {
+                    $.notify(response.message, "error");
+                };
+                return false;
+            } else {
+                //alert(msg);
+                $(".loader").css("display", "none");
+                return false;
+            }
+
+        });
+        function wrap_span_letters($string) {
+            $res = "";
+            $length = strlen($string);
+            for ($i = 0; $i < $length; $i++) {
+                if ($string[$i] == ".") {
+                    $res = "<span>" + $string[$i] + "</span>";
+                }
+                return $res
+            }
+            return $res;
+        }
+        function wrap_span_letters1($string) {
+            $res = "";
+            $length = strlen($string);
+            for ($i = 0; $i < $length; $i++) {
+                $res = "<span>$string[$i]</span>";
+            }
+            return $res;
+        }
+        function ExcellUpload(e) {
+
+            var data = new FormData();
+            var files = $("#txtUploadFile").get(0).files;
+            if (files.length > 0) {
+                data.append("File", files[0]);
+            }
+            var mailType = $("#mailType");
+            var Email = $("#Email");
+            $(mailType).html("");
+            $(Email).html("");
+            var option = '<option value="-1">Wait Loading...</option>';
+            $(option).appendTo($(mailType))
+            $.ajax({
+                type: "POST",
+                url: "/EmailCampaing/UploadHomeReport",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (response) {
+                    Email = [];
+                    $(mailType).html("");
+                    $(Email).html("");
+                    if (response.data) {
+                        for (var i = 0; i < response.data.length; i++) {
+                            var option = '<option value="' + i + '">' + response.data[i].Email + '</option>';
+                            $(option).appendTo($(mailType))
+                        }
+                        $("#excelltr").css("display", "none");
+                    } else {
+                        $.notify(response.message, "error");
+                    }
+
+                }
+            });
+
+        }
+        function focusFunction(e) {
+            if ($(e).val() !== "") {
+                $(this).val().css({ "border": "1px solid rgb(122, 122, 122)" });
+            } else {
+                result = false;
+                $(this).val().css({ "border": "2px solid #F90A0A" });
+            }
+        }
+        function blurFunction(e) {
+            if ($(e).val() !== "") {
+                $(e).css({ "border": "1px solid rgb(122, 122, 122)" });
+            } else {
+                result = false;
+                $(e).css({ "border": "2px solid #F90A0A" });
+            }
+        }
+        function addItem() {
+            if ($("#mailType option:selected") !== "") {
+                $(Email).css({ "border": "1px solid rgb(122, 122, 122)" });
+                $("#mailType option:selected").appendTo("#Email");
+                $("#Email option").attr("selected", false);
+            }
+
+        }
+        function addallItems() {
+            if ($("#mailType option").length > 0) {
+                var Email = $("#Email");
+                $(Email).html("");
+                $(Email).css({ "border": "1px solid rgb(122, 122, 122)" });
+                $("#mailType option").appendTo("#Email");
+                $("#Email option").attr("selected", false);
+            }
+
+        }
+        function removeItem() {
+            //var mailType = $("#mailType");
+            //$(mailType).html("");
+            if ($("#Email option:selected") !== "") {
+                $("#Email option:selected").appendTo("#mailType");
+                $("#mailType option").attr("selected", false);
+            }
+        }
+        function removeallItems() {
+            if ($("#Email option").length > 0) {
+                var mailType = $("#mailType");
+                $(mailType).html("");
+                $("#Email option").appendTo("#mailType");
+                $("#mailType option").attr("selected", false);
+            }
+        }
+    </script>
+
+}

@@ -1,0 +1,316 @@
+﻿@model IEnumerable<db.db.BASE_CONTACTS>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.COMPANYID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SURNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TITLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADDRESS_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADDRESS_2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CITY_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CITY_2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PROVINCE_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PROVINCE_2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZIPCODE_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZIPCODE_2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STATE_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STATE_2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VATID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TAXIDENTIFICATIONNUMBER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHONE_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHONE_2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FAX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MOBILEPHONE_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MOBILEPHONE_2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BUSINESSROLE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SKYPE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOTES)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ACTIVE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OWNERID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GROUPS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OTHERCOMPANYID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FLAGGLOBALORPERSONAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BIRTHDAY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LASTACTIVITY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LIMBO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREATEDDATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREATEDBYID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LASTMODIFIEDDATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LASTMODIFIEDBYID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BIRTHPLACE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CATEGORIES)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MLEMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MLFLAG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FROMLEAD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SEX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LASTCONTACT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOCONTACT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COMMERCIALZONE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SALESPERSONID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CODE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.COMPANYID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SURNAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TITLE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADDRESS_1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADDRESS_2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CITY_1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CITY_2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PROVINCE_1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PROVINCE_2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZIPCODE_1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZIPCODE_2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATE_1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATE_2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VATID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TAXIDENTIFICATIONNUMBER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PHONE_1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PHONE_2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FAX)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MOBILEPHONE_1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MOBILEPHONE_2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BUSINESSROLE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SKYPE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOTES)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ACTIVE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OWNERID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GROUPS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OTHERCOMPANYID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FLAGGLOBALORPERSONAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BIRTHDAY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LASTACTIVITY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LIMBO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CREATEDDATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CREATEDBYID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LASTMODIFIEDDATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LASTMODIFIEDBYID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BIRTHPLACE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CATEGORIES)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MLEMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MLFLAG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FROMLEAD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEX)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LASTCONTACT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOCONTACT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COMMERCIALZONE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SALESPERSONID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CODE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

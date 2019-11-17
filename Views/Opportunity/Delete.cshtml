@@ -1,0 +1,229 @@
+﻿@model db.crmdb.dbData.ViewNewOpportunityDetail
+
+@{
+    ViewBag.Title = "Opportunity Details";
+    Layout = "~/Views/_LayoutPage.cshtml";
+    <style>
+        .form-group h1 {
+            font-size: 14px;
+        }
+
+        .formMain .form-group .col-md-10 input#ACTIONDATE {
+            width: 64% !important;
+            margin-right: 3px;
+        }
+
+        .formMain .form-group .col-md-10 input, .formMain .form-group .col-md-10 select {
+            display: block;
+            width: 100%;
+            height: 24px;
+            padding: 1px 8px;
+            font-size: 10px;
+            line-height: 0.429;
+            color: #555;
+            background-color: #FFF;
+            background-image: none;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        .formMain .form-group .col-md-10 textarea {
+            display: block;
+            width: 100%;
+            padding: 1px 8px;
+            font-size: 10px;
+            line-height: 0.429;
+            color: #555;
+            background-color: #FFF;
+            background-image: none;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        #tabberpage .formMain .form-group .col-md-10 textarea, #tabberpage .formMain .form-group .col-md-10 input {
+            width: 85% !important;
+        }
+
+        .formRight .form-group .col-md-10 {
+            flex: 1 1 0%;
+            display: flex;
+        }
+
+        .ui-datepicker-trigger {
+            width: 21px
+        }
+
+        #tabberpage .formMain .form-group .col-md-10 textarea, #tabberpage .formMain .form-group .col-md-10 input {
+            width: 85% !important;
+            line-height: 12px;
+        }
+
+        .details .formMain .form-group .col-md-10 select {
+            width: 100% !important;
+        }
+
+        .details .formMain .form-group .col-md-10 {
+            flex: 1;
+            text-align: left;
+            border-bottom: dashed 1px #686767;
+        }
+
+        .details .form-group {
+            display: flex;
+            padding: 3px;
+            margin-bottom: 7px;
+        }
+    </style>
+}
+@section SideBar {
+    <a class="sidebtn" id="crm" href="/Opportunity/create">New Opportunity</a>
+    <a class="sidebtn" ID="hr">Advance Search</a>
+    <style>
+    </style>
+}
+
+@Html.AntiForgeryToken()
+@Html.HiddenFor(model => model.OPPORTUNITYID)
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tbody>
+        <tr>
+            <td class="pageTitle" valign="top" align="left">
+                Update Opportunity
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="tabberpage" class="form-horizontal details">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="topDiv">
+        <div class="topDivSub1">
+            <h3>CONTACT INFORMATION</h3>
+        </div>
+        <div class="topDivSub2">
+            @using (Html.BeginForm())
+            {
+                
+                @Html.HiddenFor(model => model.OPPORTUNITYID)
+                <input type="submit" value="Delete" class="save" />
+            }
+        </div>
+    </div>
+    <hr />
+    <div class="formMain">
+        <div class="formLeft">
+            <div class="form-group">
+                @Html.LabelFor(model => model.TITLE, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.LabelFor(model => model.TITLE)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.OWNERID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                        <tbody>
+                            <tr>
+                                <td width="100%">
+                                    @Html.DisplayFor(model => model.USERACCOUNT)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.StatusDesc, "STATUS", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.HiddenFor(model => model.STATUSID)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.STATUSID)
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <h1>Who is the Prospect </h1>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.CONTACTID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <table id="textDivProsepectName" width="100%" cellspacing="0" cellpadding="1" border="0">
+                        <tbody>
+                            <tr>
+                                <td width="95%">
+                                    @Html.DisplayFor(model => model.ProsepectName)
+                                </td>
+                                <td valign="top" nowrap="">
+
+                                    <img id="CONTACTSPERSONIDImage" src="/i/user.gif" style="cursor: pointer" data-href="/common/PopContacts.aspx?render=no&amp;sales=" border="0">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+        @*<div id="lblDivProsepectName" style="display:none">
+        @Html.HiddenFor(model => model.CONTACTID)
+        <label id="lblProsepectName"></label>
+        <label id="lblEmail"></label>
+        <label id="lblPhone"></label>
+    </div>*@
+            </div>
+            </div>
+            <div class="form-group">
+                <h1>Opportinuty Notes </h1>
+            </div>
+            <div class="form-group">
+                <label>OPPORTUNITY NOTES</label>
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.NOTE)
+                </div>
+            </div>
+        </div>
+
+        <div class="formRight">
+            <div class="form-group">
+                <h1>First follow-up action</h1>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.NEXTACTIONNOTE, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.NEXTACTIONNOTE)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ACTIONDATE, "ACTION DATE", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.ACTIONDATE)
+                </div>
+            </div>
+            <div class="form-group">
+                <h1>What are they interested in buying</h1>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PRODUCTCODE, "OFFERINGS", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+
+                    @Html.DisplayFor(model => model.PRODUCTCODE)
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="formMain">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update" class="save" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

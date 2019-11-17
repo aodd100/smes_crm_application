@@ -1,0 +1,1398 @@
+﻿@using System.Web.Script.Serialization
+@model db.crmdb.dbData.ViewLeadsDetail
+
+@{
+    ViewBag.Title = "Managing Leads";
+    Layout = "~/Views/_LayoutPage.cshtml";
+
+
+    <style>
+        #tabberpage .formMain .form-group .col-md-10 select {
+            width: 100%;
+        }
+
+        .ui-datepicker-trigger {
+            position: relative;
+            padding-left: 2px;
+            top: 2px;
+        }
+    </style>
+}
+
+@section SideBar {
+    <a class="sidebtn" id="crm" href="/Leads/create">New Leads</a>
+    <a class="sidebtn" ID="hr">Advance Search</a>
+}
+
+@using (Html.BeginForm("Create", "Leads", FormMethod.Post, new { onSubmit = "return jQueryAjaxPost(this)" }))
+{
+    @Html.AntiForgeryToken()
+    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                <td class="pageTitle" valign="top" align="left">
+                    Manage Leads
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="tabberpage" class="form-horizontal myOuterDiv">
+        <div class="topDiv">
+            <div class="topDivSub1">
+                <h4>NEW LEADS</h4>
+            </div>
+            <div class="topDivSub2" style="text-align:right">
+                <button class="save formSubmit" id="btnformSubmit" style="" type="submit">Save</button>
+
+            </div>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div id="dynabox" class="dynaskin popup-content" style="display:none;">
+            <div id="dragbar" class="CommonColor" style="text-align:right;color: #fff;">
+                <span id="hidebox" onclick="HideBox("hidebox");return false"><b>X&nbsp;</b></span>
+            </div>
+            <iframe scrolling="yes" id="dynaframe" name="dynaframe" src="" frameborder="0"></iframe>
+        </div>
+        <div class="formMain">
+            <div class="formLeft">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TITLE, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @*@Html.EditorFor(model => model.TITLE, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @Html.DropDownList("TITLE", new List<SelectListItem>
+                                {
+                                    new SelectListItem { Text = "Mr.", Value = "Mr." },
+                                    new SelectListItem { Text = "Mrs.", Value = "Mrs." },
+                                    new SelectListItem { Text = "Dr.", Value = "Dr." },
+                                    new SelectListItem {Text = "Esq", Value = "Esq" },
+                                }, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TITLE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FIRSTNAME, "FIRST NAME", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FIRSTNAME, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FIRSTNAME, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LASTNAME, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LASTNAME, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LASTNAME, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.COMPANYNAME, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+
+                        <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="95%">
+                                        @Html.HiddenFor(model => model.COMPANYNAME)
+                                        @Html.TextAreaFor(model => model.COMPANYNAME, 2, 40, new { @class = "form-control BoxDesignReq TextAreaCOMPNAME", @startfocus = "true" })
+                                        @Html.ValidationMessageFor(model => model.COMPANYNAME, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td valign="top" nowrap="">
+                                        <img src="/i/lookup.gif" id="COMPANYNAMESImg" alt="Check existence" data-href="/Common/checkexist.aspx?render=no&amp;Company=" style="cursor: pointer;" width="24" height="16" border="0">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.JOBTITLE, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.JOBTITLE, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.JOBTITLE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PHONE, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PHONE, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PHONE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MOBILEPHONE, "MOBILE PHONE", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MOBILEPHONE, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MOBILEPHONE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FAX, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FAX, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FAX, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EMAIL, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="95%">
+                                        @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control BoxDesignReq", @startfocus = "true" } })
+                                        @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td valign="top" nowrap="">
+                                        <img src="/i/lookup.gif" id="EMAILImg" alt="Check existence" data-href="/Common/checkmail.aspx?render=no&amp;Company=" style="cursor: pointer;" width="24" height="16" border="0">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BIRTHDAY, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="100%">
+                                        @*@Html.HiddenFor(model => model.CLOSEDATE)*@
+                                        @Html.EditorFor(model => model.BIRTHDAY, new { htmlAttributes = new { @class = "form-control", @style = "border: 2px solid rgb(249, 10, 10);width: 77% !important;padding-right: 1px;" } })
+                                        @Html.ValidationMessageFor(model => model.BIRTHDAY, "", new { @class = "text-danger" })
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BIRTHPLACE, "BIRTH PLACE", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.BIRTHPLACE, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BIRTHPLACE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CATEGORIES, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.CATEGORIES, 6, 40, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CATEGORIES, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.WEBSITE, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.WEBSITE, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.WEBSITE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="formRight">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ASSOCIATEDCOMPANY, "ASSOCIATED COMPANY", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="95%">
+                                        @Html.HiddenFor(model => model.ASSOCIATEDCOMPANYID)
+                                        @Html.TextAreaFor(model => model.ASSOCIATEDCOMPANY, 2, 40, new { htmlAttributes = new { @class = "form-control BoxDesignReq", @startfocus = "true" } })
+                                        @Html.ValidationMessageFor(model => model.ASSOCIATEDCOMPANY, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td valign="top" nowrap="">
+                                        <img src="/i/lookup.gif" id="ASSOCIATEDCOMPANYImg" alt="Check existence" data-href="/Common/PopAssociatedContact.aspx?render=no&amp;textbox=" style="cursor: pointer;" width="24" height="16" border="0">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ASSOCIATEDCONTACT, "ASSOCIATED CONTACT", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="95%">
+                                        @Html.HiddenFor(model => model.ASSOCIATEDCONTACTID)
+                                        @Html.EditorFor(model => model.ASSOCIATEDCONTACT, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ASSOCIATEDCONTACT, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td valign="top" nowrap="">
+                                        <img id="ASSOCIATEDCONTACTImage" src="/i/user.gif" style="cursor: pointer" data-href="/common/PopAssociatedContact.aspx?render=no&amp;textbox=" border="0">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.COMPANYTYPEID, "COMPANY TYPE", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.COMPANYTYPEID, ViewBag.CompanyType as SelectList, "--Select Company Type--")
+                        @Html.ValidationMessageFor(model => model.COMPANYTYPEID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.STATUSID, "STATUS", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.STATUSID, ViewBag.STATUS as SelectList, "--Select STATUS--")
+                        @Html.ValidationMessageFor(model => model.STATUSID, "", new { @class = "text-danger", @style = "width: 100%" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RATINGID, "RATING", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.RATINGID, ViewBag.RATINGs as SelectList, "--Select STATUS--")
+                        @Html.ValidationMessageFor(model => model.RATINGID, "", new { @class = "text-danger", @style = "width: 100%" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.INTERESTID, "INTEREST", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.INTERESTID, ViewBag.INTERESTs as SelectList, "--Select STATUS--")
+                        @Html.ValidationMessageFor(model => model.INTERESTID, "", new { @class = "text-danger", @style = "width: 100%" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CURRENCY, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.CURRENCYID, ViewBag.CURRENCYTABLEs as SelectList, "--Select STATUS--")
+                        @Html.ValidationMessageFor(model => model.CURRENCYID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FORECASTEDREVENUE, "FORECASTED REVENUE", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FORECASTEDREVENUE, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FORECASTEDREVENUE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CLOSEDATE, "CLOSE DATE", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="100%">
+                                        @Html.EditorFor(model => model.CLOSEDATE, new { htmlAttributes = new { @class = "form-control", @style = "border: 2px solid rgb(249, 10, 10);width: 77% !important;padding-right: 1px;" } })
+                                        @Html.ValidationMessageFor(model => model.CLOSEDATE, "", new { @class = "text-danger" })
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ORIGIN, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+
+                        @Html.EditorFor(model => model.ORIGIN, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ORIGIN, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                        @Html.LabelFor(model => model.INDUSTRY, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.INDUSTRY, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.INDUSTRY, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SALESPERSONNAME, "SALES PERSON", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @*@Html.HiddenFor(model => model.SALESPERSONID)*@
+                        <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="95%">
+                                        @Html.HiddenFor(model => model.SALESPERSONID)
+                                        @Html.EditorFor(model => model.SALESPERSONNAME, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.SALESPERSONNAME, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td valign="top" nowrap="">
+                                        <img id="SALESPERSONNAMEImage" src="/i/user.gif" style="cursor: pointer" data-href="/common/PopAccount.aspx?render=no&amp;textbox=" border="0">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.COMMERCIALZONE, "ZONE", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.COMMERCIALZONE, ViewBag.ZoneType as SelectList)
+                        @Html.ValidationMessageFor(model => model.COMMERCIALZONE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="formMiddle">
+            <span>ADDRESS</span><span class="righSpan"></span><BR />
+
+        </div>
+        <HR />
+        <div class="formMain">
+            <div class="formLeft">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ADDRESS, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ADDRESS, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ADDRESS, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.STATE, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.STATE, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.STATE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PROVINCE, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PROVINCE, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PROVINCE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ZIPCODE,  new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ZIPCODE, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ZIPCODE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+            <div class="formRight">
+
+            </div>
+        </div>
+        <div class="formMiddle">
+            <span>NOTE</span><span class="righSpan"></span>
+        </div>
+        <HR />
+        <br />
+        <div class="formMiddle">
+            <div class="form-group">
+                @Html.LabelFor(model => model.NOTES, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.NOTES, 5, 40, new { htmlAttributes = new { @class = "form-control BoxDesign" } })
+                    @Html.ValidationMessageFor(model => model.NOTES, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="formMiddle">
+            <span>Groups</span><span class="righSpan">Can Viewed By</span>
+        </div>
+        <div class="formMain1">
+            <div class="formLeft">
+                @Html.ListBox("ListGroups", ViewBag.groups as MultiSelectList, new { @class = "ListGroups", data_val = "true" })
+            </div>
+            <div class="formMid">
+                <input id="butFirstAddAll" value=">>" class="btn" type="button">
+                <input id="butAdd" value=">" class="btn" type="button">
+                <input id="btnRemove" value="<" class="btn" type="button">
+                <input id="btnRemoveAll" value="<<" class="btn" type="button">
+            </div>
+            <div class="formRight">
+                @Html.ListBox("ListDip", ViewBag.groups1 as MultiSelectList, new { @class = "ListDip", data_val = "true" })
+                <input name="GroupValue" id="GroupValue" value="|1|0|" type="hidden">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button class="save formSubmit" id="btnformSubmit1" style="" type="submit">Save</button>
+            </div>
+        </div>
+    </div>
+
+
+
+}
+@section Scripts
+{
+    <script src="~/Scripts/irsl_validation.js"></script>
+    <script type="text/javascript">
+        var mygroup = 1;
+        var msg = "";
+
+        var result = true, month;
+        $(function () {
+            var date = new Date();
+            date.setDate(date.getDate() - 6);
+            date.setFullYear(date.getFullYear() - 35);
+
+            $("#BIRTHDAY").val(toDate(("0" + date.getDate()).slice(-2) +
+                '/' +
+                ("0" + date.getMonth()).slice(-2) +
+                '/' +
+                (date.getFullYear())));
+
+            $("#BIRTHDAY").datepicker({
+                showOn: "button",
+                buttonImage: "/i/SmallCalendar.gif",
+                buttonImageOnly: true,
+                buttonText: "Select date",
+                showOtherMonths: true,
+                numberOfMonths: 2,
+                selectOtherMonths: true
+            });
+            $("#CLOSEDATE").datepicker({
+                showOn: "button",
+                buttonImage: "/i/SmallCalendar.gif",
+                buttonImageOnly: true,
+                buttonText: "Select date"
+            });
+            $('#tabberpage .col-md-10 input[type=text],#tabberpage .col-md-10 textarea, #tabberpage.col-md-10 select')
+                .prop('required', true);
+
+            $('#tabberpage .col-md-10 input[type=text]').prop('aria-required', true);
+            $('#tabberpage .col-md-10 input[type=text],#tabberpage .col-md-10 textarea').val('na');
+
+            $('#tabberpage .col-md-10 #FORECASTEDREVENUE').val("0.00");
+
+            $('#tabberpage .col-md-10 input[type=text],#tabberpage .col-md-10 textarea').blur(function () {
+                $(this).css('text-transform', 'uppercase');
+            })
+
+
+
+            $('#COMPANYNAMESImg').on('click',
+                function (event) {
+
+                    var val = $(".TextAreaCOMPNAME").val();
+                    var w = 300,
+                        h = 250;
+                    var
+                        l = (screen.availWidth - w) / 2,
+                        t = (screen.availHeight - h) / 2;
+
+                    var x = event.clientX; // Get the horizontal coordinate
+                    var y = event.clientY;
+                    y = y - 40;
+                    var url1 = $(this).attr("data-href");
+                    var url = url1.toString().split(":");
+                    url = url[0];
+                    document.getElementById('dynaframe').src = "";
+                    var el = document.getElementById('dynaframe').src = url + val;
+                    var modal = document.getElementById('dynabox');
+                    var span = document.getElementsByClassName("close")[0];
+
+                    modal.style.display = "block";
+                    $("#dynabox").css({
+                        "top": y,
+                        "left": x,
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynaframe").css({
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynabox, #dynaframe").addClass("active");
+                    $("#dynabox, #dynaframe").css("visibility", "visible");
+
+                    return false;
+                });
+            $('#EMAILImg').on('click',
+                function (event) {
+
+                    var EMAILval = $("#EMAIL").val();
+                    var w = 200,
+                        h = 100;
+                    var
+                        l = (screen.availWidth - w) / 2,
+                        t = (screen.availHeight - h) / 2;
+
+                    var x = event.clientX; // Get the horizontal coordinate
+                    var y = event.clientY;
+                    y = y - 40;
+
+                    var url1 = $(this).attr("data-href");
+                    var url = url1.toString().split(":");
+                    url = url[0];
+                    document.getElementById('dynaframe').src = "";
+                    var el = document.getElementById('dynaframe').src = url + EMAILval;
+                    var modal = document.getElementById('dynabox');
+                    var span = document.getElementsByClassName("close")[0];
+
+                    modal.style.display = "block";
+                    $("#dynabox").css({
+                        "top": y,
+                        "left": x,
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynaframe").css({
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynabox, #dynaframe").addClass("active");
+                    $("#dynabox, #dynaframe").css("visibility", "visible");
+
+                    return false;
+                });
+            $('#SALESPERSONNAMEImage').on('click',
+                function (event) {
+
+                    var SALESPERSONIDval = $("#SALESPERSONID").val();
+                    var SALESPERSONNAMEval = $("#SALESPERSONNAME").val();
+                    var w = 300,
+                        h = 100;
+                    var
+                        l = (screen.availWidth - w) / 2,
+                        t = (screen.availHeight - h) / 2;
+
+                    var x = event.clientX; // Get the horizontal coordinate
+                    var y = event.clientY;
+                    y = y - 40;
+
+                    var url2 = $(this).attr("data-href");
+                    var url = url2.toString().split(":");
+                    url = url[0];
+                    document.getElementById('dynaframe').src = "";
+
+                    var el = document.getElementById('dynaframe').src =
+                        url + SALESPERSONIDval + "&textbox=SALESPERSONID&textbox2=SALESPERSONNAME";
+
+                    var modal = document.getElementById('dynabox');
+                    var span = document.getElementsByClassName("close")[0];
+
+                    modal.style.display = "block";
+                    $("#dynabox").css({
+                        "top": y,
+                        "left": x,
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynaframe").css({
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynabox, #dynaframe").addClass("active");
+                    $("#dynabox, #dynaframe").css("visibility", "visible");
+
+                    return false;
+                });
+            $('#ASSOCIATEDCOMPANYImg').on('click',
+                function (event) {
+
+                    var SALESPERSONIDval = $("#SALESPERSONID").val();
+                    var SALESPERSONNAMEval = $("#ASSOCIATEDCOMPANY").val();
+                    var w = 500,
+                        h = 400;
+                    var
+                        l = (screen.availWidth - w) / 2,
+                        t = (screen.availHeight - h) / 2;
+
+                    var x = event.clientX; // Get the horizontal coordinate
+                    var y = event.clientY;
+                    y = y - 40;
+
+                    var url2 = $(this).attr("data-href");
+                    var url = url2.toString().split(":");
+                    url = url[0];
+                    document.getElementById('dynaframe').src = "";
+
+                    var el = document.getElementById('dynaframe').src =
+                        url + SALESPERSONIDval + "&textbox=SALESPERSONID&textbox2=ASSOCIATEDCONTACT";
+
+                    var modal = document.getElementById('dynabox');
+                    var span = document.getElementsByClassName("close")[0];
+
+                    modal.style.display = "block";
+                    $("#dynabox").css({
+                        "top": y,
+                        "left": x,
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynaframe").css({
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynabox, #dynaframe").addClass("active");
+                    $("#dynabox, #dynaframe").css("visibility", "visible");
+
+                    return false;
+                });
+            $('#hidebox').on('click',
+                function (event) {
+                    $("#dynabox, #dynaframe").removeClass("active");
+                    $("#dynaframe").attr("src", "");
+                });
+            $('#dragbar span#hidebox').on('click',
+                function (event) {
+                    $(".dynaskin").removeClass("active");
+                    $(".dynaskin").css("display", "none");
+                });
+            $('#dragbar span#hidebox').on('click',
+                function (event) {
+                    $(".dynaskin").css("visibility", "hidden");
+                    $(".dynabox").css("visibility", "hidden");
+                    $(".dynaskin").css("visibility", "hidden");
+                });
+                        //$('#hidebox').on('click',
+            //    function (event) {
+            //        $("#dynabox, #dynaframe").removeClass("active");
+            //        $("#dynaframe").attr("src", "");
+            //    });
+            $('#ASSOCIATEDCONTACTImage').on('click',
+                function (event) {
+
+                    var SALESPERSONIDval = $("#SALESPERSONID").val();
+                    var SALESPERSONNAMEval = $("#ASSOCIATEDCONTACT").val();
+                    var w = 300,
+                        h = 100;
+                    var
+                        l = (screen.availWidth - w) / 2,
+                        t = (screen.availHeight - h) / 2;
+
+                    var x = event.clientX; // Get the horizontal coordinate
+                    var y = event.clientY;
+                    y = y - 40;
+
+                    var url2 = $(this).attr("data-href");
+                    var url = url2.toString().split(":");
+                    url = url[0];
+                    document.getElementById('dynaframe').src = "";
+
+                    var el = document.getElementById('dynaframe').src =
+                        url + SALESPERSONIDval + "&textbox=SALESPERSONID&textbox2=ASSOCIATEDCONTACT";
+
+                    var modal = document.getElementById('dynabox');
+                    var span = document.getElementsByClassName("close")[0];
+
+                    modal.style.display = "block";
+                    $("#dynabox").css({
+                        "top": y,
+                        "left": x,
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynaframe").css({
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynabox, #dynaframe").addClass("active");
+                    $("#dynabox, #dynaframe").css("visibility", "visible");
+
+                    return false;
+                });
+            //$('#hidebox').on('click',
+            //    function (event) {
+            //        $("#dynabox, #dynaframe").removeClass("active");
+            //        $("#dynaframe").attr("src", "");
+            //    });
+        });
+
+        $("#butFirstAddAll").click(function (e) {
+            $("#ListGroups > option").each(function () {
+                $(this).remove().appendTo("#ListDip");
+            });
+            e.preventDefault();
+        });
+        $('#butAdd').click(
+            function (e) {
+                $("#ListGroups > option:selected").each(function () {
+                    $(this).remove().appendTo("#ListDip");
+                });;
+                e.preventDefault();
+            });
+
+        $('#btnRemove').click(
+            function (e) {
+                $("#ListDip > option:selected").each(function () {
+                    $(this).remove().appendTo("#ListGroups");
+                });
+                e.preventDefault();
+            });
+
+        $('#btnRemoveAll').click(
+            function (e) {
+                $("#ListDip > option").each(function () {
+                    $(this).remove().appendTo("#ListGroups");
+                });
+                e.preventDefault();
+            });
+        $(document).on("blur",
+            "#tabberpage.myOuterDiv #EMAIL",
+            function () {
+                if (check_mail($(this), "", $(this).val())) {
+                    $(this).css({ "border": "1px solid rgb(122, 122, 122)" });
+
+                    result = true;
+                } else {
+                    $(this).css({ "border": "2px solid #F90A0A" });
+                    result = false;
+                }
+            });
+        $(document).on("blur",
+            "#tabberpage.myOuterDiv #PROVINCE",
+            function () {
+                if (check_AlaphNumeric($(this), "", $(this).val())) {
+                    $(this).css({ "border": "1px solid rgb(122, 122, 122)" });
+
+                    result = true;
+                } else {
+                    $(this).css({ "border": "2px solid #F90A0A" });
+                    result = false;
+                }
+            });
+        $(document).on("blur",
+            "#tabberpage #SALESPERSONNAME",
+            function () {
+
+                if ($(this).val() !== "" || $(this).val() !== 'na') {
+                    var item = getSalesPersonByName($(this).val());
+                }
+
+                if (check_name($(this), "", $(this).val())) {
+                    $(this).css({ "border": "1px solid rgb(122, 122, 122)" });
+                    result = true;
+
+                } else {
+                    $(this).css({ "border": "2px solid #F90A0A" });
+                    result = false;
+                }
+            });
+        $(document).on("blur",
+            "#tabberpage #FORECASTEDREVENUE",
+            function () {
+                if ($(this).val() !== 0) {
+                    $(this).val("0.00");
+                } else {
+                    $(this).val(parseFloat($(this).val()).toLocaleString('en'));
+                }
+            });
+
+        if ($('#tabberpage #FIRSTNAME').focusout(function () {
+            if (check_name($('#tabberpage #FIRSTNAME'), "FIRSTNAME", $('#tabberpage #FIRSTNAME').val())) {
+                $(this).css({ "border": "1px solid rgb(122, 122, 122)" });
+                result = true;
+            } else {
+                $(this).css({ "border": "2px solid #F90A0A" });
+                result = false;
+            }
+        }));
+
+        if ($('#tabberpage #LASTNAME').focusout(function () {
+            if (check_name($('#tabberpage #LASTNAME'), "SURNAME", $('#tabberpage #LASTNAME').val())) {
+                $(this).css({ "border": "1px solid rgb(122, 122, 122)" });
+                result = true;
+            } else {
+                $(this).css({ "border": "2px solid #F90A0A" });
+                result = false;
+            }
+        }));
+
+        if ($('#tabberpage #MOBILEPHONE').focusout(function () {
+            if (check_PHONE($('#tabberpage #MOBILEPHONE'), "MOBILEPHONE", $('#tabberpage #MOBILEPHONE').val())) {
+                $(this).css({ "border": "1px solid rgb(122, 122, 122)" });
+                result = true;
+            } else {
+                $(this).css({ "border": "2px solid #F90A0A" });
+                result = false;
+            }
+        }));
+        if ($('#tabberpage .TextAreaCOMPNAME').focusout(function () {
+            if (check_AlaphNumeric($('#tabberpage .TextAreaCOMPNAME'),
+                "COMPANYNAME",
+                $('#tabberpage .TextAreaCOMPNAME').val())) {
+                $(this).css({ "border": "1px solid rgb(122, 122, 122)" });
+                result = true;
+
+            } else {
+                $(this).css({ "border": "2px solid #F90A0A" });
+                result = false;
+            }
+        }));
+        if ($('#tabberpage #ADDRESS').focusout(function () {
+            if (check_AlaphNumeric($('#tabberpage #ADDRESS'), "ADDRESS", $('#tabberpage #ADDRESS').val())) {
+                $(this).css({ "border": "1px solid rgb(122, 122, 122)" });
+                result = true;
+
+            } else {
+                $(this).css({ "border": "2px solid #F90A0A" });
+                result = false;
+            }
+        }));
+        if ($('#tabberpage #STATE').focusout(function () {
+            if (check_AlaphNumeric($('#tabberpage #STATE'), "STATE", $('#tabberpage #STATE').val())) {
+                $(this).css({ "border": "1px solid rgb(122, 122, 122)" });
+                result = true;
+
+            } else {
+                $(this).css({ "border": "2px solid #F90A0A" });
+                result = false;
+            }
+        }));
+
+        if ($('#tabberpage #BIRTHDAY').focusout(function () {
+            if (check_date($('#tabberpage #BIRTHDAY'), "BIRTHDAY", $('#tabberpage #BIRTHDAY').val())) {
+                $(this).css({ "border": "1px solid rgb(122, 122, 122)" });
+                result = true;
+
+            } else {
+                $(this).css({ "border": "2px solid #F90A0A" });
+                result = false;
+            }
+        }));
+        if ($('#tabberpage #ZIPCODE').focusout(function () {
+            if (check_AlaphNumeric($('#tabberpage #ZIPCODE'), "ZIPCODE", $('#tabberpage #ZIPCODE').val())) {
+                $(this).css({ "border": "1px solid rgb(122, 122, 122)" });
+                result = true;
+
+            } else {
+                $(this).css({ "border": "2px solid #F90A0A" });
+                result = false;
+            }
+        }));
+        if ($('#tabberpage #ASSOCIATEDCOMPANY').focusout(function () {
+            if (check_AlaphNumeric($('#tabberpage #ASSOCIATEDCOMPANY'),
+                "ASSOCIATEDCOMPANY",
+                $('#tabberpage #ASSOCIATEDCOMPANY').val())) {
+                $(this).css({ "border": "1px solid rgb(122, 122, 122)" });
+                result = true;
+
+            } else {
+                $(this).css({ "border": "2px solid #F90A0A" });
+                result = false;
+            }
+        }));
+
+
+        if ($('#tabberpage #JOBTITLE').focusout(function () {
+            if (check_name($('#tabberpage #JOBTITLE'), "JOBTITLE", $('#tabberpage #JOBTITLE').val())) {
+                $(this).css({ "border": "1px solid rgb(122, 122, 122)" });
+                result = true;
+
+            } else {
+                $(this).css({ "border": "2px solid #F90A0A" });
+                result = false;
+            }
+        }));
+        if ($('#tabberpage #PHONE').focusout(function () {
+            if (check_name($('#tabberpage #PHONE'), "PHONE", $('#tabberpage #PHONE').val())) {
+                $(this).css({ "border": "1px solid rgb(122, 122, 122)" });
+                result = true;
+
+            } else {
+                $(this).css({ "border": "2px solid #F90A0A" });
+                result = false;
+            }
+        }));
+        if ($('#tabberpage #DESCRIPTION').focusout(function () {
+            if (check_AlaphNumeric($('#tabberpage #DESCRIPTION'), "DESCRIPTION", $('#tabberpage #DESCRIPTION').val())) {
+                $(this).css({ "border": "1px solid rgb(122, 122, 122)" });
+                result = true;
+
+            } else {
+                $(this).css({ "border": "2px solid #F90A0A" });
+                result = false;
+            }
+        }));
+
+        if ($('#tabberpage #PHONE').focusout(function () {
+            if (check_PHONE($('#tabberpage #PHONE'), "PHONE", $('#tabberpage #PHONE').val())) {
+                $(this).css({ "border": "1px solid rgb(122, 122, 122)" });
+                result = true;
+
+            } else {
+                $(this).css({ "border": "2px solid #F90A0A" });
+                result = false;
+            }
+        }));
+
+        if ($('#tabberpage #EMAIL').focusout(function () {
+            if (check_mail($('#tabberpage #EMAIL'), "EMAIL", $('#tabberpage #EMAIL').val())) {
+                $(this).css({ "border": "1px solid #7a7a7a" });
+                result = true;
+
+            } else {
+                $(this).css({ "border": "2px solid #F90A0A" });
+                result = false;
+            }
+        }));
+
+
+        if ($('#tabberpage #BIRTHDAY').focus(function () {
+            if (check_date($('#tabberpage #BIRTHDAY'), "STATE", $('#tabberpage #BIRTHDAY').val())) {
+                $(this).css({ "border": "1px solid #7a7a7a" });
+                result = true;
+
+            } else {
+                $(this).css({ "border": "2px solid #F90A0A" });
+                result = false;
+            }
+        }));
+        if ($('#tabberpage #COMPANYTYPEID').change(function () {
+            if ($("#tabberpage #COMPANYTYPEID :selected").val() == "") {
+                result = false;
+                $("#tabberpage #COMPANYTYPEID").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#tabberpage #COMPANYTYPEID").css({ "border": "1px solid rgb(122, 122, 122)" });
+                result = true;
+            }
+        }));
+        //if ($('#SALESPERSONNAME').change(function () {
+        //    if (check_name($('#tabberpage #SALESPERSONNAME'), "SALESPERSONNAME", $('#tabberpage #SALESPERSONNAME').val())) {
+        //        $(this).css({ "border": "1px solid #7a7a7a" });
+        //        result = true;
+
+        //    } else {
+        //        $(this).css({ "border": "2px solid #F90A0A" });
+        //        result = false;
+        //    }
+        //}));
+        if ($('#SALESPERSONNAME').blur(function () {
+            if (check_name($('#tabberpage #SALESPERSONNAME'),
+                "SALESPERSONNAME",
+                $('#tabberpage #SALESPERSONNAME').val())) {
+                $(this).css({ "border": "1px solid #7a7a7a" });
+                result = true;
+
+            } else {
+                $(this).css({ "border": "2px solid #F90A0A" });
+                result = false;
+            }
+        }));
+        if ($('#tabberpage #TAXID').focusout(function () {
+            if (check_AlaphNumeric($('#tabberpage #TAXID'), "TAX", $('#tabberpage #TAXID').val())) {
+                $(this).css({ "border": "1px solid #7a7a7a" });
+                result = true;
+
+            } else {
+                $(this).css({ "border": "2px solid #F90A0A" });
+                result = false;
+            }
+        }));
+        if ($('#tabberpage #STATUSID').change(function () {
+            if ($("#tabberpage #STATUSID :selected").val() == "") {
+                result = false;
+                $("#tabberpage #STATUSID").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#tabberpage #STATUSID").css({ "border": "1px solid #7a7a7a" });
+                result = true;
+
+            }
+        }));
+
+        if ($('#tabberpage #RATINGID').change(function () {
+            if ($("#tabberpage #RATINGID :selected").val() == "") {
+                result = false;
+                $("#tabberpage #RATINGID").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#tabberpage #RATINGID").css({ "border": "1px solid #7a7a7a" });
+                result = true;
+
+            }
+        }));
+
+        if ($('#tabberpage #INTERESTID').change(function () {
+            if ($("#tabberpage #INTERESTID :selected").val() == "") {
+                result = false;
+                $("#tabberpage #INTERESTID").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#tabberpage #INTERESTID").css({ "border": "1px solid rgb(122, 122, 122)" });
+                result = true;
+
+            }
+        }));
+
+        if ($('#tabberpage #CURRENCYID').change(function () {
+            if ($("#tabberpage #CURRENCYID :selected").val() == "") {
+                result = false;
+                $("#tabberpage #CURRENCYID").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#tabberpage #CURRENCYID").css({ "border": "1px solid rgb(122, 122, 122)" });
+                result = true;
+
+            }
+        }));
+        if ($('#tabberpage #CLOSEDATE').focusout(function () {
+            if (check_date($('#tabberpage #CLOSEDATE'), "CLOSEDATE", $('#tabberpage #CLOSEDATE').val())) {
+                if (isFutureDate($('#tabberpage #CLOSEDATE').val())) {
+                    $("#tabberpage #CLOSEDATE").css({ "border": "1px solid rgb(122, 122, 122)" });
+                    result = true;
+                } else {
+                    $("#tabberpage #CLOSEDATE").css({ "border": "2px solid #F90A0A" });
+                    alert("Entered date is a future date");
+                    result = false;
+                };
+
+            } else {
+                $(this).css({ "border": "2px solid #F90A0A" });
+                result = false;
+            }
+        }));
+        //$("#CLOSEDATE").blur(function() {
+        //    val = $(this).val();
+        //    val1 = Date.parse(val);
+
+        //    if (isNaN(val1) == true && val !== '' || val == 'na') {
+        //        $("#CLOSEDATE").val($.datepicker.formatDate("mm-dd-yy", new Date()));
+
+        //        $("#tabberpage #CLOSEDATE").css({ "border": "2px solid #F90A0A" });
+        //        result = false;
+        //    }
+        //});
+        $("#BIRTHDAY").blur(function () {
+            val = $(this).val();
+            val1 = Date.parse(val);
+
+            if (val.length > 0) {
+                $("#BIRTHDAY").val($.datepicker.formatDate("mm/dd/yyyy", val));
+                $("#tabberpage #BIRTHDAY").css({ "border": "1px solid rgb(122, 122, 122)" });
+                result = true;
+            } else {
+                if (isNaN(val1) == true && val !== '' || val == 'na') {
+                    $("#BIRTHDAY").val($.datepicker.formatDate("mm/dd/yyyy", new Date()));
+                    result = false;
+                    $("#tabberpage #BIRTHDAY").css({ "border": "2px solid #F90A0A" });
+                } else {
+                    $("#tabberpage #BIRTHDAY").css({ "border": "1px solid rgb(122, 122, 122)" });
+                    result = true;
+                }
+            }
+
+
+        });
+
+        if ($('#tabberpage #ZONEID').change(function () {
+            if ($("#tabberpage #ZONEID :selected").val() == "") {
+                result = false;
+                $("#tabberpage #ZONEID").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#tabberpage #ZONEID").css({ "border": "1px solid rgb(122, 122, 122)" });
+                result = true;
+            }
+        }));
+
+        //$("form.upload").submit(function(e) {
+            function jQueryAjaxPost(form) {
+            e.preventDefault();
+            var form = $(e.target).closest('form');
+            $.ajaxSetup({ cache: false });
+            msg = "";
+            msg += "Error \n" +
+                "-------------------------------------------------\n" +
+                " Some Fields are invalid\n" +
+                " Please, check your form again and re submit\n";
+
+            if ($('#tabberpage #BIRTHDAY').val() == "" || $('#tabberpage #BIRTHDAY').val() == "na") {
+                result = false;
+                $("#tabberpage #BIRTHDAY").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* BIRTHDAY field required";
+            } else {
+                $("#tabberpage #BIRTHDAY").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($("#COMPANYTYPEID :selected").val() == "") {
+                result = false;
+                $("#COMPANYTYPEID").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* COMPANYTYPE field required";
+            } else {
+                $("#COMPANYTYPEID").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($('#tabberpage .TextAreaCOMPNAME').val() == "" ||
+                $('#tabberpage .TextAreaCOMPNAME').val() == "na" ||
+                $('#tabberpage .TextAreaCOMPNAME').val() == "NA") {
+                result = false;
+                $("#tabberpage .TextAreaCOMPNAME").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* COMPANYNAME field required";
+            } else {
+                $("#tabberpage .TextAreaCOMPNAME").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($('#tabberpage #FIRSTNAME').val() == "" || $('#tabberpage #FIRSTNAME').val() == "na") {
+                result = false;
+                $("#tabberpage #FIRSTNAME").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* FIRSTNAME field required";
+            } else {
+                $("#tabberpage #FIRSTNAME").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($('#tabberpage #LASTNAME').val() == "" || $('#tabberpage #LASTNAME').val() == "na") {
+                result = false;
+                $("#tabberpage #LASTNAME").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* LASTNAME field required";
+            } else {
+                $("#tabberpage #LASTNAME").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($('#tabberpage #PROVINCE').val() == "" || $('#tabberpage #PROVINCE').val() == "na") {
+                result = false;
+                $("#tabberpage #PROVINCE").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* PROVINCE field required";
+            } else {
+                $("#tabberpage #PROVINCE").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+
+            if ($('#ADDRESS').val() == "" || $('#ADDRESS').val() == "na") {
+                result = false;
+                $("#ADDRESS").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* ADDRESS field required";
+            } else {
+                $("#ADDRESS").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($('#CITY').val() == "" || $('#CITY').val() == "na") {
+                result = false;
+                $("#CITY").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* CITY field required";
+            } else {
+                $("#CITY").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($('#SURNAME').val() == "" || $('#SURNAME').val() == "na") {
+                result = false;
+                $("#SURNAME").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* SURNAME field required";
+            } else {
+                $("#SURNAME").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($('#JOBTITLE').val() == "" || $('#JOBTITLE').val() == "na") {
+                result = false;
+                $("#JOBTITLE").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* JOBTITLE field required";
+            } else {
+                $("#JOBTITLE").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($('.myOuterDiv #PHONE').val() == "" || $('#PHONE').val() == "na") {
+                result = false;
+                $(".myOuterDiv #PHONE").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* PHONE field required";
+            } else {
+                $(".myOuterDiv #PHONE").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($('#MOBILEPHONE').val() == "" || $('#MOBILEPHONE').val() == "na") {
+                result = false;
+                $("#MOBILEPHONE").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* MOBILEPHONE field required";
+            } else {
+                $("#MOBILEPHONE").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($('.myOuterDiv #EMAIL').val() == "" || $('#EMAIL').val() == "na") {
+                result = false;
+                $(".myOuterDiv #EMAIL").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* EMAIL field required";
+            } else {
+                $(".myOuterDiv #EMAIL").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($('#SALESPERSONNAME').val() == "" || $('#SALESPERSONNAME').val() == "na") {
+                result = false;
+                $("#SALESPERSONNAME").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* SALESPERSONNAME field required";
+            } else {
+                $("#SALESPERSONNAME").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($('#STATE').val() == "" || $('#STATE').val() == "na") {
+                result = false;
+                $("#STATE").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* STATE field required";
+            } else {
+                $("#STATE").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($('#ZIPCODE').val() == "" || $('#ZIPCODE').val() == "na") {
+                result = false;
+                $("#ZIPCODE").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* ZIPCODE field required";
+            } else {
+                $("#ZIPCODE").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($('div.myOuterDiv #PHONE').val() == "" || $('div.myOuterDiv #PHONE').val() == "na") {
+                result = false;
+                $("div.myOuterDiv #PHONE").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* PHONE field required";
+            } else {
+                $("div.myOuterDiv #PHONE").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($("div.myOuterDiv #EMAIL").val() == "" || $("div.myOuterDiv #EMAIL").val() == "na") {
+                result = false;
+                $("div.myOuterDiv #EMAIL").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* EMAIL field required";
+            } else {
+                $("div.myOuterDiv #EMAIL").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($('#WEBSITE').val() == "") {
+                result = false;
+                $("#WEBSITE").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* WEBSITE field required";
+            } else {
+                $("#WEBSITE").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            //-------------------------------------------------------------------------
+            if ($("#STATUSID :selected").val() == "") {
+                $("#STATUSID").css({ "border": "2px solid #F90A0A" });
+                result = false;
+                msg += "\n* STATUS field required";
+            } else {
+                $("#STATUSID").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($("#RATINGID :selected").val() == "") {
+                result = false;
+                $("#RATINGID").css({ "border": "2px solid #F90A0A" });
+                msg += "\n* RATING field required";
+            } else {
+                $("#RATINGID").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+
+            if ($("#INTERESTID :selected").val() == "") {
+                $("#INTERESTID").css({ "border": "2px solid #F90A0A" });
+                result = false;
+                msg += "\n* INTEREST field required";
+            } else {
+                $("#INTERESTID").css({ "border": "1px solid rgb(122, 122, 122)" });
+
+            }
+
+            if ($("#CURRENCYID :selected").val() == "") {
+                $("#CURRENCYID").css({ "border": "2px solid #F90A0A" });
+                result = false;
+                msg += "\n* CURRENCY field required";
+            } else {
+                $("#CURRENCYID").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+            if ($("#tabberpage #closedate").val() !== "" && $("#tabberpage #closedate").val() !== "na") {
+
+                if (isFutureDate($("#tabberpage #closedate").val())) {
+                    $("#tabberpage #closedate").css({ "border": "2px solid #f90a0a" });
+                    alert("entered date is a future date");
+                    $("#tabberpage #closedate").val("")
+                    result = false;
+                } else {
+                    $("#tabberpage #closedate").css({ "border": "1px solid rgb(122, 122, 122)" });
+                }
+            }
+
+            if (result) {
+                //var viewLeadsDetail = new Object(); 
+                //viewLeadsDetail.TITLE = $("#TITLE").val();
+                //viewLeadsDetail.FIRSTNAME = $("#FIRSTNAME").val();
+                //viewLeadsDetail.LASTNAME = $("#LASTNAME").val();
+                //viewLeadsDetail.CITY = $("#CITY").val();
+                //viewLeadsDetail.COMPANYNAME = $("#COMPANYNAME").val();
+                //viewLeadsDetail.PHONE = $("#PHONE").val();
+                //viewLeadsDetail.JOBTITLE = $("#JOBTITLE").val();
+                //viewLeadsDetail.FAX = $("#FAX").val();
+                //viewLeadsDetail.MOBILEPHONE = $("#MOBILEPHONE").val();
+                //viewLeadsDetail.BIRTHDAY = $("#BIRTHDAY").val();
+                //viewLeadsDetail.BIRTHPLACE = $("#BIRTHPLACE").val();
+                //viewLeadsDetail.ASSOCIATEDCOMPANY = $("#ASSOCIATEDCOMPANY").val();
+                //viewLeadsDetail.ASSOCIATEDCONTACTID = $("#ASSOCIATEDCONTACTID").val();
+                //viewLeadsDetail.CLOSEDATE = $("#CLOSEDATE").val();
+                //viewLeadsDetail.COMPANYTYPEID = $("#COMPANYTYPEID").val();
+                //viewLeadsDetail.EMAIL = $("#EMAIL").val();
+                //viewLeadsDetail.WEBSITE = $("#WEBSITE").val();
+                //viewLeadsDetail.MOBILEPHONE = $("#MOBILEPHONE").val();
+                //viewLeadsDetail.TAXID = $("#TAXID").val();
+                //viewLeadsDetail.STATUSID = $("#STATUSID").val();
+                //viewLeadsDetail.RATINGID = $("#RATINGID").val();
+                //viewLeadsDetail.INTERESTID = $("#INTERESTID").val();
+                //viewLeadsDetail.CURRENCYID = $("#CURRENCYID").val();
+                //viewLeadsDetail.SALESPERSONID = $("#SALESPERSONID").val();
+                //viewLeadsDetail.COMMERCIALZONE = $("#COMMERCIALZONE").val();
+                //viewLeadsDetail.ADDRESS = $("#ADDRESS").val();
+                //viewLeadsDetail.CITY = $("#CITY").val();
+                //viewLeadsDetail.STATE = $("#STATE").val();
+                //viewLeadsDetail.PROVINCE = $("#PROVINCE").val();
+                //viewLeadsDetail.ZIPCODE = $("#ZIPCODE").val();
+                                                                                                                            
+                $.ajax({
+                    type: 'POST',
+                    url: $(form)[0].action,
+                    data: new FormData($(form)[0]), 
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        if (response.success) {
+                            //$("#firstTab").html(response.html);
+                            $.notify(response.message, "success");
+                        } else {
+                            $.notify(response.message, "error");
+                        }
+
+                    }
+                });
+            } else {
+                alert(msg);
+            }
+            return false;
+        }
+        function listbox_selectall(listID, isSelect) {
+            var listbox = document.getElementById(listID);
+            for (var count = 0; count < listbox.options.length; count++) {
+                listbox.options[count].selected = isSelect;
+            }
+        }
+
+        function getSalesPersonByName(text) {
+            $.get("/Account/getSalesPerson",
+                { name: text },
+                function (data) {
+                    if (data != null) {
+                        $('#SALESPERSONID').val(data.SalePersonID);
+                        $('#SALESPERSONNAME').val(data.SalePersonName);
+                    } else {
+                        alert("Something went wrong");
+                    }
+                });
+        }
+
+        function compareText(option1, option2) {
+            return option1.text < option2.text ? -1 : option1.text > option2.text ? 1 : 0;
+        }
+
+        function sortSelect(select) {
+            if (!IE4plus) return;
+            var options = new Array(select.options.length);
+            for (var i = 0; i < options.length; i++)
+                options[i] =
+                    new Option(
+                        select.options[i].text,
+                        select.options[i].value,
+                        select.options[i].defaultSelected,
+                        select.options[i].selected
+                    );
+            options.sort(compareText);
+            select.options.length = 0;
+            for (var i = 0; i < options.length; i++)
+                select.options[i] = options[i];
+        }
+    </script>
+}

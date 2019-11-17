@@ -1,0 +1,298 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="IRSLCRM.master.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - CRM Application</title>
+
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="../css/defaultsheet.css" rel="stylesheet" />
+    <style type="text/css">
+        .sideContainer a {
+            padding: 2px 2px 2px 3px;
+	        border-bottom: 1px solid #EEEEEE;
+	        text-align: left;
+	        background-color: #E5E5E5;
+	        zoom: 1;
+	        display: block;
+	        width: 147px !important;
+	        padding-right: 52px;
+	        line-height: 2;
+	        padding-left: 4px;
+	        cursor: pointer;
+            text-decoration: none;
+        }
+         .sideContainer a:hover {
+	        border-left: solid 4px #002245;
+            text-decoration: none;
+        }
+        .imagTop{
+	        position: absolute;
+	        top: 0;
+	        width: 214px !important;
+	        height: 87px !important;
+        }
+        #Search {
+	        width: 97%;
+        }
+        /*===============================================================================*/
+        .popup-content {
+            /*Hides pop-up content when there is no "active" class */
+            visibility: hidden;
+        }
+
+        .popup-content.active {
+            /*Shows pop-up content when "active" class is present */
+            visibility: visible;
+        }
+        .dynaskin {
+            position: absolute;
+            top: 35px !important;
+            left:35% !important;
+        }
+        .CommonColor{
+	        background-color: #1989ca;
+	        height: 33px;
+        }
+        #hidebox{
+            cursor: pointer;
+            position: relative;
+            padding-right: 3px;
+            padding-left: 4px;
+            top: 10px;
+            right: 8px;
+        }
+        button {
+	        background-color: #1989CA;
+	        width: 110px;
+	        height: 20px;
+	        border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <form runat="server">
+                <a href="/">
+        <img class="imagTop" style="position:absolute; top: 0; width: 154px" src="/images/irsl_logo1.jpg"></a>
+        <div id="topbarIRSL" class="auto-style1" style="background-color: #CCCCCC">
+          <%--  <table cellpadding="0" cellspacing="0" class="auto-style2" style="left: 2px; position: relative; padding-top: -3px; top: -8px; padding-left: 7px;">
+                <tr>
+                    <td class="auto-style3">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style3" style="font-weight: bold">User Id:</td>
+                    <td>&nbsp;AODD&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style4" style="font-weight: bold">Name:</td>
+                    <td class="auto-style5">Sylvester Jude</td>
+                </tr>
+                <tr>
+                    <td class="auto-style3">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style3" style="font-weight: bold">Email:</td>
+                    <td>Sylvester.Jude@irslconsulting.com</td>
+                </tr>
+            </table>--%>
+       </div>
+        <table style="width: 100%; vertical-align: top; height: 80%;position: relative;top: -8px;left: -3px;">
+            <tr>
+                <td class="SideBorderLinked" style="width: 146px; vertical-align: top">
+                    <table width="100%" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td class="sideContainer">
+                                    <div class="sideTitle">
+                                        Search
+                               
+                                    </div>
+                                    <div class="sideFixed">
+                                        <asp:TextBox name="Search" CssClass="boxDesign"  ID="Search" runat="server"></asp:TextBox>
+                                    </div>
+                                    <div id="filters" style="display: none">
+                                        <div class="sideInputTitle">
+                                            Search by Group
+                               
+                                        </div>
+                                        <div class="sideInput">
+                                            <select name="ListGroups" id="ListGroups" class="BoxDesign">
+                                                <option selected="selected" value="0">Select a group</option>
+                                                <option value="1">System Administrators</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="sideInputTitle">
+                                            Search by Industry
+                               
+                                        </div>
+                                        <div class="sideInput">
+                                            <select name="ListSector" id="ListSector" class="BoxDesign">
+                                                <option value="0">Select an industry</option>
+                                                <option value="29">Actividades recreativas</option>
+                                                <option value="1">Agricultura</option>
+                                                <option value="17">Alimentos y bebidas</option>
+                                                <option value="15">Ambiente</option>
+                                                <option value="103">Artesanias</option>
+                                                <option value="21">Aseguraciones</option>
+                                                <option value="41">Asociaciones o club</option>
+                                                <option value="4">Banco</option>
+                                                <option value="5">Biotecnologia</option>
+                                                <option value="7">Comunicaciones</option>
+                                                <option value="8">Construcciones</option>
+                                                <option value="9">Consultoria</option>
+                                                <option value="10">Educacion</option>
+                                                <option value="11">Electronica</option>
+                                                <option value="12">Energia</option>
+                                                <option value="14">Entretenimiento</option>
+                                                <option value="16">Finanzas</option>
+                                                <option value="18">Gobierno</option>
+                                                <option value="20">Hospitalidad</option>
+                                                <option value="13">Ingenieria</option>
+                                                <option value="38">Instalaciones electricas</option>
+                                                <option value="39">Instalaciones hidraulicas</option>
+                                                <option value="26">Manufactura</option>
+                                                <option value="22">Mecanica</option>
+                                                <option value="27">Media</option>
+                                                <option value="31">Mensajeria</option>
+                                                <option value="28">No lucrativa</option>
+                                                <option value="6">Quimica</option>
+                                                <option value="19">Salud</option>
+                                                <option value="35">Servicios publicos</option>
+                                                <option value="32">Tecnologia</option>
+                                                <option value="33">Telecomunicaciones</option>
+                                                <option value="37">Textil</option>
+                                                <option value="2">Textil</option>
+                                                <option value="34">Transporte</option>
+                                                <option value="30">Venta al detalle</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="sideInputTitle">
+                                            Search by Type
+                               
+                                        </div>
+                                        <div class="sideInput">
+                                            <select name="ListType" id="ListType" class="BoxDesign">
+                                                <option value="0">Select a type</option>
+                                                <option value="1">Analista</option>
+                                                <option value="2">Cliente</option>
+                                                <option value="3">Competidor</option>
+                                                <option value="4">Integrador de sistemas</option>
+                                                <option value="5">Inversionista</option>
+                                                <option value="8">Prospecto</option>
+                                                <option value="9">Proveedor</option>
+                                                <option value="7">Revendedor</option>
+                                                <option value="6">Socio</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="sideInputTitle">
+                                            Search by category
+                               
+                                        </div>
+                                        <div class="sideInput">
+                                            <select name="ListCategory" id="ListCategory" class="BoxDesign">
+                                                <option value="0">Choose category</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="sideInputTitle">
+                                            Owner
+                               
+                                        </div>
+                                        <div class="sideInput">
+                                            <select name="ListOwners" id="ListOwners" class="BoxDesign">
+                                                <option selected="selected" value="0">Select user</option>
+                                                <option value="1">Admin Name Admin Surname</option>
+                                                <option value="2">nuevo usuario</option>
+                                                <option value="3">a a</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="sideInputTitle">
+                                            Last contact more than:
+                               
+                                        </div>
+                                        <div class="sideInput">
+                                            <select name="Days" id="Days" class="BoxDesign">
+                                                <option selected="selected" value="0">Select no. of days...</option>
+                                                <option value="30">30 days</option>
+                                                <option value="60">60 days</option>
+                                                <option value="90">90 days</option>
+                                                <option value="120">120 days</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="sideSubmit">
+                                        <img id="filtersimg" src="/i/plus.gif" style="float: left; cursor: pointer" alt="filters" onclick="showfilters()">
+                                        <asp:Button ID="BtnSearch" class="save" runat="server" Text="Button"/>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="sideContainer">
+                                    <div class="sideTitle">
+                                        Options
+                               
+                                    </div>
+                                    <asp:HyperLink class="sidebtn" ID="crm" runat="server" NavigateUrl="~/landingpage1.aspx">CRM App</asp:HyperLink>
+                                    <asp:HyperLink class="sidebtn" ID="hr" runat="server">MS Dynamics</asp:HyperLink>
+                                    <asp:HyperLink class="sidebtn" ID="ecommerce" runat="server" NavigateUrl="https://irslconsulting.com:8100/dispatcher" Target="_blank">SAP Business One</asp:HyperLink>
+                                    <asp:HyperLink class="sidebtn" ID="Sales" runat="server">HR Application</asp:HyperLink>
+                                    <asp:HyperLink class="sidebtn" ID="HyperLink1" runat="server">Application Tools</asp:HyperLink>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td class="BorderBottomTitles" align="left">
+                                    <span id="RapInfo" style="color: red"></span>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </td>
+                <td class="pageStyle" style="height: 100%; vertical-align: top">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                 </td>
+            </tr>
+        </table>
+        <div id="topbarFooter">
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - <a href="http://www.irslconsulting.com" style="text-align: center">IRSL Consulting Application Units</a></p>
+            </footer>
+        </div> 
+    </form>
+    <%-- <script src="../Scripts/client/dev/MyModule.index.js"></script>--%>
+    <script src="../Optin/jquery-3.3.1.js"></script>
+   <script src="../Optin/mycrmoptin.js"></script>
+</body>
+</html>

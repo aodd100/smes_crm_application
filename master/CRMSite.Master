@@ -1,0 +1,613 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true"  CodeBehind="CRMSite.master.cs"  EnableViewState="true"  Inherits="IRSLCRM.master.CRMSite" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - GUDIT CRM Application</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="../css/tmain.css" rel="stylesheet" />
+    <link href="../css/G.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+    <%--   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>--%>
+    <style type="text/css">
+        .form-inline {
+            right: 0px;
+            float: right;
+            margin-left: 770px;
+            top: 5px;
+            margin-top: 7px;
+        }
+
+        .btn-group {
+            top: 5px;
+        }
+
+        /*.topLogo {
+	        position: absolute;
+	        top: 0;
+	        height: 46px;
+	        width: 153px;
+        }*/
+        footer .topLogo {
+	        position: relative;
+	        left: 0px;
+	        height: 42px;
+        }
+        /*#topbarIrsl {
+            border-top: 2px solid #686767;
+            border: solid 2px #686767;
+        }
+
+        #topbarIrsl {
+            margin-left: 169px !important;
+        }*/
+
+        body {
+            /* padding-top: 50px; */
+            /* padding-bottom: 20px; */
+        }
+
+    </style>
+        <style type="text/css">
+        .sideContainer a {
+	        padding: 2px 2px 2px 3px;
+	        border-bottom: 1px solid #EEEEEE;
+	        text-align: left;
+	        background-color: #E5E5E5;
+	        zoom: 1;
+	        display: block;
+	        width: 148px;
+	        padding-right: 2px;
+	        line-height: 2;
+	        padding-left: 4px;
+	        cursor: pointer;
+	        text-decoration: none;
+        }
+         .sideContainer a:hover {
+	        border-left: solid 4px #002245;
+            text-decoration: none;
+        }
+        .imagTop{
+	        position: absolute;
+	        top: 0;
+	        width: 214px !important;
+	        height: 87px !important;
+        }
+        #Search {
+	        width: 97%;
+        }
+        div.sideTitle {
+	        margin-top: 5px;
+        }
+        .auto-style1 {
+            position: absolute;
+            top: 0;
+            height: 46px;
+            width: 169px;
+            left: 0px;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" media="all" href="/css/ttabber.css" />
+    <script type="text/javascript" src="/js/tooltip.js"></script>
+    <script type="text/javascript" src="/js/menudigita.js"></script>
+    <script type="text/javascript" src="/js/dynabox.js"></script>
+    <script type="text/javascript" src="/js/autodate.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="~/css/layoutTabcss.css"/>
+
+   <script type="text/javascript">
+       function ClientCallbackOptions(result, context){
+           var dropdown2 = document.forms[0].elements[context];
+           dropdown2.onclick=new function(){};
+           dropdown2.innerHTML= "";
+           var rows = result.split('|');
+           for (var i = 0; i < rows.length - 1; ++i){
+               var option = document.createElement("OPTION");
+               option.innerHTML = rows[i++];
+               option.value = rows[i];
+               dropdown2.appendChild(option);
+           }
+       }
+
+       function ClientCallbackError(result, context){
+           alert(result);
+       }
+   </script>
+
+    <script type="text/javascript">
+        var g_fFieldsChanged=1;
+
+
+        function CheckRapidMail(){
+            var e = document.getElementById("RapEmail");
+            var valid = validateEmail(e.value);
+            if(valid)
+                return valid;
+            else{
+                var info = document.getElementById("RapInfo");
+                info.innerHTML=ValidEmail;
+                return valid;
+            }
+        }
+
+        function ValidateProduct(){
+            var x = document.getElementById("Purchase_ProductID");
+            if(x.value!=""){
+                (document.getElementById("rvProductID")).style.display="none";
+                return true;
+            }else{
+                (document.getElementById("rvProductID")).style.display="inline";
+                return false;
+            }
+        }
+
+        function ValidatecompanyName()
+        {
+            var x = document.getElementById("CompanyName");
+            if(x.value!="")
+            {
+                return true;
+            }
+            else
+            {
+                alert(CRMcontxt78);
+                g_fFieldsChanged=0;
+                return false;
+            }
+        }
+
+        function IndCopy(){
+            document.forms[0].Shipment_Address.value = document.forms[0].Invoice_Address.value;
+            document.forms[0].Shipment_City.value = document.forms[0].Invoice_City.value;
+            document.forms[0].Shipment_StateProvince.value = document.forms[0].Invoice_StateProvince.value;
+            document.forms[0].Shipment_Zip.value = document.forms[0].Invoice_Zip.value;
+        }
+
+        function SelABCHeader(letter){
+            var obj = document.forms[0].visualizationType;
+            for (var i=0;i<obj.length;i++) {
+                if (obj[i].checked == true)
+                    location.href="crm_companies.aspx?m=25&si=29&list="+letter+"&type=" +obj[i].value;
+            }
+        }
+
+        function ChangeFree(s,o){
+            var selectarr = document.getElementsByTagName('TR');
+            for (var i = 0; i < selectarr.length; i++){
+                if(selectarr[i].getAttribute('ParentField')!=null){
+                    if(selectarr[i].getAttribute('ParentField')==s && selectarr[i].getAttribute('ParentFieldValue')==o.value)
+                        selectarr[i].style.display = '';
+                    else
+                        selectarr[i].style.display = 'none';
+                }
+            }
+        }
+
+        function SubmitReferrer(){
+            var c = document.getElementById("Search");
+            document.SearchC.searchcontact.value=c.value;
+            document.SearchC.submit();
+        }
+
+        function SubmitLead(){
+            var c = document.getElementById("Search");
+            document.SearchL.searchcontact.value=c.value;
+            document.SearchL.submit();
+        }
+
+
+        function ValidateFreeProduct(){
+            var FreeProduct = getElement("EstFreeProduct");
+            var FreeQta = getElement("EstFreeQta");
+            var FreeUp = getElement("EstFreeUp");
+            var FreeVat = getElement("EstFreeVat");
+            var pass=true;
+            if(FreeProduct.value!=""){
+                getElement("AxkFreeProduct").style.display="none";
+            }else{
+                getElement("AxkFreeProduct").style.display="inline";
+                pass=false;
+            }
+            if(FreeQta.value!="" && FreeQta.value>0){
+                getElement("AxkFreeQta").style.display="none";
+            }else{
+                getElement("AxkFreeQta").style.display="inline";
+                pass=false;
+            }
+            if(FreeUp.value!="" && FreeUp.value>0){
+                getElement("AxkFreeUp").style.display="none";
+            }else{
+                getElement("AxkFreeUp").style.display="inline";
+                pass=false;
+            }
+            if(FreeVat.value!="" && FreeVat.value>-1){
+                getElement("AxkFreeVat").style.display="none";
+            }else{
+                getElement("AxkFreeVat").style.display="inline";
+                pass=false;
+            }
+            if(pass)
+                return true;
+            return false;
+        }
+
+        function AjaxTextBox(tbname, txt){
+            if(ObjExists('Ajax'))
+                return Ajax.Companies.SuggestState(txt);
+        }
+
+        var checkTimerId;
+        var nameTest="";
+        function testName(ele)
+        {
+            if(!ObjExists('Ajax')){
+                ele.onkeyup=null;
+                return;}
+            if(ele.value.length<5) return;
+            clearTimeout(checkTimerId);
+            checkTimerId = setTimeout('testNameCmd(\''+RemoveCrLf(ele.value)+'\')',1000);
+        }
+
+        function testNameCmd(str)
+        {
+            var cName;
+            if(!(nameTest.indexOf(str.toUpperCase())>-1)){
+                var res = Ajax.Companies.CheckDuplicatedCompanies(str);
+                if(res.error != null){
+                    alert(res.error );
+                    return;}
+                cName = res.value;
+            }else
+                cName = nameTest;
+            if(cName.length>0){
+                nameTest=cName.toUpperCase();
+                document.getElementById('CompanyName').style.color = '#ff0000';
+                document.getElementById('companyLookupImg').src = '/i/lookupalert.gif';
+            }else{
+                document.getElementById('CompanyName').style.color = '#000000';
+                document.getElementById('companyLookupImg').src = '/i/lookup.gif';
+            }
+        }
+
+        function showfilters()
+        {
+            document.getElementById("filters").style.display='inline';
+            document.getElementById("filtersimg").style.display='none';
+        }
+    </script>
+</head>
+<body>
+<form action="Search/index" id="spForm" method="post" runat="server">
+<div class="mainTop">
+    <img class="auto-style1" src="../images/Irsllogov3.gif.gif" />
+     <div id="topbarIrsl">
+        <ul class="inBarMenu Buttons normal" id="BarMenu">
+            <li id="MenuSelected" class="FirstItem"><a href="Companies/index">CRM</a></li>
+            <li><a href="MAIL/indexCENTER">MAIL CENTER</a></li>
+            <li><a href="DashBoard/reports">REPORTS</a></li>
+            <li><a href="SALES/index">SALES</a></li>
+            <li><a href="/EXIT/logoff=true">EXIT</a></li>
+     </ul>
+        <ul class="inBarMenu" id="SubBarMenu">
+            <span class="floattop">
+                <img src="/i/topmail.gif" style="cursor: pointer;" onclick="NewWindow('/Common/PopMailHome.aspx?render=no', 'TopMail', '600', '500', 'no')">&nbsp;<img alt="Manual" style="cursor: pointer" onclick="NewWindow('http://www.Irsl.com/es/manual/index.html', 'NewLanguage', '600', '600', 'no')" src="/i/help.gif" border="0">&nbsp;<img src="/i/suggestion.gif" onclick="NewWindow('/Common/iwish.aspx?render=no', 'NewLanguage', '320', '400', 'no')" style="cursor: pointer;">&nbsp;<img src="/flags/es.gif" onclick="NewWindow('/Common/newlang.aspx?render=no', 'NewLanguage', '300', '200', 'no')" style="cursor: pointer;" width="18" height="12">
+            </span>
+            <li class="FirstItem" id="SubMenuSelected"><a href="Companies/index">Companies</a></li>
+            <li><a href="Opportunities/index">Opportunities</a></li>
+            <li><a href="Contacts/index">Contacts</a></li>
+            <li><a href="Leads/index">Leads</a></li>
+            <li><a href="Activities/index">Activities</a></li>
+            <li><a href="/today/index">Today</a></li>
+            <li><a href="Agenda/create">Agenda</a></li>
+            <li><a href="Reminders/index">Reminders</a></li>
+            <li><a href="Notes/index">Notes</a></li>
+            <li><a href="Messages/index">Messages</a></li>
+            <li><a href="Quick/index">Quick</a></li>
+        </ul>
+    </div>          
+</div>
+ 
+        
+        <table class="mainTopTable" style="width: 100%; vertical-align: top; height: 80%">
+            <tr>
+                <td class="SideBorderLinked" style="width: 146px; vertical-align: top">
+                    <table width="100%" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td class="sideContainer">
+                                <div class="sideTitle">
+                                    Options
+                                </div>
+                                        
+                                    <span>
+                                        
+                                    <asp:ContentPlaceHolder ID="ContentMenu" runat="server">
+
+                                    </asp:ContentPlaceHolder>
+                                    </span>
+                             
+                            </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="sideContainer">
+                                    <div class="sideTitle">
+                                        Search
+                               
+                                    </div>
+                                    <div class="sideFixed">
+                                        <asp:TextBox name="Search" CssClass="boxDesign" ID="Search" runat="server"></asp:TextBox>
+                                    </div>
+                                    
+                                            <div id="filters" style="display: none">
+                                                <div class="sideInputTitle">
+                                                    Search by Group
+                                       
+                                                </div>
+                                                <div class="sideInput">
+                                                    <select name="ListGroups" id="ListGroups" class="BoxDesign">
+                                                        <option selected="selected" value="0">Select a group</option>
+                                                        <option value="1">System Administrators</option>
+
+                                                    </select>
+                                                </div>
+                                                <div class="sideInputTitle">
+                                                    Search by Industry
+                                       
+                                                </div>
+                                                <div class="sideInput">
+                                                    <select name="ListSector" id="ListSector" class="BoxDesign">
+                                                        <option value="0">Select an industry</option>
+                                                        <option value="29">Actividades recreativas</option>
+                                                        <option value="1">Agricultura</option>
+                                                        <option value="17">Alimentos y bebidas</option>
+                                                        <option value="15">Ambiente</option>
+                                                        <option value="103">Artesanias</option>
+                                                        <option value="21">Aseguraciones</option>
+                                                        <option value="41">Asociaciones o club</option>
+                                                        <option value="4">Banco</option>
+                                                        <option value="5">Biotecnologia</option>
+                                                        <option value="7">Comunicaciones</option>
+                                                        <option value="8">Construcciones</option>
+                                                        <option value="9">Consultoria</option>
+                                                        <option value="10">Educacion</option>
+                                                        <option value="11">Electronica</option>
+                                                        <option value="12">Energia</option>
+                                                        <option value="14">Entretenimiento</option>
+                                                        <option value="16">Finanzas</option>
+                                                        <option value="18">Gobierno</option>
+                                                        <option value="20">Hospitalidad</option>
+                                                        <option value="13">Ingenieria</option>
+                                                        <option value="38">Instalaciones electricas</option>
+                                                        <option value="39">Instalaciones hidraulicas</option>
+                                                        <option value="26">Manufactura</option>
+                                                        <option value="22">Mecanica</option>
+                                                        <option value="27">Media</option>
+                                                        <option value="31">Mensajeria</option>
+                                                        <option value="28">No lucrativa</option>
+                                                        <option value="6">Quimica</option>
+                                                        <option value="19">Salud</option>
+                                                        <option value="35">Servicios publicos</option>
+                                                        <option value="32">Tecnologia</option>
+                                                        <option value="33">Telecomunicaciones</option>
+                                                        <option value="37">Textil</option>
+                                                        <option value="2">Textil</option>
+                                                        <option value="34">Transporte</option>
+                                                        <option value="30">Venta al detalle</option>
+
+                                                    </select>
+                                                </div>
+                                                <div class="sideInputTitle">
+                                                    Search by Type
+                                       
+                                                </div>
+                                                <div class="sideInput">
+                                                    <select name="ListType" id="ListType" class="BoxDesign">
+                                                        <option value="0">Select a type</option>
+                                                        <option value="1">Analista</option>
+                                                        <option value="2">Cliente</option>
+                                                        <option value="3">Competidor</option>
+                                                        <option value="4">Integrador de sistemas</option>
+                                                        <option value="5">Inversionista</option>
+                                                        <option value="8">Prospecto</option>
+                                                        <option value="9">Proveedor</option>
+                                                        <option value="7">Revendedor</option>
+                                                        <option value="6">Socio</option>
+
+                                                    </select>
+                                                </div>
+                                                <div class="sideInputTitle">
+                                                    Search by category
+                                       
+                                                </div>
+                                                <div class="sideInput">
+                                                    <select name="ListCategory" id="ListCategory" class="BoxDesign">
+                                                        <option value="0">Choose category</option>
+
+                                                    </select>
+                                                </div>
+                                                <div class="sideInputTitle">
+                                                    Owner
+                                       
+                                                </div>
+                                                <div class="sideInput">
+                                                    <select name="ListOwners" id="ListOwners" class="BoxDesign">
+                                                        <option selected="selected" value="0">Select user</option>
+                                                        <option value="1">Admin Name Admin Surname</option>
+                                                        <option value="2">nuevo usuario</option>
+                                                        <option value="3">a a</option>
+
+                                                    </select>
+                                                </div>
+                                                <div class="sideInputTitle">
+                                                    Last contact more than:
+                                       
+                                                </div>
+                                                <div class="sideInput">
+                                                    <select name="Days" id="Days" class="BoxDesign">
+                                                        <option selected="selected" value="0">Select no. of days...</option>
+                                                        <option value="30">30 days</option>
+                                                        <option value="60">60 days</option>
+                                                        <option value="90">90 days</option>
+                                                        <option value="120">120 days</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="sideSubmit">
+                                                <img id="filtersimg" src="/i/plus.gif" style="float: left; cursor: pointer" alt="filters" onclick="showfilters()">
+                                                <asp:Button ID="BtnSearch" class="save" runat="server" Text="Button" />
+                                            </div>
+                                  
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                        <tr>
+                            <td class="sideContainer">
+                              
+                                                               
+                                <div class="sideTitle">
+                                    Create Quick Company
+                                </div>
+                                <div class="sideFixed">
+                                    <span>Company Name</span>
+                                </div>
+                                <div class="sideFixed">
+                                    <input name="COMPANYNAME" class="boxDesign" id="COMPANYNAME" />
+                                </div>
+                                <div class="sideFixed">
+                                    <span>Phone Number</span>
+                                </div>
+                                <div class="sideFixed">
+                                    <input name="PHONE" class="boxDesign" id="PHONE" />
+                                </div>
+                                <div class="sideFixed">
+                                    <span>Email</span>
+                                </div>
+                                <div class="sideFixed">
+                                    <input name="EMAIL" class="boxDesign" id="EMAIL" />
+                                </div>
+                                <div class="sideFixed">
+                                    <button name="btnQuickCompany" class="save" id="btnQuickCompany"> Save </button>
+                                </div>
+
+                                
+                            </td>
+                        </tr>
+
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td class="BorderBottomTitles" align="left">
+                                    <span id="RapInfo" style="color: red"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td class="pageStyle" style="height: 100%; vertical-align: top">                  
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                        </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+        </table>                      
+            <footer>
+                <center>
+                        <table style="height:40px; margin-top:5px;" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td><a href="http://www.opensource.irsl.com" target="_blank">
+                                        <img class="topLogo" src="../images/IrslLogoOS.gif.gif" alt="Powered by IRSL CRM" border="0"></a></td>
+                                    <td valign="top" nowrap="">
+                                        <div style="font-family: tahoma, verdana; font-size: 12px; padding:2px 2px 3px 2px; border: 1px solid #686666; border-left: none;">© 2017-2018 All Rights Reserved.<br>Visit <a href="http://www.opensource.irslconsulting.com" target="_blank" style="font-family: tahoma, verdana; font-size: 12px; color: #f46d12;">www.irslconsulting.com</a> for more information.
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </center>
+            </footer>
+</form>
+<script type="text/javascript">
+    $(function() {
+        $("#btnQuickCompany").click(function(e) {
+            var dataToPost = $("#spForm").serialize();
+            $.ajax(
+                {
+                    type: "POST",
+                    data: JSON.stringify(dataToPost),
+                    url: "Companies/CreateNew",
+                    contentType: 'application/json; charset=utf-8'
+                });
+            e.preventDefault();
+        });
+    });
+
+    function ShowImagePreview(imageUploader, previewImage) {
+        if (imageUploader.files && imageUploader.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $(previewImage).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(imageUploader.files[0]);
+        }
+        //Usage <input type='file' name='ImageUpload' accept="image/jpeg, image/png" 
+        //onchange = "ShowImagePreview(this,document.getElementById("imageId"))"
+        //in form you add @using(Html.BeginForm("AddEdit","Employee",FormMethod.Post, new { enctype = "multipart/form-data",
+        // onSubmit = ""return jQueryAjaxPost(this);"})){} also add the hidden field of the previous image e.g @Html.Hiddenfor(model=>model.ImagePath)
+    }
+
+    //this can be use for all form submite
+    function jQueryAjaxPost(form) {
+            $.validate.unobtrusive.parse(form);
+            if ($(form).valid()) {
+                //if form validation is true perform other operation to post to server here
+                var ajaxConfig = {
+                    type: "POST",
+                    url: "Employee/AddOrEdit",
+                    data: new FormData(form),
+                    success: function(response) {
+                        $("#firstTab").html(response);
+                    }
+                };
+                if ($(form).attr("enctype") == "multipart/form-data") {
+
+                    ajaxConfig["contentType"] = false;
+                    ajaxConfig["processData"] = false;
+
+                }
+                $.ajax(ajaxConfig);
+            }
+
+            return false;
+    }
+       
+    
+</script>
+</body>
+</html>
+

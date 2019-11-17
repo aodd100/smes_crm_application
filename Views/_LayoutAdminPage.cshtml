@@ -1,0 +1,658 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>@ViewBag.Title</title>
+
+
+    <link href="@Url.Content("~/css/layoutTabcssAdmin.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/datatables.min.css")" rel="stylesheet" />
+    @*<link href="@Url.Content("~/css/css/bootstrap.min.css")" rel="stylesheet" />
+        <link href="@Url.Content("~/css/font-awesome/css/font-awesome.min.css")" rel="stylesheet">
+        <link href="@Url.Content("~/css/nprogress.css")" rel="stylesheet">
+        <link href="@Url.Content("~/css/prettify.min.css")" rel="stylesheet">
+        <link href="@Url.Content("~/css/custom.min.css")" rel="stylesheet">*@
+
+
+    @**@
+    <link href="@Url.Content("~/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css")" rel="stylesheet">
+    <!-- Font Awesome -->
+    <!-- Bootstrap -->
+    <link href="@Url.Content("~/gentelella/vendors/font-awesome/css/font-awesome.min.css")" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="@Url.Content("~/gentelella/vendors/nprogress/nprogress.css")" rel="stylesheet">
+   
+    <!-- bootstrap-wysiwyg -->
+    <link href="@Url.Content("~/gentelella/vendors/google-code-prettify/bin/prettify.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/jquery-ui.css")" rel="stylesheet" />
+
+    <!-- Custom styling plus plugins -->
+    <link href="@Url.Content("~/gentelella/build/css/custom.min.css")" rel="stylesheet">@* *@
+
+
+
+    <style type="text/css">
+        body {
+            color: #101010 !important;
+        }
+
+        #BarMenu {
+            display: flex;
+        }
+
+            #BarMenu .menu {
+                flex: 2
+            }
+
+            #BarMenu .username {
+                flex: 1
+            }
+
+        .userProfile {
+            display: flex;
+        }
+
+            .userProfile table {
+                flex: 1
+            }
+
+            .userProfile a {
+                flex: 1
+            }
+
+        .sideContainer a:hover {
+            border-left: solid 4px #002245;
+            text-decoration: none;
+        }
+
+        .imagTop {
+            position: absolute;
+            top: 0;
+            width: 217px !important;
+            height: 62px !important;
+        }
+
+        #Search {
+            width: 97%;
+        }
+
+        .pageStyle table.ContentTbl {
+            width: 29%;
+            vertical-align: top;
+            margin: auto;
+            margin-top: 120px;
+            margin-bottom: 71px;
+        }
+
+        div.tr table > td > input[type='button'] {
+            position: relative;
+            margin-left: 50px;
+        }
+
+        .auto-style1 {
+            width: 100%;
+        }
+
+        .auto-style2 {
+            height: 124px;
+        }
+
+        .auto-style3 {
+            width: 145px;
+        }
+
+        .auto-style4 {
+            width: 80ex;
+            height: 66px;
+        }
+
+        .auto-style5 {
+            width: 120px;
+            height: 66px;
+        }
+
+        .auto-style6 {
+            width: 161%;
+            height: 6000%;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+        }
+
+        .auto-style7 {
+            top: 0px;
+            position: relative;
+            left: 77px;
+            width: 116px;
+        }
+
+        .auto-style8 {
+            width: 165px;
+            height: 103px;
+        }
+
+        #topbarIRSL1 {
+            background-position: center top;
+            margin-left: 0px !important;
+            border-top: 2px solid #686767;
+            height: 100%;
+            width: 100%;
+            top: -7px;
+            position: relative;
+            /* left: -3px; */
+            /*border-bottom: 2px solid #686767;
+            border-right: 2px solid #686767;
+            background-image: url('/images/BACKGROUND-2.jpg');
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            color: #FFFFFF;
+            background-position-x: -491px;
+            background-position-y: -163px;*/
+            background-color: #FFA500 !important;
+        }
+
+        html > body #tabberpage {
+            border-bottom: thin outset;
+            border-right: thin outset;
+            -moz-box-sizing: border-box;
+            background-color: #fff;
+            padding: 10px;
+        }
+
+        .mainTop #myId {
+            height: 47px;
+            width: 168px;
+            position: relative;
+            top: -7px;
+        }
+
+        .mainTop {
+            position: relative;
+            top: -6px;
+            display: flex;
+            height: 45px;
+        }
+
+        div.sideTitle {
+            border-bottom: 1px solid #C0C0C0;
+            background-color: #CDCDCD;
+            background-image: url(/images/GridTitleBg.gif);
+            background-repeat: repeat-x;
+            background-position: top;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 11px;
+            font-weight: bold;
+            text-align: left;
+            height___: 18px;
+            padding: 2px 1px 1px 3px;
+        }
+
+        .mainTopTable {
+            width: 100%;
+            vertical-align: top;
+            height: 80%;
+            position: relative;
+            top: -8px;
+            left: -4px;
+        }
+
+        /*.sideContainer a:hover {
+            border-left: solid 4px #002245;
+            text-decoration: none;
+        }*/
+
+        /*.sideContainer a {
+            padding: 2px 2px 2px 3px;
+            border-bottom: 1px solid #EEEEEE;
+            text-align: left;
+            background-color: #E5E5E5;
+            zoom: 1;
+            display: block;
+            width: 206px;
+            padding-right: 2px;
+            line-height: 2;
+            padding-left: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }*/
+        /* Style the sidebar - fixed full height */
+        .sidebar {
+            height: 100%;
+            width: 160px;
+            /* position: fixed; */
+            z-index: 1;
+            top: 0;
+            left: 0;
+            /* background-color: #111; */
+            overflow-x: hidden;
+            padding-top: 16px;
+        }
+
+            /* Style sidebar links */
+            .sidebar a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 10px;
+                color: #000;
+                display: block;
+            }
+
+        /* Style links on mouse-over */
+        /*.sidebar a:hover {
+            color: #f1f1f1;
+        }*/
+
+        /* Style the main content */
+        .main {
+            margin-left: 160px; /* Same as the width of the sidenav */
+            padding: 0px 10px;
+        }
+
+        button, input, select, textarea {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            color: #000;
+        }
+
+        .form-horizontal .control-label {
+            text-align: left !important;
+        }
+
+        .formMain .form-group .col-md-10 input, .formMain .form-group .col-md-10 select {
+            display: block;
+            width: 100%;
+            height: 24px;
+            padding: 1px 8px;
+            font-size: 10px;
+            line-height: 0.429;
+            color: #555;
+            background-color: #FFF;
+            background-image: none;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        .formMain .form-group .col-md-10 textarea {
+            display: block;
+            width: 100%;
+            padding: 1px 8px;
+            font-size: 10px;
+            line-height: 0.429;
+            color: #555;
+            background-color: #FFF;
+            background-image: none;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        #divPopupTimeOut {
+            text-align: left;
+            margin-top: 15px;
+            position: fixed;
+            top: 40px;
+            right: 0px;
+            left: 490px;
+            z-index: 9999;
+            height: 165px;
+            width: 280px !important;
+        }
+    </style>
+
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="/Account/Admin" class="site_title"><i class="fa fa-paw"></i> <span>GUDIT CRM</span></a>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="~/AppFiles/Images/default.png" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            @if (!String.IsNullOrEmpty((string)HttpContext.Current.Session["FullName"]))
+                            {
+                                <span>Welcome,</span>
+                                <h2>@Session["FullName"]</h2>
+                            }
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!-- /menu profile quick info -->
+
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>General</h3>
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a href="~/Default.aspx"><i class="fa fa-home"></i> Home</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Charts", "Dashboard")"><i class="fa fa-bar-chart-o"></i>Dashboard</a>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-desktop"></i> Host Setting<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="@Url.Action("Comppanies", "Reports")">Configure System Host</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+
+                                    <a><i class="fa fa-edit"></i>User Account <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="@Url.Action("index", "Account")">List Of Users</a></li>
+                                        <li><a href="@Url.Action("Create", "Account")">New User</a></li>
+                                        <li><a href="@Url.Action("myProfile", "Account",new {id=Session["UserId"] })">Update Profile</a></li>
+                                        <li><a href="@Url.Action("ChangePassword", "Account")">Change Password</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-comment"></i>Manage Uptin Clients<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="@Url.Action("index", "Optinuser")">Uptin Clients</a></li>
+                                        <li><a href="@Url.Action("Details", "Optinuser")">Migrate CLient</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-envelope"></i>Email Campaign<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="@Url.Action("index", "EmailCampaing")">Send Campaign</a></li>
+                                        <li><a href="@Url.Action("readMails", "EmailCampaing")">Check Read Mails Reports</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-bar-chart-o"></i> Appointments <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="@Url.Action("index", "Events")">Manage Appointment</a></li>
+                                        <li><a href="@Url.Action("Create", "Events")">Create Appointment</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Settings">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Lock">
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="images/img.jpg" alt="">
+
+                                    @if (!String.IsNullOrEmpty((string)HttpContext.Current.Session["FullName"]))
+                                    {
+                                        @Session["FullName"]
+                                    }
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li><a href="/Account/myProfile/@Session["UserId"]"> Profile</a></li>
+                                    @*<li>
+                                            <a href="javascript:;">
+                                                <span class="badge bg-red pull-right">50%</span>
+                                                <span>Settings</span>
+                                            </a>
+                                        </li>*@
+                                    <li><a href="javascript:;">Help</a></li>
+                                    <li><a href="/logout.aspx"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                </ul>
+                            </li>
+
+                            <li role="presentation" class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="badge bg-green">0</span>
+                                </a>
+                                @*<ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                        email templates
+                                        <li>
+                                            <a>
+                                                <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                                <span>
+                                                    <span>John Smith</span>
+                                                    <span class="time">3 mins ago</span>
+                                                </span>
+                                                <span class="message">
+                                                    Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                </span>
+                                            </a>
+                                        </li>
+
+                                    </ul>*@
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+
+                        </div>
+
+                        <div class="title_right">
+                            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search for...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">Go!</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Admin Page</h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li>
+                                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li>
+                                                    <a href="#">Settings 1</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Settings 2</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a class="close-link"><i class="fa fa-close"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    @RenderBody()
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    © 2017-2018 All Rights Reserved.  Version 1.0.0<br>Visit <a href="http://www.opensource.irslconsulting.com" target="_blank" style="font-family: tahoma, verdana; font-size: 12px; color: #f46d12;">www.irslconsulting.com</a> for more information.
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+
+    <script src="@Url.Content("~/Scripts/jquery.min.js")"></script>
+    <script src="@Url.Content("~/js/jquery-ui.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/fastclick.js")"></script>
+    <script src="@Url.Content("~/Scripts/nprogress.js")"></script>
+    <script src="@Url.Content("~/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/js/tooltip.js")"></script>
+
+    <!-- bootstrap-wysiwyg -->
+    <script src="@Url.Content("~/gentelella/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js")"></script>
+    <script src="@Url.Content("~/gentelella/vendors/jquery.hotkeys/jquery.hotkeys.js")"></script>
+    <script src="@Url.Content("~/gentelella/vendors/google-code-prettify/src/prettify.js")"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="@Url.Content("~/gentelella/build/js/custom.min.js")"></script>
+
+    @RenderSection("Scripts", required: false)
+    @*<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>*@
+    <script src="@Url.Content("~/js/notify.min.js")"></script>
+
+
+
+    <script type="text/javascript">
+    var loginUrl='@Url.Action("Login", "Login")';
+    var extendMethodUrl='@Url.Action("ExtendSession", "Account")';
+    $(document).ready(function(){
+            SessionTimeout.schedulePopup();
+        });
+
+    window.SessionTimeout = (function() {
+            var _timeLeft, _popupTimer, _countDownTimer;
+            var stopTimers = function() {
+                window.clearTimeout(_popupTimer);
+                window.clearTimeout(_countDownTimer);
+            };
+            var updateCountDown = function() {
+                var min = Math.floor(_timeLeft / 60);
+                var sec = _timeLeft % 60;
+                if(sec < 10)
+                    sec = "0" + sec;
+
+                document.getElementById("CountDownHolder").innerHTML = min + ":" + sec;
+
+                if(_timeLeft > 0) {
+                    _timeLeft--;
+                    _countDownTimer = window.setTimeout(updateCountDown, 1000);
+                } else  {
+                    document.location = loginUrl;
+                }
+            };
+            var showPopup = function() {
+            $("#divPopupTimeOut").show();
+                _timeLeft = 120;
+                updateCountDown();
+            };
+            var schedulePopup = function() {
+            $("#divPopupTimeOut").hide();
+                stopTimers();
+                _popupTimer = window.setTimeout(showPopup, @PopupShowDelay);
+            };
+            var hidePopup=function(){
+            $("#divPopupTimeOut").hide();
+            };
+            var sendKeepAlive = function() {
+                stopTimers();
+                $("#divPopupTimeOut").hide();
+                $.ajax({
+                    type: "GET",
+                    url: extendMethodUrl,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function successFunc(response) {
+                        SessionTimeout.schedulePopup();
+                    },
+                    error:function(){
+                    }
+                });
+            };
+            return {
+                schedulePopup: schedulePopup,
+                sendKeepAlive: sendKeepAlive,
+                hidePopup:hidePopup,
+                stopTimers:stopTimers,
+            };
+
+        })();
+
+    </script>
+</body>
+</html>
+
+<div id="divPopupTimeOut" style="display:none; text-align: left; margin-top:15px; width:280px !important; position:fixed; top:40px; right:0px; z-index:9999; height:165px;" class="alert alert-warning">
+    <div class="row" style="margin-top:10px; margin-left:10px;">
+        Your session is about to expire!
+        <br />
+        <span id="CountDownHolder"></span>
+        <br />
+        Click OK to continue your session.
+    </div>
+    <div class="row">
+        <div class="text-center button-block" style="text-align:center; margin-top:22px;">
+            <button type="button" class="btn btn-default btn-sm" onclick="SessionTimeout.sendKeepAlive();">OK</button>
+            <button type="button" class="btn btn-default btn-sm" onclick="SessionTimeout.hidePopup();">Cancel</button>
+        </div>
+    </div>
+</div>
+
+@functions {
+    public int PopupShowDelay
+    {
+        get
+        {
+            return 1000 * (Convert.ToInt32(FormsAuthentication.Timeout.TotalSeconds) - 130);
+        }
+    }
+}
+

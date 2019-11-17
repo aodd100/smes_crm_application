@@ -1,0 +1,639 @@
+﻿@model db.crmdb.dbData.ViewActivityDetail
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/_LayoutPage.cshtml";
+    <style>
+        .form-group h1 {
+            font-size: 14px;
+        }
+
+        .formMain .form-group .col-md-10 input#ACTIONDATE {
+            width: 64% !important;
+            margin-right: 3px;
+        }
+
+        .formMain .form-group .col-md-10 input, .formMain .form-group .col-md-10 select {
+            display: block;
+            width: 100%;
+            height: 24px;
+            padding: 1px 8px;
+            font-size: 10px;
+            line-height: 0.429;
+            color: #555;
+            background-color: #FFF;
+            background-image: none;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        .formMain .form-group .col-md-10 textarea {
+            display: block;
+            width: 100%;
+            padding: 1px 8px;
+            font-size: 10px;
+            line-height: 0.429;
+            color: #555;
+            background-color: #FFF;
+            background-image: none;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        #tabberpage .formMain .form-group .col-md-10 textarea, #tabberpage .formMain .form-group .col-md-10 input {
+            width: 85% !important;
+        }
+
+        .formRight .form-group .col-md-10 {
+            flex: 1 1 0%;
+            display: flex;
+        }
+
+        .ui-datepicker-trigger {
+            width: 21px
+        }
+
+        #tabberpage .formMain .form-group .col-md-10 textarea, #tabberpage .formMain .form-group .col-md-10 input {
+            width: 85% !important;
+            line-height: 12px;
+        }
+        .ui-datepicker-trigger {
+            left: 4px;
+            position: relative;
+        }
+    </style>
+}
+@section SideBar {
+    <a class="sidebtn" id="crm" href="/Activity/create">New Activity</a>
+    <a class="sidebtn" ID="hr">Advance Search</a>
+    <style>
+    </style>
+}
+@using (Html.BeginForm("Create", "Activity", FormMethod.Post, new { accept_charset = "UTF-8", id = "SendMailForm" }))
+{
+    @Html.AntiForgeryToken()
+    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                <td class="pageTitle" valign="top" align="left">
+                    Manage Activity
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="dynabox" class="dynaskin popup-content" style="display:none;">
+        <div id="dragbar" class="CommonColor" style="text-align:right;color: #fff;">
+            <span id="hidebox" onclick="HideBox(" hidebox");return false"><b>X&nbsp;</b></span>
+        </div>
+        <iframe scrolling="yes" id="dynaframe" name="dynaframe" src="" frameborder="0"></iframe>
+    </div>
+    <div id="tabberpage" class="form-horizontal">
+        <div class="topDiv">
+            <div class="topDivSub1">
+                <h3>New Activity</h3>
+            </div>
+            <div class="topDivSub2">
+                <input type="submit" value="Save" class="save" />
+            </div>
+        </div>
+        @* @Html.HiddenFor(model => model.ActivityID)*@
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="formMain">
+            <div class="formLeft">
+
+                <div class="form-group">
+                    <h1>Which Company</h1>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.COMPANYID, "Company", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="95%">
+                                        @Html.HiddenFor(model => model.COMPANYID)
+                                        @Html.TextAreaFor(model => model.COMPANYNAME, 5, 40, htmlAttributes: new { @class = "form-control", @startfocus = "true", required = "true", @style = "padding: 7px; line-height: 14px;" })
+                                        @Html.ValidationMessageFor(model => model.COMPANYNAME, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td valign="top" nowrap="">
+                                        <img src="/i/lookup.gif" id="companyLookupImg" alt="Check existence" data-href="/Common/checkexist.aspx?render=no&amp;Company=" style="cursor: pointer;" width="24" height="16" border="0">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h1>What type of Activity</h1>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ActivityTypeId, "Activity Type", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.ActivityTypeId, ViewBag.Activity as SelectList, "--Select Activity--")
+                        @Html.ValidationMessageFor(model => model.ActivityTypeId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h1>What are they interested in buying</h1>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PRODUCTCODE, "OFFERINGS", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.PRODUCTCODE, ViewBag.Prods as SelectList, "--Select Offerings--")
+                        @Html.ValidationMessageFor(model => model.PRODUCTCODE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h1> Notes </h1>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Note, 5, 50, htmlAttributes: new { @class = "form-control", @startfocus = "true", required = "true", @style = "padding: 7px; line-height: 14px;" })
+                        @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="formRight">
+                <div class="form-group">
+                    <h1>Feedback Recieved</h1>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FeedbackRecieved, "Feedback Recieved", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.FeedbackRecieved, 3, 50, htmlAttributes: new { @class = "form-control", @startfocus = "true", required = "true", @style = "padding: 7px; line-height: 14px;" })
+
+                        @Html.ValidationMessageFor(model => model.FeedbackRecieved, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h1>Starting Date</h1>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InitiationDate,"Initiation Date", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.InitiationDate, new { htmlAttributes = new { @class = "form-control", required = "true", @style = "width: 72% !important;padding-right:5px", placeholder = "mm/dd/yyyy" } })
+                        @Html.ValidationMessageFor(model => model.InitiationDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h1>Expected Closure Date</h1>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ExpectedClosure, "Expected Closure", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ExpectedClosure, new { htmlAttributes = new { @class = "form-control", @style ="width: 72% !important;padding-right:5px", required = "true", placeholder = "mm/dd/yyyy" } })
+                        @Html.ValidationMessageFor(model => model.ExpectedClosure, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h1>Next Action</h1>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NextAction, "Next Action", htmlAttributes: new { @class = "control-label col-md-2", required="required" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.NextAction, 3, 50, htmlAttributes: new { @class = "form-control", @startfocus = "true", required = "true", @style = "padding: 7px; line-height: 14px;" })
+                        @Html.ValidationMessageFor(model => model.NextAction, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="save" />
+            </div>
+        </div>
+
+
+    </div>
+
+  
+ }
+
+        @section Scripts {
+
+            <script src="@Url.Content("~/js/jquery-ui.js")"></script>
+            @Scripts.Render("~/bundles/jqueryval")
+            <script src="~/Scripts/irsl_validation.js"></script>
+            <script type="text/javascript">
+
+                var mygroup = 1;
+                $(function () {
+                    $("#InitiationDate").datepicker({
+                        showOn: "button",
+                        buttonImage: "/i/SmallCalendar.gif",
+                        buttonImageOnly: true,
+                        buttonText: "Select date"
+                    });
+                    $("#ExpectedClosure").datepicker({
+                        showOn: "button",
+                        buttonImage: "/i/SmallCalendar.gif",
+                        buttonImageOnly: true,
+                        buttonText: "Select date"
+                    });
+
+                    $('#SALESPERSONIDImage').on('click',
+                        function (event) {
+
+                            var SALESPERSONIDval = $("#SALESPERSONID").val();
+                            var SALESPERSONNAMEval = $("#USERACCOUNT").val();
+                            var w = 400,
+                                h = 200;
+                            var
+                                l = (screen.availWidth - w) / 2,
+                                t = (screen.availHeight - h) / 2;
+
+                            var x = event.clientX; // Get the horizontal coordinate
+                            var y = event.clientY;
+                            y = y - 40;
+
+                            var url2 = $(this).attr("data-href");
+                            var url = url2.toString().split(":");
+                            url = url[0];
+                            document.getElementById('dynaframe').src = "";
+
+                            var el = document.getElementById('dynaframe').src =
+                                url + SALESPERSONIDval + "&textbox=SALESPERSONID&textbox2=USERACCOUNT";
+
+                            var modal = document.getElementById('dynabox');
+                            var span = document.getElementsByClassName("close")[0];
+
+                            modal.style.display = "block";
+                            $("#dynabox").css({
+                                "top": y,
+                                "left": x,
+                                "width": w,
+                                "height": h
+                            });
+                            $("#dynaframe").css({
+                                "width": w,
+                                "height": h
+                            });
+                            $("#dynabox, #dynaframe").addClass("active");
+                            $("#dynabox, #dynaframe").css("visibility", "visible");
+
+                            return false;
+                        });
+
+                    $('#CONTACTSPERSONIDImage').on('click',
+                        function (event) {
+                            event.preventDefault();
+
+                            var ProsepectName = $("#ProsepectName");
+                            var $textDivProsepectName = $("#textDivProsepectName");
+                            var $lblDivProsepectName = $("#lblDivProsepectName");
+                            var $lblProsepectName = $("#lblProsepectName");
+                            var $lblEmail = $("#lblEmail");
+                            var $lblPhone = $("#lblPhone");
+                            var $CONTACTID = $("#CONTACTID");
+
+                            if (ProsepectName.val() !== "" && ProsepectName.val() !== "na") {
+                                $.get("/Account/getContactPerson",
+                                    { name: ProsepectName.val() },
+                                    function (data) {
+                                        if (data.data !== null) {
+                                            $textDivProsepectName.css("display", "none");
+                                            $lblDivProsepectName.css("display", "block");
+                                            $lblProsepectName.text(data.FullName);
+                                            $lblEmail.text(data.Email);
+                                            $lblPhone.text(data.Phone);
+                                            $CONTACTID.val(data.ContactID);
+
+                                        }
+                                        else {
+                                            alert("No records for the search criterias");
+                                        }
+                                    });
+                            } else {
+                                var w = 400,
+                                    h = 200;
+                                var
+                                    l = (screen.availWidth - w) / 2,
+                                    t = (screen.availHeight - h) / 2;
+
+                                var x = event.clientX; // Get the horizontal coordinate
+                                var y = event.clientY;
+                                y = y - 40;
+
+                                var url2 = $(this).attr("data-href");
+                                var url = url2.toString().split(":");
+                                url = url[0];
+                                document.getElementById('dynaframe').src = "";
+
+                                var el = document.getElementById('dynaframe').src =
+                                    url + "&textbox=CONTACTID&textbox2=ProsepectName";
+
+                                var modal = document.getElementById('dynabox');
+                                var span = document.getElementsByClassName("close")[0];
+
+                                modal.style.display = "block";
+                                $("#dynabox").css({
+                                    "top": y,
+                                    "left": x,
+                                    "width": w,
+                                    "height": h
+                                });
+                                $("#dynaframe").css({
+                                    "width": w,
+                                    "height": h
+                                });
+                                $("#dynabox, #dynaframe").addClass("active");
+                                $("#dynabox, #dynaframe").css("visibility", "visible");
+                                return false;
+                            }
+                        });
+
+
+                    $('#hidebox').on('click',
+                        function (event) {
+                            $("#dynabox, #dynaframe").removeClass("active");
+                            $("#dynaframe").attr("src", "");
+                        });
+                    $('#dragbar span#hidebox').on('click',
+                        function (event) {
+                            $(".dynaskin").removeClass("active");
+                            $(".dynaskin").css("display", "none");
+                        });
+                    $('#dragbar span#hidebox').on('click',
+                        function (event) {
+                            $(".dynaskin").css("visibility", "hidden");
+                            $(".dynabox").css("visibility", "hidden");
+                            $(".dynaskin").css("visibility", "hidden");
+                        });
+
+                    $("#BIRTHDAY").blur(function () {
+                        val = $(this).val();
+                        val1 = Date.parse(val);
+
+                        if (val.length > 0) {
+                            $("#BIRTHDAY").val($.datepicker.formatDate("mm/dd/yyyy", val));
+                            $("#tabberpage #BIRTHDAY").css({ "border": "1px solid rgb(122, 122, 122)" });
+                            result = true;
+                        } else {
+                            if (isNaN(val1) == true && val !== '' || val == 'na') {
+                                $("#BIRTHDAY").val($.datepicker.formatDate("mm/dd/yyyy", new Date()));
+                                result = false;
+                                $("#tabberpage #BIRTHDAY").css({ "border": "2px solid #F90A0A" });
+                            } else {
+                                $("#tabberpage #BIRTHDAY").css({ "border": "1px solid rgb(122, 122, 122)" });
+                                result = true;
+                            }
+                        }
+
+
+                    });
+
+                    $(document).on("blur",
+                        "#tabberpage.myOuterDiv #EMAIL",
+                        function () {
+                            if (check_mail($(this).val())) {
+                                $(this).val().css({ "border": "1px solid rgb(122, 122, 122)" });
+                            } else {
+                                result = false;
+                                $(this).val().css({ "border": "2px solid #F90A0A" });
+                            }
+                        });
+
+
+                    if ($('#tabberpage #CONTACTTYPEID').change(function () {
+                        if ($("#tabberpage #CONTACTTYPEID :selected").val() == "") {
+                            result = false;
+                            $("#tabberpage #CONTACTTYPEID").css({ "border": "2px solid #F90A0A" });
+                        } else {
+                            $("#tabberpage #CONTACTTYPEID").css({ "border": "1px solid rgb(122, 122, 122)" });
+                        }
+                    }));
+
+                    if ($('#tabberpage #COMPANYTYPEID').change(function () {
+                        if ($("#tabberpage #COMPANYTYPEID :selected").val() == "") {
+                            result = false;
+                            $("#tabberpage #COMPANYTYPEID").css({ "border": "2px solid #F90A0A" });
+                        } else {
+                            $("#tabberpage #COMPANYTYPEID").css({ "border": "1px solid rgb(122, 122, 122)" });
+                        }
+                    }));
+
+                    $('#companyLookupImg').on('click',
+                        function (event) {
+                            //function companyLookup(url, event) {
+
+                            var val = $("#COMPANYNAME").val();
+                            var w = 300,
+                                h = 250;
+                            var
+                                l = (screen.availWidth - w) / 2,
+                                t = (screen.availHeight - h) / 2;
+
+                            var x = event.clientX; // Get the horizontal coordinate
+                            var y = event.clientY;
+                            y = y - 40;
+                            //var url2 = $(event).attr("data-href");
+                            //var url = url2.toString().split
+
+
+                            var url1 = $(this).attr("data-href");
+                            var url = url1.toString().split(":");
+                            url = url[0];
+                            document.getElementById('dynaframe').src = "";
+                            var el = document.getElementById('dynaframe').src = url + val + "&textbox=CompanyId&textbox2=COMPANYNAME";
+                            var modal = document.getElementById('dynabox');
+                            var span = document.getElementsByClassName("close")[0];
+
+                            modal.style.display = "block";
+                            $("#dynabox").css({
+                                "top": t-90,
+                                "left": l+20,
+                                "width": w,
+                                "height": h
+                            });
+                            $("#dynaframe").css({
+                                "width": w,
+                                "height": h
+                            });
+                            $("#dynabox, #dynaframe").addClass("active");
+                            $("#dynabox, #dynaframe").css("visibility", "visible");
+
+                            return false;
+                        });
+
+                    $("#Country").change(function () {
+                        var selectedCountry = $("#Country").val();
+                        var regionsSelect = $('#Region');
+                        regionsSelect.empty();
+                        if (selectedCountry != null && selectedCountry != '') {
+                            AddRegions(selectedCountry, regionsSelect);
+                        }
+                    });
+                    $("#ActivityTypeId").on("change", function () {
+                        if ($("#ActivityTypeId :selected").val() == "") {
+                            $("#ActivityTypeId").css({ "border": "2px solid #F90A0A" });
+                        } else {
+                            $("#ActivityTypeId").css({ "border": "1px solid rgb(122, 122, 122)" });
+                        }
+                    });
+                    $("#PRODUCTCODE").on("change", function () {
+                        if ($("#PRODUCTCODE :selected").val() == "") {
+                            $("#PRODUCTCODE").css({ "border": "2px solid #F90A0A" });
+                        } else {
+                            $("#PRODUCTCODE").css({ "border": "1px solid rgb(122, 122, 122)" });
+                        }
+                    });
+
+                    $(document).on("focusout blur", '#tabberpage #InitiationDate',function () {
+                        if (check_date($('#tabberpage #InitiationDate'), "STATE", $('#tabberpage #InitiationDate').val())) {
+                            $(this).css({ "border": "1px solid #7a7a7a" });
+                            result = true;
+
+                        } else {
+                            $(this).css({ "border": "2px solid #F90A0A" });
+                            result = false;
+                        }
+                    });
+
+                    $(document).on("focusout blur",'#tabberpage #ExpectedClosure',function () {
+                        if (check_date($('#tabberpage #ExpectedClosure'), "STATE", $('#tabberpage #ExpectedClosure').val())) {
+                            $(this).css({ "border": "1px solid #7a7a7a" });
+                            result = true;
+
+                        } else {
+                            $(this).css({ "border": "2px solid #F90A0A" });
+                            result = false;
+                        }
+                    });
+
+                    $(".save").on('click', function (e) {
+
+                        $(".loader").css("display", "block");
+
+                        var form = $("#SendMailForm")[0];
+                        $.ajaxSetup({ cache: false });
+
+                        var result = true;
+                        var form = $(form);
+                        $.ajaxSetup({ cache: false });
+                        msg = "";
+                        msg += "Error \n" +
+                            "-------------------------------------------------\n" +
+                            " Some Fields are invalid\n" +
+                            " Please, check your form again and re submit\n";
+
+                        if ($("#tabberpage #COMPANYNAME").val() == "") {
+                            $("#tabberpage #COMPANYNAME").css({ "border": "2px solid #F90A0A" });
+                            result = false;
+                            msg += "\n* COMPANYNAME field required";
+                        } else {
+                            $("#tabberpage #COMPANYNAME").css({ "border": "1px solid rgb(122, 122, 122)" });
+                        }
+                        if ($("#Note").val() == "") {
+                            $("#Note").css({ "border": "2px solid #F90A0A" });
+                            result = false;
+                            msg += "\n* Note field required";
+                        } else {
+                            $("#Note").css({ "border": "1px solid rgb(122, 122, 122)" });
+                        }
+                        if ($("#FeedbackRecieved").val() == "") {
+                            $("#FeedbackRecieved").css({ "border": "2px solid #F90A0A" });
+                            result = false;
+                            msg += "\n* Feedback Recieved field required";
+                        } else {
+                            $("#FeedbackRecieved").css({ "border": "1px solid rgb(122, 122, 122)" });
+                        }
+
+                        if ($("#InitiationDate").val() == "") {
+                            $("#InitiationDate").css({ "border": "2px solid #F90A0A" });
+                            result = false;
+                            msg += "\n* Initiation Date field required";
+                        } else {
+                            $("#InitiationDate").css({ "border": "1px solid rgb(122, 122, 122)" });
+                        }
+
+                        if ($("#ExpectedClosure").val() == "") {
+                            $("#ExpectedClosure").css({ "border": "2px solid #F90A0A" });
+                            result = false;
+                            msg += "\n* Expected Closure field required";
+                        } else {
+                            $("#ExpectedClosure").css({ "border": "1px solid rgb(122, 122, 122)" });
+                        }
+
+                        if ($("#NextAction").val() == "") {
+                            $("#NextAction").css({ "border": "2px solid #F90A0A" });
+                            result = false;
+                            msg += "\n* Next Action field required";
+                        } else {
+                            $("#NextAction").css({ "border": "1px solid rgb(122, 122, 122)" });
+                        }
+                        if ($("#ActivityTypeId :selected").val() == "") {
+                            $("#ActivityTypeId").css({ "border": "2px solid #F90A0A" });
+                            result = false;
+                            msg += "\n* Activity Type field required";
+                        } else {
+                            $("#ActivityTypeId").css({ "border": "1px solid rgb(122, 122, 122)" });
+                        }
+
+                        if ($("#PRODUCTCODE :selected").val() == "") {
+                            $("#PRODUCTCODE").css({ "border": "2px solid #F90A0A" });
+                            result = false;
+                            msg += "\n* OFFERINGS field required";
+                        } else {
+                            $("#PRODUCTCODE").css({ "border": "1px solid rgb(122, 122, 122)" });
+                        }
+
+                        if (result) {
+                            $.ajax({
+                                type: 'POST',
+                                url: $(form)[0].action,
+                                data: $(form).serialize(),
+                                processData: false,
+                                contentType: false,
+                                success: function (response) {
+                                    if (response.success) {
+                                        //$("#firstTab").html(response.html);
+                                        $.notify(response.message, "success");
+
+                                        $(".loader").css("display", "none");
+                                    } else {
+                                        $.notify(response.message, "error");
+
+                                        $(".loader").css("display", "none");
+                                    }
+                                }
+                            });
+                            return true;
+                        }
+                        else {
+                            alert(msg);
+                        }
+                        return false;
+                    });
+                });
+
+               
+
+                function changeStatusID(form) {
+                    $("#STATUSID").val($("#StatusDesc option:selected").val());
+                }
+                
+                function listbox_selectall(listID, isSelect) {
+                    var listbox = document.getElementById(listID);
+                    for (var count = 0; count < listbox.options.length; count++) {
+                        listbox.options[count].selected = isSelect;
+                    }
+                }
+
+                function compareText(option1, option2) {
+                    return option1.text < option2.text ? -1 : option1.text > option2.text ? 1 : 0;
+                }
+               
+            </script>
+        }

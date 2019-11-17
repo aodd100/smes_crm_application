@@ -1,0 +1,563 @@
+﻿@model db.crmdb.dbData.ViewNewOpportunityDetail
+
+@{
+    ViewBag.Title = "Manage Opportunity";
+    Layout = "~/Views/_LayoutPage.cshtml";
+    <style>
+        .form-group h1 {
+            font-size: 14px;
+        }
+
+        .formMain .form-group .col-md-10 input#ACTIONDATE {
+            width: 64% !important;
+            margin-right: 3px;
+        }
+
+        .formMain .form-group .col-md-10 input, .formMain .form-group .col-md-10 select {
+            display: block;
+            width: 100%;
+            height: 24px;
+            padding: 1px 8px;
+            font-size: 10px;
+            line-height: 0.429;
+            color: #555;
+            background-color: #FFF;
+            background-image: none;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        .formMain .form-group .col-md-10 textarea {
+            display: block;
+            width: 100%;
+            padding: 1px 8px;
+            font-size: 10px;
+            line-height: 0.429;
+            color: #555;
+            background-color: #FFF;
+            background-image: none;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        #tabberpage .formMain .form-group .col-md-10 textarea, #tabberpage .formMain .form-group .col-md-10 input {
+            width: 85% !important;
+        }
+
+        .formRight .form-group .col-md-10 {
+            flex: 1 1 0%;
+            display: flex;
+        }
+
+        .ui-datepicker-trigger {
+            width: 21px
+        }
+
+        #tabberpage .formMain .form-group .col-md-10 textarea, #tabberpage .formMain .form-group .col-md-10 input {
+            width: 85% !important;
+            line-height: 12px;
+        }
+    </style>
+}
+@section SideBar {
+    <a class="sidebtn" id="crm" href="/Opportunity/create">New Opportunity</a>
+    <a class="sidebtn" ID="hr">Advance Search</a>
+    <style>
+    </style>
+}
+@using (Html.BeginForm("Create", "Opportunity", FormMethod.Post, new { onSubmit = "return jQueryAjaxPost(this)" }))
+{
+    @Html.AntiForgeryToken()
+    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                <td class="pageTitle" valign="top" align="left">
+                    Manage Opportunity
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="dynabox" class="dynaskin popup-content" style="display:none;">
+        <div id="dragbar" class="CommonColor" style="text-align:right;color: #fff;">
+            <span id="hidebox" onclick="HideBox(" hidebox");return false"><b>X&nbsp;</b></span>
+        </div>
+        <iframe scrolling="yes" id="dynaframe" name="dynaframe" src="" frameborder="0"></iframe>
+    </div>
+    <div id="tabberpage" class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="topDiv">
+            <div class="topDivSub1">
+                <h3>CONTACT INFORMATION</h3>
+            </div>
+            <div class="topDivSub2">
+                <input type="submit" value="Save" class="save" />
+            </div>
+        </div>
+        <hr />
+        <div class="formMain">
+            <div class="formLeft">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TITLE, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("TITLE", new List<SelectListItem>
+                                    {
+                                        new SelectListItem { Text = "Mr.", Value = "Mr." },
+                                        new SelectListItem { Text = "Mrs.", Value = "Mrs." },
+                                        new SelectListItem { Text = "Dr.", Value = "Dr." },
+                                        new SelectListItem {Text = "Esq", Value = "Esq" },
+                                    }, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TITLE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.OWNERID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="95%">
+                                        @Html.HiddenFor(model => model.OWNERID)
+                                        @Html.EditorFor(model => model.USERACCOUNT, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                                        @Html.ValidationMessageFor(model => model.OWNERID, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td valign="top" nowrap="">
+
+                                        <img id="SALESPERSONIDImage" src="/i/user.gif" style="cursor: pointer" data-href="/common/PopAccount.aspx?render=no&amp;sales=" border="0">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StatusDesc, "STATUS", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                    <div class="col-md-10">
+                        @Html.HiddenFor(model => model.STATUSID)
+                        @Html.DropDownListFor(model => model.StatusDesc, ViewBag.STATUS as SelectList, "--Select STATUS--", new { onChange = "changeStatusID();" })
+                        @Html.ValidationMessageFor(model => model.STATUSID, "", new { @class = "text-danger", @style = "width: 100%" })
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <h1>Who is the Prospect </h1>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CONTACTID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <table id="textDivProsepectName" width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="95%">
+                                        @*@Html.HiddenFor(model => model.CONTACTID)*@
+                                        @Html.EditorFor(model => model.ProsepectName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ProsepectName, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td valign="top" nowrap="">
+
+                                        <img id="CONTACTSPERSONIDImage" src="/i/user.gif" style="cursor: pointer" data-href="/common/PopContacts.aspx?render=no&amp;sales=" border="0">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div id="lblDivProsepectName" style="display:none; border: 1px solid rgb(238, 238, 238); height: 74px;">
+                            @Html.HiddenFor(model => model.CONTACTID)
+                            <label id="lblProsepectName" style="font-weight:600"></label>(<label id="lblPhone" style="color:blue"></label>)<br />
+                            <label id="lblCompnay"></label><br />
+                            <label id="lblEmail"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h1>Opportinuty Notes </h1>
+                </div>
+                <div class="form-group">
+                    <label>OPPORTUNITY NOTES</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.NOTE, 5, 40, new { htmlAttributes = new { @class = "form-control BoxDesign", required = "true" } })
+                        @Html.ValidationMessageFor(model => model.NOTE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="formRight">
+                <div class="form-group">
+                    <h1>First follow-up action</h1>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NEXTACTIONNOTE, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.NEXTACTIONNOTE, 5, 40, new { htmlAttributes = new { @class = "form-control BoxDesign" } })
+                        @Html.ValidationMessageFor(model => model.NEXTACTIONNOTE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ACTIONDATE, "ACTION DATE", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ACTIONDATE, new { htmlAttributes = new { @class = "form-control", required = "true", placeholder = "mm/dd/yyyy" } })
+                        @Html.ValidationMessageFor(model => model.ACTIONDATE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h1>What are they interested in buying</h1>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PRODUCTCODE, "OFFERINGS", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.PRODUCTCODE, ViewBag.Prods as SelectList, "--Select Offerings--")
+                        @Html.ValidationMessageFor(model => model.PRODUCTCODE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="formMain">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="save" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+
+    <script src="@Url.Content("~/js/jquery-ui.js")"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/irsl_validation.js"></script>
+    <script type="text/javascript">
+
+        var mygroup = 1;
+        $(function () {
+            $("#ACTIONDATE").datepicker({
+                showOn: "button",
+                buttonImage: "/i/SmallCalendar.gif",
+                buttonImageOnly: true,
+                buttonText: "Select date"
+            });
+
+
+
+            $('#SALESPERSONIDImage').on('click',
+                function(event) {
+
+                    var SALESPERSONIDval = $("#SALESPERSONID").val();
+                    var SALESPERSONNAMEval = $("#USERACCOUNT").val();
+                    var w = 400,
+                        h = 200;
+                    var
+                        l = (screen.availWidth - w) / 2,
+                        t = (screen.availHeight - h) / 2;
+
+                    var x = event.clientX; // Get the horizontal coordinate
+                    var y = event.clientY;
+                    y = y - 40;
+
+                    var url2 = $(this).attr("data-href");
+                    var url = url2.toString().split(":");
+                    url = url[0];
+                    document.getElementById('dynaframe').src = "";
+
+                    var el = document.getElementById('dynaframe').src =
+                        url + SALESPERSONIDval + "&textbox=SALESPERSONID&textbox2=USERACCOUNT";
+
+                    var modal = document.getElementById('dynabox');
+                    var span = document.getElementsByClassName("close")[0];
+
+                    modal.style.display = "block";
+                    $("#dynabox").css({
+                        "top": y,
+                        "left": x,
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynaframe").css({
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynabox, #dynaframe").addClass("active");
+                    $("#dynabox, #dynaframe").css("visibility", "visible");
+
+                    return false;
+                });
+
+            $('#CONTACTSPERSONIDImage').on('click',
+                function (event) {
+                    event.preventDefault();
+
+                    var ProsepectName = $("#ProsepectName");
+                    var $textDivProsepectName = $("#textDivProsepectName");
+                    var $lblDivProsepectName = $("#lblDivProsepectName");
+                    var $lblProsepectName = $("#lblProsepectName");
+                    var $lblEmail = $("#lblEmail");
+                    var $lblPhone = $("#lblPhone");
+                    var $CONTACTID = $("#CONTACTID");
+
+                    if (ProsepectName.val() !== "" && ProsepectName.val() !== "na") {
+                      $.get("/Account/getContactPerson",
+                          { name: ProsepectName.val() },
+                        function (data) {
+                            if (data.data !== null) {
+                                $textDivProsepectName.css("display", "none");
+                                $lblDivProsepectName.css("display", "block");
+                                $lblProsepectName.text(data.FullName);
+                                $lblEmail.text(data.Email);
+                                $lblPhone.text(data.Phone);
+                                $CONTACTID.val(data.ContactID);
+
+                            }
+                            else {
+                                alert("No records for the search criterias");
+                            }
+                        });
+                    }else{
+                            var w = 400,
+                                h = 200;
+                            var
+                                l = (screen.availWidth - w) / 2,
+                                t = (screen.availHeight - h) / 2;
+
+                            var x = event.clientX; // Get the horizontal coordinate
+                            var y = event.clientY;
+                            y = y - 40;
+
+                            var url2 = $(this).attr("data-href");
+                            var url = url2.toString().split(":");
+                            url = url[0];
+                            document.getElementById('dynaframe').src = "";
+
+                            var el = document.getElementById('dynaframe').src =
+                                url + "&textbox=CONTACTID&textbox2=ProsepectName";
+
+                            var modal = document.getElementById('dynabox');
+                            var span = document.getElementsByClassName("close")[0];
+
+                            modal.style.display = "block";
+                            $("#dynabox").css({
+                                "top": y,
+                                "left": x,
+                                "width": w,
+                                "height": h
+                            });
+                            $("#dynaframe").css({
+                                "width": w,
+                                "height": h
+                            });
+                            $("#dynabox, #dynaframe").addClass("active");
+                            $("#dynabox, #dynaframe").css("visibility", "visible");
+                            return false;
+                    }
+                });
+
+
+            $('#hidebox').on('click',
+                function (event) {
+                    $("#dynabox, #dynaframe").removeClass("active");
+                    $("#dynaframe").attr("src", "");
+                });
+            $('#dragbar span#hidebox').on('click',
+                function (event) {
+                    $(".dynaskin").removeClass("active");
+                    $(".dynaskin").css("display", "none");
+                });
+            $('#dragbar span#hidebox').on('click',
+                function (event) {
+                    $(".dynaskin").css("visibility", "hidden");
+                    $(".dynabox").css("visibility", "hidden");
+                    $(".dynaskin").css("visibility", "hidden");
+                });
+
+            //$(document).on("change",
+            //    "#OFFERINGID",
+            //    function () {
+            //        val retVal = $("#OFFERINGID option:selected").val();
+            //        $("#OFFERINGID").val(retVal);
+            //    });
+        $(document).on("blur",
+            "#tabberpage.myOuterDiv #EMAIL",
+            function() {
+               if (check_mail($(this).val())) {
+                    $(this).val().css({ "border": "1px solid rgb(122, 122, 122)" });
+                } else {
+                    result = false;
+                    $(this).val().css({ "border": "2px solid #F90A0A" });
+                }
+            });
+
+
+        if ($('#tabberpage #CONTACTTYPEID').change(function () {
+            if ($("#tabberpage #CONTACTTYPEID :selected").val() == "") {
+                result = false;
+                $("#tabberpage #CONTACTTYPEID").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#tabberpage #CONTACTTYPEID").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+        }));
+
+        if ($('#tabberpage #COMPANYTYPEID').change(function () {
+            if ($("#tabberpage #COMPANYTYPEID :selected").val() == "") {
+                result = false;
+                $("#tabberpage #COMPANYTYPEID").css({ "border": "2px solid #F90A0A" });
+            } else {
+                $("#tabberpage #COMPANYTYPEID").css({ "border": "1px solid rgb(122, 122, 122)" });
+            }
+        }));
+
+        //$(document).ready(function () {
+        //    var selectedCountry = $("#Country").val();
+        //    var selectedRegion = $("#Region").val();
+        //    var regionsSelect = $('#Region');
+        //    AddRegions(selectedCountry, regionsSelect);
+        //    if (selectedRegion != null && selectedRegion != '') {
+        //        regionsSelect.val = selectedRegion;
+        //    };
+        //});
+
+        $("#Country").change(function () {
+            var selectedCountry = $("#Country").val();
+            var regionsSelect = $('#Region');
+            regionsSelect.empty();
+            if (selectedCountry != null && selectedCountry != '') {
+                AddRegions(selectedCountry, regionsSelect);
+            }
+        });
+    });
+                                    @*function AddRegions(selectedCountry, regionsSelect) {
+        $.getJSON('@Url.Action("GetRegions")', {
+            iso3: selectedCountry
+        }, function (regions) {
+            if (regions != null && !jQuery.isEmptyObject(regions)) {
+                regionsSelect.append($('<option/>', {
+                    value: null,
+                    text: ""
+                }));
+                $.each(regions, function (index, region) {
+                    regionsSelect.append($('<option/>', {
+                        value: region.Value,
+                        text: region.Text
+                    }));
+                });
+            };
+        });
+    }*@
+                                    function changeStatusID(form) {
+                                                            //alert($("#StatusDesc option:selected").val());
+                                                            $("#STATUSID").val($("#StatusDesc option:selected").val());
+
+                                    }
+                                    function jQueryAjaxPost(form) {
+
+                                        var result = true;
+                                        var form = $(form);
+                                                                $.ajaxSetup({ cache: false });
+                                        msg = "";
+                                        msg += "Error \n" +
+                                            "-------------------------------------------------\n" +
+                                            " Some Fields are invalid\n" +
+                                            " Please, check your form again and re submit\n";
+
+
+                                        if ($("#lblDivProsepectName").css("display") !== "block") {
+                                            if ($('#ProsepectName').val() == "" || $('#ProsepectName').val() == "na") {
+                                                result = false;
+                                                                        $("#ProsepectName").css({ "border": "2px solid #F90A0A" });
+                                                msg += "\n* ProsepectName field required";
+                                            } else {
+                                                                        $("#ProsepectName").css({ "border": "1px solid rgb(122, 122, 122)" });
+                                            }
+                                        }
+
+
+
+                                        ////-------------------------------------------------------------------------
+                                        //if ($("#STATUSID :selected").val() == "") {
+                                        //    $("#STATUSID").css({ "border": "2px solid #F90A0A" });
+                                        //    result = false;
+                                        //    msg += "\n* STATUS field required";
+                                        //} else {
+                                        //    $("#STATUSID").css({ "border": "1px solid rgb(122, 122, 122)" });
+                                        //}
+
+
+
+
+                                        //if ($("#tabberpage #closedate").val() !== "" && $("#tabberpage #closedate").val() !== "na") {
+
+                                        //    if (isFutureDate($("#tabberpage #closedate").val())) {
+                                        //        $("#tabberpage #closedate").css({ "border": "2px solid #f90a0a" });
+                                        //        alert("entered date is a future date");
+                                        //        $("#tabberpage #closedate").val("")
+                                        //        result = false;
+                                        //    } else {
+                                        //        $("#tabberpage #closedate").css({ "border": "1px solid rgb(122, 122, 122)" });
+                                        //    }
+                                        //}
+
+                                        if (result)
+                                        {
+
+                                                                    $.ajax({
+                                                type: 'POST',
+                                                                        url: $(form)[0].action,
+                                                                        data: $(form).serialize(),
+                                                                        processData: false,
+                                                                        contentType: false,
+                                                                        success: function(response) {
+                                                    if (response.success)
+                                                    {
+                                                                                //$("#firstTab").html(response.html);
+                                                                                $.notify(response.message, "success");
+                                                    }
+                                                    else
+                                                    {
+                                                                                $.notify(response.message, "error");
+                                                    }
+
+                                                }
+                                            });
+                                            return true;
+                                        }
+                                        else
+                                        {
+                                            alert(msg);
+                                        }
+                                        return false;
+                                    }
+                                    function listbox_selectall(listID, isSelect) {
+                                        var listbox = document.getElementById(listID);
+                                        for (var count = 0; count< listbox.options.length; count++) {
+                                        listbox.options[count].selected = isSelect;
+                                        }
+                                        }
+
+                                        function compareText(option1, option2) {
+                                        return option1.text < option2.text ? -1 : option1.text > option2.text ? 1 : 0;
+                                        }
+
+
+                                        function addItem() {
+                                        $("#ListDips option:selected").appendTo("#ListDip");
+                                        $("#ListDip option").attr("selected", false);
+                                        }
+                                        function addallItems() {
+                                        $("#ListDips option").appendTo("#ListDip");
+                                        $("#ListDip option").attr("selected", false);
+                                        }
+                                        function removeItem() {
+                                        $("#ListDip option:selected").appendTo("#ListDips");
+                                        $("#ListDips option").attr("selected", false);
+                                        }
+                                        function removeallItems() {
+                                        $("#ListDip option").appendTo("#ListDips");
+                                        $("#ListDips option").attr("selected", false);
+                                        }
+                                        </script>
+}
+                                
+

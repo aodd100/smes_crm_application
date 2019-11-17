@@ -1,0 +1,115 @@
+﻿@model IEnumerable<db.crmdb.dbData.ViewActivityDetail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutPage.cshtml";
+    <style type="text/css">
+        .btn {
+            width: 161px;
+        }
+
+        table.dataTable {
+            position: relative;
+            top: 5px;
+        }
+    </style>
+}
+@section SideBar {
+    <a class="sidebtn" id="crm" href="/Activity/create">New Activity</a>
+    <a class="sidebtn" ID="hr">Advance Search</a>
+}
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tbody>
+        <tr>
+            <td class="pageTitle" valign="top" align="left">
+                Manage Activity
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2>List Of Activities</h2>
+
+@if (Model.Any())
+{
+    <div>
+
+        <div class="formhorizontal">
+            <div class="form-group">
+                <div class=" col-md-offset-2 col-md-2" style="display:flex;flex-flow:row">
+                    @*@Html.ActionLink("Export to CSV", "ExportCSV", "Companies", null, new { @class = "btn btn-primary" })*@
+                    @Html.ActionLink("Export to Excel", "ExportExcel", "Activity", null, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+<div id="tabberpage" class="form-horizontal">
+    <table id="mytable" class="table table-striped table-bordered">
+        <thead class="black white-text">
+            <tr>
+                <th class="GridTitle" style="width: 20%">
+                    @Html.DisplayNameFor(model => model.COMPANYNAME)
+                </th>
+                <th class="GridTitle" style="width: 20%">
+                    @Html.DisplayNameFor(model => model.InitiationDate)
+                </th>
+                <th class="GridTitle" style="width: 15%">
+                    @Html.DisplayNameFor(model => model.ExpectedClosure)
+                </th>
+                <th class="GridTitle" style="width: 20%"></th>
+        </thead>
+        <tbody>
+            @if (Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="GridItem GridItemHlip">
+                            <a class="" href="@Url.Action("Details","Activity", new { id=item.ActivityID })">
+                                @Html.DisplayFor(modelItem => item.COMPANYNAME)
+                            </a>
+                        </td>
+                        <td class="GridItem GridItemHlip">
+                            @Html.DisplayFor(modelItem => item.InitiationDate)
+                        </td>
+                        <td class="GridItem GridItemHlip">
+                            @Html.DisplayFor(modelItem => item.ExpectedClosure)
+                        </td>
+                        <td class="GridItem GridItemHlip">
+                            <a href="@Url.Action("Delete","Activity", new { id = item.ActivityID })" onclick="return ConfirmDelete()">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#mytable").dataTable();
+        });
+        function Edit(url) {
+            $.ajax({
+                type: 'GET',
+                url: url,
+                success: function () {
+
+                },
+                dataType: dataType
+            });
+        }
+        function ConfirmDelete() {
+            if (confirm("Are you sure you want to delete this Company")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+
+}

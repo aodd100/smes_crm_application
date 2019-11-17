@@ -1,0 +1,187 @@
+﻿@model db.crmdb.dbData.OPTINUSER
+
+@{
+    ViewBag.Title = "Optine User Details";
+    Layout = "~/Views/_LayoutAdminPage.cshtml";
+<style type="text/css">
+    #tabberpage .formMain .form-group .col-md-10 textarea, #tabberpage .formMain .form-group .col-md-10 input {
+        width: 85% !important;
+    }
+
+    .formRight .form-group .col-md-10 {
+        flex: 1 1 0%;
+        display: flex;
+    }
+
+    .ui-datepicker-trigger {
+        width: 21px
+    }
+
+    #tabberpage .formMain .form-group .col-md-10 textarea, #tabberpage .formMain .form-group .col-md-10 input {
+        width: 85% !important;
+        line-height: 12px;
+    }
+
+    .details.formMain.form-group.col-md-10 select {
+        width: 100% !important;
+    }
+
+    .details.formMain.form-group.col-md-10 {
+        flex: 1;
+        text-align: left;
+        border-bottom: dashed 1px #686767;
+    }
+
+    .details.form-group {
+        display: flex;
+        padding: 3px;
+        margin-bottom: 7px;
+    }
+
+    html > body #tabberpage {
+        border-bottom: none !important;
+        border-right: none !important;
+        -moz-box-sizing: border-box;
+        background-color: #fff;
+        padding: 10px;
+    }
+    .details .formMain .form-group .col-md-10 select {
+        width: 100% !important;
+    }
+
+    .details .formMain .form-group .col-md-10 {
+        flex: 1;
+        text-align: left;
+        border-bottom: dashed 1px #686767;
+    }
+
+    .details .form-group {
+        display: flex;
+        padding: 3px;
+        margin-bottom: 7px;
+    }
+</style>
+}
+<div id="tabberpage" class="form-horizontal details">
+    <div class="topDiv">
+        <div class="topDivSub1">
+
+            @Html.ActionLink("Convert Lead To Contact", "LeadToContact", new { id = Model.OPTINUSERID }, new { @class = "btn btn-primary" })
+        </div>
+        <div class="topDivSub2">
+            @Html.ActionLink("Last searched", "index", new { @class = "btn btn-primary" })
+        </div>
+    </div>
+    <hr />
+    <div class="formMain">
+        <div class="formLeft">
+            <div class="form-group">
+                @Html.LabelFor(model => model.EMAIL, "Email")
+
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.EMAIL)
+
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.FIRSTNAME, "First Name")
+
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.FIRSTNAME)
+
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.LASTNAME, "Last Name")
+
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.LASTNAME)
+
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PHONENUMBER, "Phone Number")
+
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.PHONENUMBER)
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="formRight">
+            <div class="form-group">
+                @Html.LabelFor(model => model.DATEENTERED, "Date Entered")
+
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.DATEENTERED)
+
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.TOREVIEWPROFILE, "To Review Profile")
+
+                <div class="col-md-10">
+
+                    @if (Model.TOREVIEWPROFILE == true)
+                    {
+                        <label>Want to review my profile</label>
+                    }
+                    else
+                    {
+                        <label>Dont want to review my profile</label>
+                    }
+
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.TOUPDATEPROFILE, "To Update Profile")
+
+                <div class="col-md-10">
+                    @if(Model.TOUPDATEPROFILE == true)
+                    {
+                    <label>Want to update my profile</label>
+                    }
+                    else
+                    {
+                    <label>Dont want to update my profile</label>
+                    }
+
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.TOREMOVEPROFILE, "To Remove Profile")
+
+                <div class="col-md-10">
+
+                    @if (Model.TOREMOVEPROFILE == true)
+                    {
+                        <label>Want to remove my profile</label>
+                    }
+                    else
+                    {
+                        <label>Dont want to remove my profile</label>
+                    }
+
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.COMMENT, "Comment")
+
+                <div class="col-md-10" style="height:150px">
+
+                    @Html.DisplayFor(model => model.COMMENT)
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

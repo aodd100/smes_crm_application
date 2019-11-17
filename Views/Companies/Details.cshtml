@@ -1,0 +1,318 @@
+﻿@model db.crmdb.dbData.ViewCompaniesDetail
+
+@{
+    ViewBag.Title = "Company Details";
+    Layout = "~/Views/_LayoutPage.cshtml";
+
+}
+
+@section SideBar {
+    <a class="sidebtn" id="crm" href="/Companies/create">New Company</a>
+    <a class="sidebtn" ID="hr">Advance Search</a>
+    <style>
+        .details .formMain .form-group .col-md-10 select {
+            width: 100% !important;
+        }
+        .details .formMain .form-group .col-md-10 {
+            flex: 1;
+            text-align: left;
+            border-bottom: dashed 1px #686767;
+        }
+        .details .form-group {
+            display: flex;
+            padding: 3px;
+            margin-bottom: 7px;
+        }
+    </style>
+}
+    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                <td class="pageTitle" valign="top" align="left">
+                    Company Details
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="tabberpage" class="form-horizontal details">
+        <div class="topDiv">
+            <div class="topDivSub1">
+                <h3>CONTACT INFORMATION</h3>
+            </div>
+            <div class="topDivSub2">
+                @Html.ActionLink("Edit", "Edit", new { id = ViewBag.Id })
+                @Html.ActionLink("Last searched", "index", new { @class = "save" })
+            </div>
+        </div>
+        <hr />
+        @Html.HiddenFor(model => model.COMPANYID)
+        <div class="formMain">
+            <div class="formLeft">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.COMPANYNAME)
+                    <div class="col-md-10">
+                        <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="100%">
+                                        @Html.DisplayFor(model => model.COMPANYNAME)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ADDRESS)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.ADDRESS)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CITY)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.CITY)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.STATE)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.STATE)
+                        @Html.ValidationMessageFor(model => model.STATE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.COUNTRYID)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.NAME_EN)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ZIPCODE)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.ZIPCODE)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PHONE)
+                    <div class="col-md-10">
+                        <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="95%">
+                                        @Html.DisplayFor(model => model.PHONE)
+                                    </td>
+                                    <td valign="top" nowrap="">
+                                        <img id="PHONEimage" src="/i/phone.gif" data-href="/Common/PopPhone.aspx?render=no&amp;ret=Phone&amp;phone=" style="cursor: pointer;" border="0">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FAX)
+                    <div class="col-md-10">
+                        <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="100%">
+                                        @Html.DisplayFor(model => model.FAX)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EMAIL)
+                    <div class="col-md-10">
+                        <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="100%">
+                                        @Html.DisplayFor(model => model.EMAIL)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.WEBSITE)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.WEBSITE)
+                    </div>
+                </div>
+            </div>
+            <div class="formRight">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.COMPANYCODE)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.COMPANYCODE)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TAXID)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.TAXID)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CONTACTTYPEID)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.CONTACTTYPE)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.COMPANYTYPEID)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.COMPANYTYPES)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SALESPERSONID)
+                    <div class="col-md-10">
+                        <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="100%">
+                                        @Html.DisplayFor(model => model.FULLNAME)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CATEGORIES)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.CATEGORIES)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.COMMERCIALZONE)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.ZONESs)
+                    </div>
+                </div>
+            </div>
+        </div><br />
+        <div class="formMiddle">
+            <div class="form-group">
+                @Html.LabelFor(model => model.DESCRIPTION)
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.DESCRIPTION)
+                </div>
+            </div>
+        </div>
+        <div class="formMiddle">
+            <span>BILLING ADDRESS</span><span class="righSpan">SHIPPING ADDRESS</span>
+        </div>
+        <hr />
+        <div class="formMain">
+            <div class="formLeft">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.INVOICINGADDRESS)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.INVOICINGADDRESS)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.INVOICINGSTATE)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.INVOICINGSTATE)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.INVOICINGZIPCODE)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.INVOICINGZIPCODE)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.INVOICINGPHONE)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.INVOICINGPHONE)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.INVOICINGFAX)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.INVOICINGFAX)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.INVOICINGEMAIL)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.INVOICINGEMAIL)
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="formRight">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SHIPPINGADDRESS)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.SHIPPINGADDRESS)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SHIPPINGSTATE)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.SHIPPINGSTATE)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SHIPPINGPHONE)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.SHIPPINGPHONE)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SHIPPINGFAX)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.SHIPPINGFAX)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SHIPPINGEMAIL)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.SHIPPINGEMAIL)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SHIPPINGSTATEPROVINCE)
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.SHIPPINGSTATEPROVINCE)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

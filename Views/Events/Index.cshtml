@@ -1,0 +1,117 @@
+﻿@model IEnumerable<db.crmdb.dbData.mEvent>
+
+@{
+    /**/
+
+    ViewBag.Title = "Manage Events List";
+    Layout = "~/Views/_LayoutAdminPage.cshtml";
+    <style>
+        .dataTables_filter input, .dataTables_filter select {
+            height: 24px;
+            padding: 1px 8px;
+            font-size: 10px;
+            line-height: 0.429;
+            color: #555;
+            background-color: #FFF;
+            background-image: none;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        .table > caption + thead > tr:first-child > td, .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th {
+            border-top: 0;
+            background-color: #2A3F54;
+            color: #fff;
+        }
+    </style>
+}
+
+@*@section SideBar {
+        <a class="sidebtn" id="crm" href="/Events/create">New Event</a>
+        <a class="sidebtn" ID="hr">Advance Search</a>
+    }*@
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tbody>
+        <tr>
+            <td class="pageTitle" valign="top" align="left">
+                <h4>List Of Appointments</h4>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+@*<div id="tabberpage " class="form-horizontal"></div>*@
+<table id="mytable" class="table table-striped table-bordered">
+    <thead class="black white-text">
+        <tr>
+            <th class="GridTitle">
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th class="GridTitle">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th class="GridTitle">
+                @Html.DisplayNameFor(model => model.Start)
+            </th>
+            <th class="GridTitle">
+                @Html.DisplayNameFor(model => model.End)
+            </th>
+            <th class="GridTitle" style="width: 165px;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td class="GridItem GridItemHlip">
+                        @Html.DisplayFor(modelItem => item.Subject)
+                    </td>
+                    <td class="GridItem GridItemHlip">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td class="GridItem GridItemHlip">
+                        @Html.DisplayFor(modelItem => item.Start)
+                    </td>
+                    <td class="GridItem GridItemHlip">
+                        @Html.DisplayFor(modelItem => item.End)
+                    </td>
+                    <td class="GridItem">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.EventID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.EventID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.EventID })
+                    </td>
+                </tr>
+            }
+
+        }
+        else
+        {
+            <tr>
+                <td class="GridItem GridItemHlip">
+                    <span style="color:red"> The are no records at the moment, please check back</span>
+                </td>
+            </tr>
+
+        }
+
+
+    </tbody>
+</table>
+
+
+
+@section Scripts
+{
+
+    <script type='text/javascript'>
+        $(document).ready(function () {
+            $("#mytable").dataTable();
+        });
+    </script>
+}

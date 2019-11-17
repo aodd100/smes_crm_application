@@ -1,0 +1,272 @@
+﻿
+@{
+    ViewBag.Title = "Leads Importing";
+    Layout = "~/Views/_LayoutPage.cshtml";
+    <style type="text/css">
+        #Companytable {
+            z-index: 5;
+            position: relative;
+            width: 100%;
+            text-align: center;
+            vertical-align: middle;
+            min-height: 300px;
+            filter: DropShadow(Color=#333333, OffX=1, OffY=1, Positive=true);
+        }
+
+        .loader {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            top: 18%;
+            left: 41%;
+            width: 28%;
+            height: 90vh;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-attachment: fixed;
+            display: block;
+            z-index: 999999;
+        }
+        .table > tbody > tr > td:first-child,
+        .table > tbody > tr > th:first-child,
+        .table > tfoot > tr > td:first-child,
+        .table > tfoot > tr > th:first-child,
+        .table > thead > tr > td:first-child,
+        .table > thead > tr > th:first-child,
+        .table > tbody > tr > td:last-child,
+        .table > tbody > tr > th:last-child,
+        .table > tfoot > tr > td:last-child,
+        .table > tfoot > tr > th:last-child,
+        .table > thead > tr > td:last-child,
+        .table > thead > tr > th:last-child {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+
+        .table > tbody > tr > td,
+        .table > tbody > tr > th,
+        .table > tfoot > tr > td,
+        .table > tfoot > tr > th,
+        .table > thead > tr > td,
+        .table > thead > tr > th {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+}
+@section SideBar {
+    <a class="sidebtn" id="crm" href="/Importing/Activity">Import Activities</a>
+    <a class="sidebtn" id="crm" href="/Importing/Companies">Import Companies</a>
+    <a class="sidebtn" id="crm" href="/Importing/Leads">Import Leads</a>
+    <a class="sidebtn" id="crm" href="/Importing/Contacts">Import Contacts</a>
+    <a class="sidebtn" id="crm" href="/Importing/Opportunity">Import Opportunity</a>
+    <a class="sidebtn" ID="hr">Advance Search</a>
+    <style>
+    </style>
+}
+@using (Html.BeginForm("Leads", "Importing", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="Id" value="4" />
+    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                <td class="pageTitle" valign="top" align="left">
+                    Manage Leads Import
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="tabberpage" class="form-horizontal">
+        <table cellpadding="0" cellspacing="0" class="auto-style3 myOuterDiv" style="position:relative;">
+
+            <tr>
+                <td colspan="3">
+                    <div class="form-group">
+                        <label>Excell Sheet</label>
+                    </div>
+                </td>
+            </tr>
+            <tr id="excelltr">
+                <td colspan="3">
+
+                    <fieldset style="width: 43%">
+                        <legend>Upload File</legend>
+                        <div class="form-group">
+                            <label for="fileselect" style="margin-top: 1%; text-align:left;" class="col-sm-2 control-label">Files to upload:</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="UploadFile" id="txtUploadFile" class="makethispretty" onchange="ExcellUpload(this); return false" />
+                            </div>
+                        </div>
+                    </fieldset>
+                </td>
+            </tr>
+        </table>
+        <hr />
+        <table id="Companytable" class="table">
+            <thead>
+                <tr>
+                    <th class="GridTitle" style="width:30%">
+                        <label>COMPANYNAME</label>
+                    </th>
+                    <th class="GridTitle" style="width:10%">
+                        <label>TITLE</label>
+                    </th>
+                    <th class="GridTitle" style="width:10%">
+                        <label>FIRSTNAME</label>
+                    </th>
+                    <th class="GridTitle" style="width:10%">
+                        <label>LASTNAME</label>
+                    </th>
+                    <th class="GridTitle" style="width:15%">
+                        <label>PHONE</label>
+                    </th>
+                    <th class="GridTitle" style="width:15%">
+                        <label>CITY</label>
+                    </th>
+                    <th class="GridTitle" style="width:15%">
+                        <label>JOBTITLE</label>
+                    </th>
+                    <th class="GridTitle" style="width:20%">
+                        <label>EMAIL</label>
+                    </th>
+                    <th class="GridTitle" style="width:30%">
+                        <label>WEBSITE</label>
+                    </th>
+                    <th class="GridTitle" style="width:30%">
+                        <label>MOBILEPHONE</label>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody id="contentplaceholder"></tbody>
+        </table>
+
+        <hr />
+
+        <div class="formMain">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Submit" class="save" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script id="addresstemplate" type="text/x-handlebars-template">
+    {{#each data}}
+    <tr>
+        <td class="GridItem GridItemHlip">
+            {{COMPANYNAME}}
+        </td>
+        <td class="GridItem GridItemHlip">
+            {{TITLE}}
+        </td>
+        <td class="GridItem GridItemHlip">
+            {{FIRSTNAME}}
+        </td>
+        <td class="GridItem GridItemHlip">
+            {{LASTNAME}}
+        </td>
+        <td class="GridItem GridItemHlip">
+            {{PHONE}}
+        </td>
+        <td class="GridItem GridItemHlip">
+            {{CITY}}
+        </td>
+        <td class="GridItem GridItemHlip">
+            {{JOBTITLE}}
+        </td>
+        <td class="GridItem GridItemHlip">
+            {{EMAIL}}
+        </td>
+        <td class="GridItem GridItemHlip">
+            {{WEBSITE}}
+        </td>
+        <td class="GridItem GridItemHlip">
+            {{MOBILEPHONE}}
+        </td>
+    </tr>
+    {{/each}}
+
+</script>
+<div class="loader">
+    <img id="img" src="@Url.Content("~/images/ajax_loader_gray_256.gif")" alt="Alternate Text" />
+</div>
+@section Scripts {
+
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/mustache.min.js"></script>
+    <script src="~/Scripts/handlebars.min.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".loader").css("display", "none");
+        });
+        $(function () {
+            $(document).ajaxStart(function () {
+                $(".loader").css("display", "block");
+            });
+
+            $(document).ajaxComplete(function () {
+                $(".loader").css("display", "none");
+            });
+        });
+
+
+        (function () {
+            $("#excelltr").css("display", "none");
+        });
+
+        function ExcellUpload(e) {
+            var theTemplateScript = $("#addresstemplate").html();
+            var theTemplate = Handlebars.compile(theTemplateScript);
+
+            var data = new FormData();
+            var files = $("#txtUploadFile").get(0).files;
+            if (files.length > 0) {
+                data.append("File", files[0]);
+            }
+            var mailType = $("#mailType");
+            var Email = $("#Email");
+            $(mailType).html("");
+            $(Email).html("");
+            var option = '<option value="-1">Wait Loading...</option>';
+            $(option).appendTo($(mailType))
+            $.ajax({
+                type: "POST",
+                url: "/Importing/UploadLeads",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (response) {
+                    context = [];
+                    $(mailType).html("");
+                    $(Email).html("");
+                    if (response.data) {
+                        var html = theTemplate(response);
+                        $('#contentplaceholder').html(html);
+                    } else {
+                        $.notify(response.message, "error");
+                    }
+
+                }
+            });
+
+        }
+    </script>
+
+}
+
+
+
+
+

@@ -1,0 +1,1515 @@
+﻿@model db.crmdb.dbData.ViewContactDetail
+
+@{
+    ViewBag.Title = "Managing Contact";
+    Layout = "~/Views/_LayoutPage.cshtml";
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .form-group h1 {
+            font-size: 14px;
+        }
+
+        .formMain .form-group .col-md-10 input#ACTIONDATE {
+            width: 80% !important;
+            margin-right: 3px;
+        }
+
+        .tabContainer {
+            width: 100%;
+            min-height: 350px;
+            max-height: 814px;
+        }
+
+        .tabContainer .buttonContainer {
+            height: 7%;
+        }
+
+        .tabContainer .buttonContainer input {
+            width: 97px;
+            height: 100%;
+            float: left;
+            border: medium none;
+            outline: medium none;
+            cursor: pointer;
+            padding: 2px 6px 2px 2px;
+            font-size: 12px;
+            font-family: sans-serif;
+            background-color: #DEDEDE;
+            border-radius: 8px 8px 0px 0px;
+            border-style: none;
+            margin-right: 4px;
+        }
+
+        .tabContainer .buttonContainer input:hover {
+            background-color: #d7d4d4;
+            border-style: none;
+        }
+
+        .tabContainer .tabPanel {
+            width: 100%;
+            height: 85%;
+            padding-top: 1px;
+            background-color: grey;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            font-size: 14px;
+            display: none;
+        }
+
+        .formMain .form-group .col-md-10 input, .formMain .form-group .col-md-10 select {
+            display: block;
+            width: 100%;
+            height: 24px;
+            padding: 1px 8px;
+            font-size: 10px;
+            line-height: 0.429;
+            color: #555;
+            background-color: #FFF;
+            background-image: none;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        .formMain .form-group .col-md-10 textarea {
+            display: block;
+            width: 100%;
+            padding: 1px 8px;
+            font-size: 10px;
+            line-height: 0.429;
+            color: #555;
+            background-color: #FFF;
+            background-image: none;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        input[type="email"], input[type="password"] {
+            padding-left: 40px;
+        }
+
+        input.form-control {
+            height: 20px;
+            font-size: 8px;
+            margin-bottom: 3px;
+        }
+        /*dont move this style*/
+        .formMain .form-group .col-md-10 textarea, .formMain .form-group .col-md-10 input, .formMain .form-group .col-md-10 select {
+            width: 100% !important;
+        }
+
+        .form-horizontal {
+            background-color: #FFF;
+            padding: 6px;
+            width: 74%;
+            margin-top: 21px;
+            margin-left: 0px;
+            margin-bottom: 12px;
+            max-height: 847px !important;
+        }
+
+        .formMain .socialDiv .form-group .col-md-10 table td img {
+            cursor: pointer;
+            width: 14px;
+        }
+
+        #PersonNotes {
+            margin-left: 7px;
+        }
+
+        .formMainInner {
+            display: flex;
+            flex-flow: column nowrap;
+            width: 100%;
+        }
+
+            .formMainInner .form-group label {
+                flex: 1;
+            }
+
+            .formMainInner .form-group .col-md-10 {
+                flex: 2;
+            }
+    </style>
+}
+
+@section SideBar {
+    <a class="sidebtn" id="crm" href="/Contacts/create">New Contact</a>
+    <a class="sidebtn" ID="hr">Advance Search</a>
+}
+@using (Html.BeginForm("Create", "Contacts", FormMethod.Post, new { onSubmit = "return jQueryAjaxPost(this)" }))
+{
+    @Html.AntiForgeryToken()
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 8px;">
+        <tbody>
+            <tr>
+                <td class="pageTitle" valign="top" align="left">
+                    Manage Contact
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div id="dynabox" class="dynaskin popup-content" style="display:none;">
+        <div id="dragbar" class="CommonColor" style="text-align:right;color: #fff">
+            <span id="hidebox" onclick="HideBox("hidebox");return false"><b>X&nbsp;</b></span>
+        </div>
+        <iframe scrolling="yes" id="dynaframe" name="dynaframe" src="" frameborder="0"></iframe>
+    </div>
+
+    <div class="tabContainer">
+
+        <div class="buttonContainer">
+            <input type="button" onclick="showPanel(0,'#ffffff')" value="General" />
+            <input type="button" onclick="showPanel(1,'#ffffff')" value="Address" />
+            <input type="button" onclick="showPanel(2,'#ffffff')" value="Additional Info" />
+            <input type="button" onclick="showPanel(3,'#ffffff')" value="Person Note" />
+            <input type="button" onclick="showPanel(4,'#ffffff')" value="CustomFields" />
+        </div>
+        <div class="form-horizontal">
+            <div class="topDiv">
+                <div class="topDivSub1">
+                </div>
+                <div class="topDivSub2" style="text-align: right; margin-right: 13px;">
+                    <input type="submit" value="Save" class="save" />
+                </div>
+            </div>
+            <hr />
+            <div class="tabPanel">
+                <div class="formMain">
+                    <div class="formLeft">
+                        <div class="form-group">
+                            <h1>General Information </h1>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.FirstName, "First Name", new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LastName, "Last Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SalePersonId, "Sale Person", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                                    <tbody>
+                                        <tr>
+                                            <td width="95%">
+                                                @Html.HiddenFor(model => model.SalePersonId)
+                                                @Html.EditorFor(model => model.USERACCOUNT, new { htmlAttributes = new { @class = "form-control", required = "" } })
+                                                @Html.ValidationMessageFor(model => model.SalePersonId, "", new { @class = "text-danger" })
+                                            </td>
+                                            <td valign="top" nowrap="">
+                                                <img id="SALESPERSONIDImage" src="/i/user.gif" style="cursor: pointer" data-href="/common/PopAccount.aspx?render=no&amp;sales=" border="0">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CompanyId, "Company", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <table width="100%" cellspacing="0" cellpadding="1" border="0">
+                                    <tbody>
+                                        <tr>
+                                            <td width="95%">
+                                                @Html.HiddenFor(model => model.CompanyId)
+                                                @Html.TextAreaFor(model => model.COMPANYNAME, 5, 40, htmlAttributes: new { @class = "form-control", @startfocus = "true", required = "", @style = "padding: 7px; line-height: 14px;" })
+                                                @Html.ValidationMessageFor(model => model.COMPANYNAME, "", new { @class = "text-danger" })
+                                            </td>
+                                            <td valign="top" nowrap="">
+                                                <img src="/i/lookup.gif" id="companyLookupImg" alt="Check existence" data-href="/Common/checkexist.aspx?render=no&amp;Company=" onclick="javascript: companyLookup('/Common/checkexist.aspx?render=no&amp;Company=',this); return false;" style="cursor: pointer;" width="24" height="16" border="0">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.JobTitle, "Job Title", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.JobTitle, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                                @Html.ValidationMessageFor(model => model.JobTitle, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PersonTypeId, "Person Type", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @*@Html.EditorFor(model => model.PersonTypeId, new { htmlAttributes = new { @class = "form-control" } })*@
+                                @Html.DropDownList("PersonTypeId", new List<SelectListItem>
+                                       {
+                                           new SelectListItem { Text = "Prospect", Value = "1" },
+                                           new SelectListItem { Text = "Customer", Value = "2" },
+                                           new SelectListItem { Text = "Partner", Value = "3" },
+                                           new SelectListItem {Text = "Personal Contact", Value = "4" },
+                                           new SelectListItem {Text = "Vendor", Value = "5" },
+                                       }, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PersonTypeId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LeadsSource, "Leads Source", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.SourceId, ViewBag.Sources as SelectList)
+                                @Html.ValidationMessageFor(model => model.LeadsSource, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("Gender", new List<SelectListItem>
+                                       {
+                                           new SelectListItem { Text = "Male", Value = "Male" },
+                                           new SelectListItem { Text = "Female", Value = "Female" } })
+                                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h1>Billing Address</h1>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.INVOIVINGCITY, "City", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.INVOIVINGCITY, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.INVOIVINGCITY, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.INVOICINGADDRESS, "Address", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.INVOICINGADDRESS, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.INVOICINGADDRESS, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.INVOICINGSTATE, "Address", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.INVOICINGSTATE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.INVOICINGSTATE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.INVOICINGZIPCODE, "Zipcode", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.INVOICINGZIPCODE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.INVOICINGZIPCODE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.INVOICINGPHONE, "Phone", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.INVOICINGPHONE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.INVOICINGPHONE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.INVOICINGFAX, "Fax", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.INVOICINGFAX, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.INVOICINGFAX, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.INVOICINGEMAIL, "Email", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.INVOICINGEMAIL, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.INVOICINGEMAIL, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.INVOICINGSTATEPROVINCE, "Province", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.INVOICINGSTATEPROVINCE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.INVOICINGSTATEPROVINCE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.COUNTRYID, "Country", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.COUNTRYID, ViewBag.Countrys as SelectList)
+                                @Html.ValidationMessageFor(model => model.COUNTRYID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="formRight">
+                        <div class="form-group">
+                            <h1>Account Summary</h1>
+                        </div>
+                        Amt Paid $0.00<br />
+                        Bal Due $0.00
+                        <div class="form-group">
+                            <h1>Phone/Fax</h1>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Phone1, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Phone1, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                                @Html.ValidationMessageFor(model => model.Phone1, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Phone2, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Phone2, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Phone2, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Fax, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h1>Email/Social</h1>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="socialDiv">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.WebSite, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <table cellpadding="0px" cellspacing="0px">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    @Html.EditorFor(model => model.WebSite, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.WebSite, "", new { @class = "text-danger" })
+
+                                                </td>
+                                                <td width="3px"> &nbsp;</td>
+                                                <td>
+                                                    <img style="cursor:pointer" src="/i/open-url.png" onclick="popLink(document.getElementById('WebSite').value)" alt="Go to" title="Go to">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Twitter, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <table cellpadding="0px" cellspacing="0px">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    @Html.EditorFor(model => model.Twitter, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Twitter, "", new { @class = "text-danger" })
+
+                                                </td>
+                                                <td width="3px"> &nbsp;</td>
+                                                <td>
+                                                    <img style="cursor:pointer" src="/i/twitter.png" onclick="popLink(document.getElementById('Twitter').value)" alt="Go to" title="Go to">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Facebook, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <table cellpadding="0px" cellspacing="0px">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    @Html.EditorFor(model => model.Facebook, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Facebook, "", new { @class = "text-danger" })
+
+                                                </td>
+                                                <td width="3px"> &nbsp;</td>
+                                                <td>
+                                                    <img style="cursor:pointer" src="/i/facebook.png" onclick="popLink(document.getElementById('Facebook').value)" alt="Go to" title="Go to">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.LinkedIn, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <table cellpadding="0px" cellspacing="0px">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    @Html.EditorFor(model => model.LinkedIn, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.LinkedIn, "", new { @class = "text-danger" })
+
+                                                </td>
+                                                <td width="3px"> &nbsp;</td>
+                                                <td>
+                                                    <img style="cursor:pointer" src="/i/linkedIn.png" onclick="popLink(document.getElementById('LinkedIn').value)" alt="Go to" title="Go to">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h1>Global Information</h1>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LanguageCode, "Language", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <select class="inf-select is-component field-valid" id="LanguageCode" name="LanguageCode" data-on="Component.Select">
+                                    <option value="en" selected="selected"> English </option>
+                                    <option value="en-AU">English(Australia)</option>
+                                    <option value="en-CA"> English(Canada) </option>
+                                    <option value="en-IN">English(India)</option>
+                                    <option value="en-ZA"> English(South Africa) </option>
+                                    <option value="en-GB">English(United Kingdom)</option>
+                                    <option value="en-US"> English(United States) </option>
+                                    <option value="fr-FR">French(France)</option>
+                                    <option value="de"> German </option>
+                                    <option value="pt-BR">Portuguese(Brazil)</option>
+                                    <option disabled="disabled" value="—">——————————</option>
+                                    <option value="sq"> Albanian </option>
+                                    <option value="sq-AL">Albanian(Albania)</option>
+                                    <option value="ar"> Arabic </option>
+                                    <option value="ar-DZ">Arabic(Algeria)</option>
+                                    <option value="ar-BH"> Arabic(Bahrain) </option>
+                                    <option value="ar-EG">Arabic(Egypt)</option>
+                                    <option value="ar-IQ"> Arabic(Iraq) </option>
+                                    <option value="ar-JO">Arabic(Jordan)</option>
+                                    <option value="ar-KW"> Arabic(Kuwait) </option>
+                                    <option value="ar-LB">Arabic(Lebanon)</option>
+                                    <option value="ar-LY"> Arabic(Libya) </option>
+                                    <option value="ar-MA">Arabic(Morocco)</option>
+                                    <option value="ar-OM"> Arabic(Oman) </option>
+                                    <option value="ar-QA">Arabic(Qatar)</option>
+                                    <option value="ar-SA"> Arabic(Saudi Arabia) </option>
+                                    <option value="ar-SD">Arabic(Sudan)</option>
+                                    <option value="ar-SY"> Arabic(Syria) </option>
+                                    <option value="ar-TN">Arabic(Tunisia)</option>
+                                    <option value="ar-AE"> Arabic(United Arab Emirates) </option>
+                                    <option value="ar-YE">Arabic(Yemen)</option>
+                                    <option value="be"> Belarusian </option>
+                                    <option value="be-BY">Belarusian(Belarus)</option>
+                                    <option value="bg"> Bulgarian </option>
+                                    <option value="bg-BG">Bulgarian(Bulgaria)</option>
+                                    <option value="ca"> Catalan </option>
+                                    <option value="ca-ES">Catalan(Spain)</option>
+                                    <option value="zh"> Chinese </option>
+                                    <option value="zh-CN">Chinese(China)</option>
+                                    <option value="zh-HK"> Chinese(Hong Kong) </option>
+                                    <option value="zh-SG">Chinese(Singapore)</option>
+                                    <option value="zh-TW"> Chinese(Taiwan) </option>
+                                    <option value="hr">Croatian</option>
+                                    <option value="hr-HR"> Croatian(Croatia) </option>
+                                    <option value="cs">Czech</option>
+                                    <option value="cs-CZ"> Czech(Czech Republic) </option>
+                                    <option value="da">Danish</option>
+                                    <option value="da-DK"> Danish(Denmark) </option>
+                                    <option value="nl">Dutch</option>
+                                    <option value="nl-BE"> Dutch(Belgium) </option>
+                                    <option value="nl-NL">Dutch(Netherlands)</option>
+                                    <option value="en-IE"> English(Ireland) </option>
+                                    <option value="en-MT">English(Malta)</option>
+                                    <option value="en-NZ"> English(New Zealand) </option>
+                                    <option value="en-PH">English(Philippines)</option>
+                                    <option value="en-SG"> English(Singapore) </option>
+                                    <option value="et">Estonian</option>
+                                    <option value="et-EE"> Estonian(Estonia) </option>
+                                    <option value="fi">Finnish</option>
+                                    <option value="fi-FI"> Finnish(Finland) </option>
+                                    <option value="fr">French</option>
+                                    <option value="fr-BE"> French(Belgium) </option>
+                                    <option value="fr-CA">French(Canada)</option>
+                                    <option value="fr-LU"> French(Luxembourg) </option>
+                                    <option value="fr-CH">French(Switzerland)</option>
+                                    <option value="de-AT"> German(Austria) </option>
+                                    <option value="de-DE">German(Germany)</option>
+                                    <option value="de-GR"> German(Greece) </option>
+                                    <option value="de-LU">German(Luxembourg)</option>
+                                    <option value="de-CH"> German(Switzerland) </option>
+                                    <option value="el">Greek</option>
+                                    <option value="el-CY"> Greek(Cyprus) </option>
+                                    <option value="el-GR">Greek(Greece)</option>
+                                    <option value="he"> Hebrew </option>
+                                    <option value="he-IL">Hebrew(Israel)</option>
+                                    <option value="hi"> Hindi </option>
+                                    <option value="hi-IN">Hindi(India)</option>
+                                    <option value="hu"> Hungarian </option>
+                                    <option value="hu-HU">Hungarian(Hungary)</option>
+                                    <option value="is"> Icelandic </option>
+                                    <option value="is-IS">Icelandic(Iceland)</option>
+                                    <option value="id"> Indonesian </option>
+                                    <option value="id-ID">Indonesian(Indonesia)</option>
+                                    <option value="ga"> Irish </option>
+                                    <option value="ga-IE">Irish(Ireland)</option>
+                                    <option value="it"> Italian </option>
+                                    <option value="it-IT">Italian(Italy)</option>
+                                    <option value="it-CH"> Italian(Switzerland) </option>
+                                    <option value="ja">Japanese</option>
+                                    <option value="ja-JP"> Japanese(Japan) </option>
+                                    <option value="ko">Korean</option>
+                                    <option value="ko-KR"> Korean(South Korea) </option>
+                                    <option value="lv">Latvian</option>
+                                    <option value="lv-LV"> Latvian(Latvia) </option>
+                                    <option value="lt">Lithuanian</option>
+                                    <option value="lt-LT"> Lithuanian(Lithuania) </option>
+                                    <option value="mk">Macedonian</option>
+                                    <option value="mk-MK"> Macedonian(Macedonia) </option>
+                                    <option value="ms">Malay</option>
+                                    <option value="ms-MY"> Malay(Malaysia) </option>
+                                    <option value="mt">Maltese</option>
+                                    <option value="mt-MT"> Maltese(Malta) </option>
+                                    <option value="no">Norwegian</option>
+                                    <option value="no-NO"> Norwegian(Norway) </option>
+                                    <option value="nn-NO">Norwegian(Norway, Nynorsk)</option>
+                                    <option value="pl"> Polish </option>
+                                    <option value="pl-PL">Polish(Poland)</option>
+                                    <option value="pt"> Portuguese </option>
+                                    <option value="pt-PT">Portuguese(Portugal)</option>
+                                    <option value="ro"> Romanian </option>
+                                    <option value="ro-RO">Romanian(Romania)</option>
+                                    <option value="ru"> Russian </option>
+                                    <option value="ru-RU">Russian(Russia)</option>
+                                    <option value="sr"> Serbian </option>
+                                    <option value="sr-BA">Serbian(Bosnia and Herzegovina)</option>
+                                    <option value="sr-Latn"> Serbian(Latin) </option>
+                                    <option value="sr-Latn-BA">Serbian(Latin, Bosnia and Herzegovina)</option>
+                                    <option value="sr-Latn-ME"> Serbian(Latin, Montenegro) </option>
+                                    <option value="sr-Latn-RS">Serbian(Latin, Serbia)</option>
+                                    <option value="sr-ME"> Serbian(Montenegro) </option>
+                                    <option value="sr-CS">Serbian(Serbia and Montenegro)</option>
+                                    <option value="sr-RS"> Serbian(Serbia) </option>
+                                    <option value="sk">Slovak</option>
+                                    <option value="sk-SK"> Slovak(Slovakia) </option>
+                                    <option value="sl">Slovenian</option>
+                                    <option value="sl-SI"> Slovenian(Slovenia) </option>
+                                    <option value="es">Spanish</option>
+                                    <option value="es-AR"> Spanish(Argentina) </option>
+                                    <option value="es-BO">Spanish(Bolivia)</option>
+                                    <option value="es-CL"> Spanish(Chile) </option>
+                                    <option value="es-CO">Spanish(Colombia)</option>
+                                    <option value="es-CR"> Spanish(Costa Rica) </option>
+                                    <option value="es-CU">Spanish(Cuba)</option>
+                                    <option value="es-DO"> Spanish(Dominican Republic) </option>
+                                    <option value="es-EC">Spanish(Ecuador)</option>
+                                    <option value="es-SV"> Spanish(El Salvador) </option>
+                                    <option value="es-GT">Spanish(Guatemala)</option>
+                                    <option value="es-HN"> Spanish(Honduras) </option>
+                                    <option value="es-MX">Spanish(Mexico)</option>
+                                    <option value="es-NI"> Spanish(Nicaragua) </option>
+                                    <option value="es-PA">Spanish(Panama)</option>
+                                    <option value="es-PY"> Spanish(Paraguay) </option>
+                                    <option value="es-PE">Spanish(Peru)</option>
+                                    <option value="es-PR"> Spanish(Puerto Rico) </option>
+                                    <option value="es-ES">Spanish(Spain)</option>
+                                    <option value="es-US"> Spanish(United States) </option>
+                                    <option value="es-UY">Spanish(Uruguay)</option>
+                                    <option value="es-VE"> Spanish(Venezuela) </option>
+                                    <option value="sv">Swedish</option>
+                                    <option value="sv-SE"> Swedish(Sweden) </option>
+                                    <option value="th">Thai</option>
+                                    <option value="th-TH"> Thai(Thailand) </option>
+                                    <option value="tr">Turkish</option>
+                                    <option value="tr-TR"> Turkish(Turkey) </option>
+                                    <option value="uk">Ukrainian</option>
+                                    <option value="uk-UA"> Ukrainian(Ukraine) </option>
+                                    <option value="vi">Vietnamese</option>
+                                    <option value="vi-VN"> Vietnamese(Vietnam) </option>
+                                </select>
+                                @Html.ValidationMessageFor(model => model.LanguageCode, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TimeZoneCode, "TimeZone", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <select class="inf-select is-component field-valid" id="TimeZoneId" name="TimeZoneCode" data-on="Component.Select">
+                                    <option value="Pacific/Pago_Pago">(GMT -11:00) Pago Pago</option>
+                                    <option value="America/Adak">(GMT -09:00) Adak</option>
+                                    <option value="Pacific/Honolulu">(GMT -10:00) Hawaii</option>
+                                    <option value="Pacific/Marquesas">(GMT -09:30) Marquesas</option>
+                                    <option value="America/Anchorage">(GMT -08:00) Anchorage</option>
+                                    <option value="Pacific/Gambier">(GMT -09:00) Gambier</option>
+                                    <option value="America/Santa_Isabel">(GMT -07:00) Santa Isabel</option>
+                                    <option value="America/Los_Angeles">(GMT -07:00) Pacific Time (US &amp; Canada)</option>
+                                    <option value="Pacific/Pitcairn">(GMT -08:00) Pitcairn</option>
+                                    <option value="America/Mazatlan">(GMT -06:00) Mazatlan</option>
+                                    <option value="America/Denver">(GMT -06:00) Mountain Time (US &amp; Canada)</option>
+                                    <option value="America/Phoenix">(GMT -07:00) Phoenix</option>
+                                    <option value="Pacific/Easter">(GMT -05:00) Easter Island</option>
+                                    <option value="America/Chicago">(GMT -05:00) Central Time (US &amp; Canada)</option>
+                                    <option value="America/Mexico_City">(GMT -05:00) Mexico City</option>
+                                    <option value="America/Guatemala">(GMT -06:00) Guatemala</option>
+                                    <option value="America/New_York">(GMT -04:00) Eastern Time (US &amp; Canada)</option>
+                                    <option value="America/Havana">(GMT -04:00) Havana</option>
+                                    <option value="America/Bogota">(GMT -05:00) Bogota</option>
+                                    <option value="America/Caracas">(GMT -04:30) Caracas</option>
+                                    <option value="America/Halifax">(GMT -03:00) Halifax</option>
+                                    <option value="America/Santiago">(GMT -03:00) Santiago</option>
+                                    <option value="America/Asuncion">(GMT -03:00) Asuncion</option>
+                                    <option value="America/Goose_Bay">(GMT -03:00) Goose Bay</option>
+                                    <option value="Atlantic/Stanley">(GMT -03:00) Stanley</option>
+                                    <option value="America/Santo_Domingo">(GMT -04:00) Santo Domingo</option>
+                                    <option value="America/Campo_Grande">(GMT -04:00) Campo Grande</option>
+                                    <option value="America/St_Johns">(GMT -02:30) St Johns</option>
+                                    <option value="America/Montevideo">(GMT -02:00) Montevideo</option>
+                                    <option value="America/Godthab">(GMT -02:00) Godthab</option>
+                                    <option value="America/Miquelon">(GMT -02:00) Miquelon</option>
+                                    <option value="America/Sao_Paulo">(GMT -03:00) Sao Paulo</option>
+                                    <option value="America/Argentina/Buenos_Aires">(GMT -03:00) Buenos Aires</option>
+                                    <option value="America/Noronha">(GMT -02:00) Noronha</option>
+                                    <option value="Atlantic/Azores">(GMT) Azores</option>
+                                    <option value="Atlantic/Cape_Verde">(GMT -01:00) Cape Verde</option>
+                                    <option value="UTC" selected="selected">(GMT) Greenwich Mean Time</option>
+                                    <option value="Europe/London">(GMT +01:00) Dublin, Edinburgh, London</option>
+                                    <option value="Africa/Lagos">(GMT +01:00) West Central Africa</option>
+                                    <option value="Europe/Berlin">(GMT +02:00) Amsterdam, Berlin, Paris</option>
+                                    <option value="Africa/Windhoek">(GMT +02:00) Windhoek</option>
+                                    <option value="Africa/Cairo">(GMT +02:00) Cairo</option>
+                                    <option value="Asia/Gaza">(GMT +02:00) Gaza</option>
+                                    <option value="Africa/Johannesburg">(GMT +02:00) Johannesburg</option>
+                                    <option value="Asia/Jerusalem">(GMT +02:00) Jerusalem</option>
+                                    <option value="Asia/Beirut">(GMT +03:00) Beirut</option>
+                                    <option value="Asia/Damascus">(GMT +03:00) Damascus</option>
+                                    <option value="Europe/Istanbul">(GMT +03:00) Istanbul</option>
+                                    <option value="Asia/Baghdad">(GMT +03:00) Baghdad</option>
+                                    <option value="Europe/Minsk">(GMT +03:00) Minsk</option>
+                                    <option value="Asia/Tehran">(GMT +03:30) Tehran</option>
+                                    <option value="Europe/Moscow">(GMT +04:00) Moscow</option>
+                                    <option value="Asia/Dubai">(GMT +04:00) Dubai</option>
+                                    <option value="Asia/Yerevan">(GMT +05:00) Yerevan</option>
+                                    <option value="Asia/Baku">(GMT +05:00) Baku</option>
+                                    <option value="Asia/Kabul">(GMT +04:30) Kabul</option>
+                                    <option value="Asia/Karachi">(GMT +05:00) Karachi</option>
+                                    <option value="Asia/Kolkata">(GMT +05:30) Kolkata</option>
+                                    <option value="Asia/Kathmandu">(GMT +05:45) Kathmandu</option>
+                                    <option value="Asia/Dhaka">(GMT +06:00) Dhaka</option>
+                                    <option value="Asia/Yekaterinburg">(GMT +06:00) Yekaterinburg</option>
+                                    <option value="Asia/Rangoon">(GMT +06:30) Rangoon</option>
+                                    <option value="Asia/Jakarta">(GMT +07:00) Jakarta</option>
+                                    <option value="Asia/Omsk">(GMT +07:00) Omsk</option>
+                                    <option value="Asia/Shanghai">(GMT +08:00) Manila, Perth, Shanghai</option>
+                                    <option value="Asia/Krasnoyarsk">(GMT +08:00) Krasnoyarsk</option>
+                                    <option value="Australia/Eucla">(GMT +08:45) Eucla</option>
+                                    <option value="Asia/Irkutsk">(GMT +09:00) Irkutsk</option>
+                                    <option value="Asia/Tokyo">(GMT +09:00) Osaka, Sapporo, Tokyo</option>
+                                    <option value="Australia/Darwin">(GMT +09:30) Darwin</option>
+                                    <option value="Australia/Adelaide">(GMT +10:30) Adelaide</option>
+                                    <option value="Asia/Yakutsk">(GMT +10:00) Yakutsk</option>
+                                    <option value="Australia/Brisbane">(GMT +10:00) Brisbane</option>
+                                    <option value="Australia/Sydney">(GMT +11:00) Canberra, Melbourne, Sydney</option>
+                                    <option value="Australia/Lord_Howe">(GMT +11:00) Lord Howe</option>
+                                    <option value="Asia/Vladivostok">(GMT +11:00) Vladivostok</option>
+                                    <option value="Pacific/Noumea">(GMT +11:00) Noumea</option>
+                                    <option value="Pacific/Norfolk">(GMT +11:30) Norfolk</option>
+                                    <option value="Pacific/Tarawa">(GMT +12:00) Tarawa</option>
+                                    <option value="Asia/Kamchatka">(GMT +12:00) Kamchatka</option>
+                                    <option value="Pacific/Fiji">(GMT +12:00) Fiji</option>
+                                    <option value="Pacific/Majuro">(GMT +12:00) Majuro</option>
+                                    <option value="Pacific/Auckland">(GMT +13:00) Auckland</option>
+                                    <option value="Pacific/Chatham">(GMT +13:45) Chatham</option>
+                                    <option value="Pacific/Tongatapu">(GMT +13:00) Tongatapu</option>
+                                    <option value="Pacific/Apia">(GMT +13:00) Apia</option>
+                                    <option value="Pacific/Kiritimati">(GMT +14:00) Kiritimati</option>
+                                </select>
+                                @Html.ValidationMessageFor(model => model.TimeZoneCode, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabPanel">
+                <div class="formMain">
+                    <div class="formLeft">
+                        <div class="form-group">
+                            <h1>Shipping Address</h1>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SHIPPINGCITY, "City", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SHIPPINGCITY, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SHIPPINGCITY, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SHIPPINGADDRESS, "Address", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SHIPPINGADDRESS, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SHIPPINGADDRESS, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SHIPPINGSTATE, "State", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SHIPPINGSTATE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SHIPPINGSTATE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SHIPPINGZIPCODE, "Zipcode", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SHIPPINGZIPCODE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SHIPPINGZIPCODE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SHIPPINGPHONE, "Phone", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SHIPPINGPHONE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SHIPPINGPHONE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SHIPPINGFAX, "Fax", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SHIPPINGFAX, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SHIPPINGFAX, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SHIPPINGEMAIL, "Email", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SHIPPINGEMAIL, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SHIPPINGEMAIL, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SHIPPINGSTATEPROVINCE, "Province", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SHIPPINGSTATEPROVINCE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SHIPPINGSTATEPROVINCE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="formRight">
+                        <div class="form-group">
+                            <h1>Optional Address</h1>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OPTIONALCITY, "City", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.OPTIONALCITY, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.OPTIONALCITY, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OPTIONALADDRESS, "Address", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.OPTIONALADDRESS, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.OPTIONALADDRESS, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OPTIONALSTATE, "State", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.OPTIONALSTATE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.OPTIONALSTATE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OPTIONALZIPCODE, "Zipcode", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.OPTIONALZIPCODE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.OPTIONALZIPCODE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OPTIONALPHONE, "Phone", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.OPTIONALPHONE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.OPTIONALPHONE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OPTIONALFAX, "Fax", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.OPTIONALFAX, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.OPTIONALFAX, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OPTIONALEMAIL, "Email", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.OPTIONALEMAIL, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.OPTIONALEMAIL, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OPTIONALSTATEPROVINCE, "Province", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.OPTIONALSTATEPROVINCE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.OPTIONALSTATEPROVINCE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="tabPanel">
+                <div class="formMain">
+                    <div class="formLeft">
+                        <div class="form-group">
+                            <h1>Other Field</h1>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.AssistanceName, "Assistance Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.AssistanceName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.AssistanceName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.AssistancePhone, "Assistance Phone", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.AssistancePhone, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.AssistancePhone, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SSN, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SSN, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SSN, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.BirthDay, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.BirthDay, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SpouseName, "Spouse Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.SpouseName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SpouseName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Anniversory, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Anniversory, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Anniversory, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Title, "Title", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("Title", new List<SelectListItem>
+                                            {
+                                                new SelectListItem { Text = "Mr.", Value = "Mr." },
+                                                new SelectListItem { Text = "Mrs.", Value = "Mrs." },
+                                                new SelectListItem { Text = "Dr.", Value = "Dr." },
+                                                new SelectListItem {Text = "Esq", Value = "Esq" },
+                                            }, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SuffixId, "Suffix", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                <select class="inf-select default-input field-valid" id="Contact0Suffix" name="Contact0Suffix">
+                                    <option>I</option>
+                                    <option>II</option>
+                                    <option>III</option>
+                                    <option>IV</option>
+                                    <option>Eng</option>
+                                    <option>Esq</option>
+                                    <option selected="selected">Prof</option>
+                                    <option>Dr.</option>
+                                    <option>V</option>
+                                    <option>PhD</option>
+                                    <option>Jr</option>
+                                    <option>11</option>
+                                    <option>21</option>
+                                    <option>2</option>
+                                    <option>9</option>
+                                    <option>13</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>14</option>
+                                    <option>15</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>16</option>
+                                    <option>7</option>
+                                    <option>17</option>
+                                    <option>18</option>
+                                    <option>8</option>
+                                    <option>19</option>
+                                    <option>20</option>
+                                    <option>10</option>
+                                    <option>1</option>
+                                    <option>12</option>
+                                </select>
+                                @*@Html.EditorFor(model => model.SuffixId, new { htmlAttributes = new { @class = "form-control" } })*@
+                                @Html.ValidationMessageFor(model => model.SuffixId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.MiddleName, "Middle Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NickName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.NickName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NickName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="formRight">
+                        <div class="form-group">
+                            <h1>Other Field</h1>
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ReferralCode, "Referral Code", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ReferralCode, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ReferralCode, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Phone3, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Phone3, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                                @Html.ValidationMessageFor(model => model.Phone3, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Phone4, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Phone4, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Phone4, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Phone5, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Phone5, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Phone5, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Fax2, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Fax2, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Fax2, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EmailAddress2, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.EmailAddress2, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EmailAddress2, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EmailAddress3, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.EmailAddress3, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EmailAddress3, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="tabPanel">
+                <div class="formMain">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PersonNotes, "Person Notes", htmlAttributes: new { @class = "control-label col-md-2", @style = "flex:none" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.PersonNotes, 18, 80, htmlAttributes: new { @class = "form-control", @style = "margin-left:5px;padding: 7px; line-height: 14px;" })
+                            @Html.ValidationMessageFor(model => model.PersonNotes, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="tabPanel">
+                <div class="formMain">
+                    <div class="formMainInner">
+                        <div class="form-group">
+                            <h1>Custom Field</h1>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NameOfBank, "Name Of Bank", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.NameOfBank, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NameOfBank, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ManagingDirector, "Managing Director", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ManagingDirector, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ManagingDirector, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.HeadOffice, "Head Office", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.HeadOffice, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.HeadOffice, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ChiefInternalAuditor, "Chief Internal Auditor", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ChiefInternalAuditor, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ChiefInternalAuditor, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PhoneNumber, "Phone", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Attention1, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Attention1, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Attention1, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Attention2, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Attention2, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Attention2, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CommenAboutUs, "Comment About Us", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.CommenAboutUs, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CommenAboutUs, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Age1, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="save" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(function () {
+            //$('#tabberpage .formLe .col-md-10 input[type=text],#tabberpage .col-md-10 textarea, #tabberpage.col-md-10 select')
+            ///   .prop('required', true);
+
+            $('#tabberpage .col-md-10 input[type=text],#tabberpage .col-md-10 textarea').val('na');
+
+            $('#SALESPERSONIDImage').on('click',
+                function (event) {
+                    event.preventDefault();
+
+                    var SALESPERSONIDval = $("#SALESPERSONID").val();
+                    var SALESPERSONNAMEval = $("#USERACCOUNT").val();
+                    var w = 300,
+                        h = 164;
+                    var
+                        l = (screen.availWidth - w) / 2,
+                        t = (screen.availHeight - h) / 2;
+
+                    var x = event.clientX; // Get the horizontal coordinate
+                    var y = event.clientY;
+                    y = y - 40;
+
+                    var url2 = $(this).attr("data-href");
+                    var url = url2.toString().split(":");
+                    url = url[0];
+                    document.getElementById('dynaframe').src = "";
+
+                    var el = document.getElementById('dynaframe').src =
+                        url + SALESPERSONIDval + "&textbox=SALESPERSONID&textbox2=USERACCOUNT";
+
+                    var modal = document.getElementById('dynabox');
+                    var span = document.getElementsByClassName("close")[0];
+
+                    modal.style.display = "block";
+                    $("#dynabox").css({
+                        "top": y,
+                        "left": x,
+                        "width": w,
+                        "height": h
+                    });
+                    $("#dynaframe").css({
+                        "width": w - 2,
+                        "height": h
+                    });
+                    $("#dynabox, #dynaframe").addClass("active");
+                    $("#dynabox, #dynaframe").css("visibility","visible");
+                    return false;
+                });
+
+            $('#txtfindUser').on('click', function (e) {
+                var drpUserEnabledToViewList = $("#drpUserEnabledToViewList");
+                var selectedOffice = $("#drpUserEnabledToView  option:selected").val();
+                var searchUser = $("#txtUserEnabledToView").val();
+
+                var option = '<option value="-1">Wait Loading...</option>';
+                $(option).appendTo($(drpUserEnabledToViewList))
+                $.ajax({
+                    type: "GET",
+                    url: "/Account/GetSalesPerson",
+                    data: {
+                        officeId: selectedOffice,
+                        userName: searchUser
+                    },
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+                    },
+                    success: function (response) {
+                        Email = [];
+                        $(drpUserEnabledToViewList).html("");
+
+                        if (response.SalePersonModel) {
+                            $(drpUserEnabledToViewList).html("");
+                            for (var i = 0; i < response.SalePersonModel.length; i++) {
+                                var option = '<option value="' + response.SalePersonModel[i].SalePersonID + '">' + response.SalePersonModel[i].SalePersonName + '</option>';
+                                $(option).appendTo($(drpUserEnabledToViewList))
+                            }
+
+                        } else {
+                            $.notify(response.message, "error");
+                        }
+
+                    }
+                });
+            });
+
+            $(document).on("blur keyup focusout", "#USERACCOUNT", function (event) {
+
+                event.preventDefault();
+
+                var SALESPERSONIDval = $("#SALESPERSONID").val();
+                var SALESPERSONNAMEval = $("#USERACCOUNT").val();
+                var w = 300,
+                    h = 164;
+                var
+                    l = (screen.availWidth - w) / 2,
+                    t = (screen.availHeight - h) / 2;
+
+                var x = event.clientX; // Get the horizontal coordinate
+                var y = event.clientY;
+                y = y - 40;
+
+                var url2 = $(this).parent().parent().find("#SALESPERSONIDImage").attr("data-href");
+                var url = url2.toString().split(":");
+                url = url[0];
+                document.getElementById('dynaframe').src = "";
+
+                var el = document.getElementById('dynaframe').src =
+                    url + SALESPERSONIDval + "&textbox=SALESPERSONID&textbox2=USERACCOUNT&User=" + SALESPERSONNAMEval;
+
+                var modal = document.getElementById('dynabox');
+                var span = document.getElementsByClassName("close")[0];
+
+                modal.style.display = "block";
+                $("#dynabox").css({
+                    "top": y,
+                    "left": x,
+                    "width": w,
+                    "height": h
+                });
+                $("#dynaframe").css({
+                    "width": w - 2,
+                    "height": h
+                });
+                $("#dynabox, #dynaframe").addClass("active");
+                $("#dynabox, #dynaframe").css("visibility", "visible");
+
+                return false;
+
+
+            });
+            $(document).on("blur",
+                "#tabberpage #Opportunity_EXPECTEDREVENUE",
+                function () {
+                    if ($(this).val() !== 0) {
+                        $(this).val("0.00");
+                    } else {
+                        $(this).val(parseFloat($(this).val()).toLocaleString('en'));
+                    }
+                });
+            $(document).on("blur",
+                "#tabberpage #SALESPERSONNAME",
+                function () {
+
+                    if ($(this).val() !== "" || $(this).val() !== 'na') {
+                        var item = getSalesPersonByName($(this).val());
+                    }
+
+                    if (check_name($(this), "", $(this).val())) {
+                        $(this).css({ "border": "1px solid rgb(122, 122, 122)" });
+                        result = true;
+
+                    } else {
+                        $(this).css({ "border": "2px solid #F90A0A" });
+                        result = false;
+                    }
+                });
+
+            $('#AddPertainingTo').click(function (e) {
+
+                var name = $("#search").val();
+
+                $('#MatterPertainingToList1').
+                    append($("<option></option>").
+                        attr("value", name).
+                        text(name));
+            });
+
+            // 2. Remove
+            $('#btnRemove').on('click', function (event) {
+                event.preventDefault();
+                if ($(this).parent().parent().closest('table').find('tbody').children('tr').length > 1) {
+                    $(this).parent().parent().remove();
+                }
+                return false;
+            });
+        });
+        function companyLookup(url, event) {
+
+            var val = $("#COMPANYNAME").val();
+            var w = 300,
+                h = 250;
+            var
+                l = (screen.availWidth - w) / 2,
+                t = (screen.availHeight - h) / 2;
+
+            var x = event.clientX; // Get the horizontal coordinate
+            var y = event.clientY;
+            y = y - 40;
+            var url1 = $(event).attr("data-href");
+            var url = url1.toString().split(":");
+            url = url[0];
+            document.getElementById('dynaframe').src = "";
+            var el = document.getElementById('dynaframe').src = url + val + "&textbox=CompanyId&textbox2=COMPANYNAME";
+            var modal = document.getElementById('dynabox');
+            var span = document.getElementsByClassName("close")[0];
+
+            modal.style.display = "block";
+            $("#dynabox").css({
+                "top": y,
+                "left": x,
+                "width": w,
+                "height": h
+            });
+            $("#dynaframe").css({
+                "width": w,
+                "height": h
+            });
+            $("#dynabox, #dynaframe").addClass("active");
+            $("#dynabox, #dynaframe").css("visibility", "visible");
+
+            return false;
+        }
+
+        var tabButtons = document.querySelectorAll(".tabContainer .buttonContainer input");
+        var tabPanels = document.querySelectorAll(".tabContainer .tabPanel");
+        function showPanel(panelIndex, colorCode) {
+            //tabButtons.forEach(function (node) {
+            //    node.style.backgroundColor = "";
+            //    node.style.color = "";
+            //});
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].style.backgroundColor = "";
+                tabButtons[i].style.color = "";
+                tabButtons[panelIndex].style.borderLeft = "none !important";
+                tabButtons[panelIndex].style.borderTop = "none !important";
+                tabButtons[panelIndex].style.borderRight = "none !important";
+                tabButtons[panelIndex].style.borderStyle = "none !important";
+            }
+            tabButtons[panelIndex].style.backgroundColor = colorCode;
+            tabButtons[panelIndex].style.color = "blue";
+            //tabButtons[panelIndex].style.borderLeft = "1px solid rgb(153, 153, 153)";
+            //tabButtons[panelIndex].style.borderTop = "1px solid rgb(153, 153, 153)";
+            //tabButtons[panelIndex].style.borderRight = "1px solid rgb(153, 153, 153)";
+            //tabPanels.forEach(function (node) {
+            //    node.style.display = "none";
+            //});
+            for (var i = 0; i < tabPanels.length; i++) {
+                tabPanels[i].style.display = "none";
+            }
+            tabPanels[panelIndex].style.backgroundColor = colorCode;
+            tabPanels[panelIndex].style.display = "block";
+        }
+        showPanel(0, '#ffffff');
+        function jQueryAjaxPost(form) {
+            debugger;
+            $.ajaxSetup({ cache: false });
+
+            var ajaxConfig = {
+                type: 'POST',
+                url: form.action,
+                data: form.serialize(),
+                dataType: 'json',
+                cache: false,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Accept", "application/json");
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                },
+                success: function (response) {
+                    if (response.success) {
+                        $.notify(response.message, "success");
+                    } else {
+                        $.notify(response.message, "error");
+                    }
+                }
+            }
+            if ($(form).attr('enctype') == "multipart/form-data") {
+                ajaxConfig['contentType'] = false;
+                ajaxConfig['processData'] = false;
+            }
+            $.ajax(ajaxConfig);
+            return true;
+        }
+        function getSalesPersonByName(text) {
+            $.get("/Account/getSalesPerson",
+                { name: text },
+                function (data) {
+                    if (data != null) {
+                        $('#SALESPERSONID').val(data.SalePersonID);
+                        $('#SALESPERSONNAME').val(data.SalePersonName);
+                    } else {
+                        alert("Something went wrong");
+                    }
+                });
+        }
+        function popLink(url) {
+            if (url !== "") {
+                if (url.indexOf("http://") > 0) {
+                    window.open(url, '_blank');
+                    window.focus();
+                } else {
+                    window.open("http://" + url, '_blank');
+                    window.focus();
+                }
+
+            }
+        }
+    </script>
+}
