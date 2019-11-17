@@ -33,7 +33,7 @@
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
     "babel-register": "^7.0.0-beta.3",
-    "bootstrap": "3.3.7",
+    "bootstrap": "3.4.1",
     "bootstrapjs": "2.0.0",
     "core-js": "^2.5.4",
     "cross-env": "^1.0.8",
