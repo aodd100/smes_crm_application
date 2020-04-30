@@ -41,7 +41,7 @@
     "expect": "^1.20.1",
     "fixed-data-table": "0.6.3",
     "immutable": "^3.8.1",
-    "jquery": "3.3.1",
+    "jquery": "3.5.0",
     "lodash": "^4.13.1",
     "node-libs-browser": "^1.0.0",
     "node-sass": "^3.8.0",
